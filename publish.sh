@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 npm run build
-cp -r ./dist/ng-blog/* ./prebuilt
+cp -r ./dist/awesome-angular/* ./prebuilt
 cd ./prebuilt
 cp index.html 404.html
 
