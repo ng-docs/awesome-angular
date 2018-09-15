@@ -1,0 +1,3 @@
+[submodule "prebuilt"]
+	path = prebuilt
+	url = git@github.com:ng-docs/ng-blog.angular.cn.git
