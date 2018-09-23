@@ -1,0 +1,42 @@
+<mat-toolbar color="primary" class="mat-elevation-z6 header">
+  <button
+    type="button"
+    aria-label="Toggle sidenav"
+    mat-icon-button
+    (click)="drawer.toggle()"
+    *ngIf="isHandset$ | async">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+  <app-icon-angular></app-icon-angular>
+  <div *ngIf="!(isHandset$ | async)">
+    <app-svg-title aria-label="Angular 资源集锦"></app-svg-title>
+  </div>
+  <a mat-button routerLink="/articles" routerLinkActive="active">
+    文章
+  </a>
+  <a mat-button routerLink="/libraries" routerLinkActive="active">
+    组件库
+  </a>
+  <a mat-button routerLink="/news" routerLinkActive="active">
+    新闻
+  </a>
+  <ng-container *ngIf="!(isHandset$ | async)">
+    <div class="flex-spacer"></div>
+    <a mat-button href="https://github.com/ng-docs/awesome-angular" target="_blank" aria-label="GitHub 仓库">
+      <app-icon-github></app-icon-github>
+    </a>
+  </ng-container>
+</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <ng-content></ng-content>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

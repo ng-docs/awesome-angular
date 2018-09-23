@@ -1,0 +1,6 @@
+<app-layout-nav>
+  <mat-nav-list>
+    <a *ngFor="let item of items" mat-list-item [routerLink]="['.', item.id]"
+       routerLinkActive="active">{{item.label}}</a>
+  </mat-nav-list>
+</app-layout-nav>

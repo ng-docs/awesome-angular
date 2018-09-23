@@ -1,0 +1,41 @@
+@import "../../styles/common";
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  &.header {
+    top: 0;
+    margin-bottom: 8px;
+  }
+}
+
+app-svg-title {
+  margin-right: 1rem;
+}
+
+[mat-button] {
+  min-width: auto;
+  &.active {
+    margin-bottom: -2px;
+    border-bottom: 2px solid white;
+  }
+}
+
+::ng-deep mat-list-item {
+  &.active {
+    color: $active;
+    background: $active-bg;
+  }
+}
+
+mat-sidenav-content {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
