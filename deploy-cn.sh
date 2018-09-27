@@ -3,9 +3,9 @@
 set -x
 set -e
 
-#npm run build
+npm run build
 
-#npm run build:ssr
+npm run build:ssr
 
 kill `lsof -t -i :4000` || true
 
