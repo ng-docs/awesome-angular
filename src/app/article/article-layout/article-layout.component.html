@@ -4,9 +4,6 @@
       <a routerLink="." class="flex-spacer">
         栏目简介
       </a>
-      <button mat-icon-button routerLink=".">
-        <mat-icon matListIcon>chevron_right</mat-icon>
-      </button>
     </mat-list-item>
     <a *ngFor="let item of items" mat-list-item [routerLink]="[item.id]"
        routerLinkActive="active">{{item.label}}</a>

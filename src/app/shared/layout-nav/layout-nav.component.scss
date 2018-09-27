@@ -28,14 +28,8 @@ app-svg-title {
   }
 }
 
-::ng-deep mat-list-item {
-  &.active {
-    color: $active;
-    background: $active-bg;
-  }
-}
-
 mat-sidenav-content {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
