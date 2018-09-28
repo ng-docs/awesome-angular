@@ -12,12 +12,8 @@ const routes: Routes = [
     loadChildren: './article/article.module#ArticleModule',
   },
   {
-    path: 'libraries',
-    loadChildren: './library/library.module#LibraryModule',
-  },
-  {
-    path: 'news',
-    loadChildren: './news/news.module#NewsModule',
+    path: 'authors',
+    loadChildren: './author/author.module#AuthorModule',
   },
 ];
 
