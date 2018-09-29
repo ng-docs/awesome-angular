@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { buildUuid, findFilesWithDuplicateIds, parseAuthor, parseCommit, splitGitLog } from './tree-builder';
+import { buildUuid, findFilesWithDuplicateIds, parseAuthor, parseCommit, splitGitLog } from './builder';
 import { FileCommitModel } from './file-commit.model';
 import { FileModel } from './file.model';
 
