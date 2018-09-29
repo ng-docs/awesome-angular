@@ -1,5 +1,5 @@
-import { DirTreeModel } from '../../utils/dir-tree.model';
+import { AuthorModel } from './author.model';
 
 declare function require(name: string): any;
 
-export const authors: DirTreeModel = require('./json');
+export const authors: AuthorModel[] = require('./tree.json');
