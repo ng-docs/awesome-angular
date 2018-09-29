@@ -14,7 +14,7 @@ import {
 import { LayoutNavComponent } from './layout-nav/layout-nav.component';
 import { IconAngularComponent } from './icons/icon-angular/icon-angular.component';
 import { IconGithubComponent } from './icons/icon-github/icon-github.component';
-import { SvgTitleComponent } from './svg-title/svg-title.component';
+import { SearchBoxComponent } from './search-box/search-box.component';
 
 @NgModule({
   imports: [
@@ -33,7 +33,7 @@ import { SvgTitleComponent } from './svg-title/svg-title.component';
     LayoutNavComponent,
     IconAngularComponent,
     IconGithubComponent,
-    SvgTitleComponent,
+    SearchBoxComponent,
   ],
   exports: [
     MatToolbarModule,
@@ -44,6 +44,7 @@ import { SvgTitleComponent } from './svg-title/svg-title.component';
     MatListModule,
     MatTabsModule,
     LayoutNavComponent,
+    SearchBoxComponent,
   ],
 })
 export class SharedModule {

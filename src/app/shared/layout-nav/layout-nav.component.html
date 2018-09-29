@@ -9,17 +9,9 @@
   </button>
   <app-icon-angular></app-icon-angular>
   <div *ngIf="!(isHandset$ | async)">
-    <app-svg-title aria-label="Angular 资源集锦"></app-svg-title>
+    <img src="/assets/icons/logo.svg" alt="Angular 资源集锦"/>
   </div>
-  <a mat-button routerLink="/articles" routerLinkActive="active">
-    文章
-  </a>
-  <a mat-button routerLink="/libraries" routerLinkActive="active">
-    组件库
-  </a>
-  <a mat-button routerLink="/news" routerLinkActive="active">
-    新闻
-  </a>
+  <app-search-box (search)="search($event)"></app-search-box>
   <ng-container *ngIf="!(isHandset$ | async)">
     <div class="flex-spacer"></div>
     <a mat-button href="https://github.com/ng-docs/awesome-angular" target="_blank" aria-label="GitHub 仓库">

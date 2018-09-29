@@ -2,7 +2,7 @@
   <mat-nav-list>
     <mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <a routerLink="." class="flex-spacer">
-        栏目简介
+        文章列表
       </a>
     </mat-list-item>
     <a *ngFor="let item of items" mat-list-item [routerLink]="[item.id]"

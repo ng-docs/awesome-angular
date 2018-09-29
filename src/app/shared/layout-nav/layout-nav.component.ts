@@ -18,4 +18,7 @@ export class LayoutNavComponent {
   constructor(private breakpointObserver: BreakpointObserver) {
   }
 
+  search(keyword: string): void {
+    // TODO: implement search with lunr.js
+  }
 }

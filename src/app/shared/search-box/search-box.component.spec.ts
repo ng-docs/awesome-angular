@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SvgTitleComponent } from './svg-title.component';
+import { SearchBoxComponent } from './search-box.component';
 
-describe('SvgTitleComponent', () => {
-  let component: SvgTitleComponent;
-  let fixture: ComponentFixture<SvgTitleComponent>;
+describe('SearchBoxComponent', () => {
+  let component: SearchBoxComponent;
+  let fixture: ComponentFixture<SearchBoxComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SvgTitleComponent],
+      declarations: [SearchBoxComponent],
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SvgTitleComponent);
+    fixture = TestBed.createComponent(SearchBoxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
