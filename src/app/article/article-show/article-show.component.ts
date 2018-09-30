@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { findArticleById } from '../data/articles';
+import { ArticleModel } from '../data/article.model';
 
 @Component({
   selector: 'app-article-show',
@@ -7,10 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleShowComponent implements OnInit {
 
-  constructor() {
+  constructor(private route: ActivatedRoute) {
   }
 
+  article: ArticleModel;
+
   ngOnInit() {
+    this.route.params.subscribe(({ id }) => {
+      this.article = findArticleById(id);
+    });
   }
 
 }

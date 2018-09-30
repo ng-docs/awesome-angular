@@ -8,12 +8,14 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleShowComponent } from './article-show/article-show.component';
 import { MatTreeModule } from '@angular/material';
 import { NavNodeComponent } from './nav-node/nav-node.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   imports: [
     CommonModule,
     ArticleRoutingModule,
     MatTreeModule,
+    MarkdownModule.forChild(),
     SharedModule,
   ],
   declarations: [ArticleLayoutComponent, ArticleListComponent, ArticleShowComponent, NavNodeComponent],

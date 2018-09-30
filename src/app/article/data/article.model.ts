@@ -11,6 +11,6 @@ export class ArticleModel {
   content: string;
   author: AuthorModel;
   creationDate: Date;
-  lastUpdated: Date;
+  lastUpdated?: Date;
   history: ArticleHistoryModel[] = [];
 }

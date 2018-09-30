@@ -105,8 +105,12 @@ function buildArticle(file: FileModel, authors: AuthorModel[]): ArticleModel {
     result.path = '/' + result.path;
   }
   result.filename = file.path.replace(/^.*\/(.*).md/, '$1');
-  result.creationDate = lastOf(file.commits).date;
-  result.lastUpdated = firstOf(file.commits).date;
+  const creationDate = lastOf(file.commits).date;
+  result.creationDate = creationDate;
+  const lastUpdated = firstOf(file.commits).date;
+  if (creationDate !== lastUpdated) {
+    result.lastUpdated = lastUpdated;
+  }
   result.content = fs.readFileSync(file.path, 'utf-8');
   result.history = file.commits.map(commit => buildArticleHistory(commit, authors));
   const authorId = lastOf(file.commits).author;

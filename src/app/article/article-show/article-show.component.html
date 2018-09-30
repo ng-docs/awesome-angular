@@ -1,3 +1,4 @@
-<p>
-  article-show works!
-</p>
+<p>作者：<a [routerLink]="['/authors', article.author.name]">{{article.author.name}}</a></p>
+<p>发表：{{article.creationDate | date}}</p>
+<p *ngIf="article.lastUpdated">修改：{{article.lastUpdated | date}}</p>
+<markdown [data]="article.content"></markdown>
