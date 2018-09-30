@@ -6,7 +6,6 @@
 
 mat-list-item, [mat-list-item] {
   &.active {
-    color: $active;
-    background: $active-bg;
+    color: $active !important;
   }
 }

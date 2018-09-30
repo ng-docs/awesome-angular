@@ -1,13 +1,5 @@
 <app-layout-nav>
   <mat-nav-list>
-    <mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-      <a routerLink="." class="flex-spacer">
-        文章列表
-      </a>
-    </mat-list-item>
-    <ng-container *ngFor="let item of items">
-      <a *ngIf="!item.groups?.length" mat-list-item [routerLink]="[item.id]"
-         routerLinkActive="active">{{item.title}}</a>
-    </ng-container>
+    <app-nav-node [data]="articles"></app-nav-node>
   </mat-nav-list>
 </app-layout-nav>

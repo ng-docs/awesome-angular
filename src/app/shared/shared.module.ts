@@ -15,6 +15,7 @@ import { LayoutNavComponent } from './layout-nav/layout-nav.component';
 import { IconAngularComponent } from './icons/icon-angular/icon-angular.component';
 import { IconGithubComponent } from './icons/icon-github/icon-github.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
+import { ToggleDirective } from './directives/toggle.directive';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
     IconAngularComponent,
     IconGithubComponent,
     SearchBoxComponent,
+    ToggleDirective,
   ],
   exports: [
     MatToolbarModule,
@@ -45,6 +47,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
     MatTabsModule,
     LayoutNavComponent,
     SearchBoxComponent,
+    ToggleDirective,
   ],
 })
 export class SharedModule {

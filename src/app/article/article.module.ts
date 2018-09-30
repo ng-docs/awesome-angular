@@ -6,14 +6,17 @@ import { ArticleLayoutComponent } from './article-layout/article-layout.componen
 import { SharedModule } from '../shared/shared.module';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleShowComponent } from './article-show/article-show.component';
+import { MatTreeModule } from '@angular/material';
+import { NavNodeComponent } from './nav-node/nav-node.component';
 
 @NgModule({
   imports: [
     CommonModule,
     ArticleRoutingModule,
+    MatTreeModule,
     SharedModule,
   ],
-  declarations: [ArticleLayoutComponent, ArticleListComponent, ArticleShowComponent],
+  declarations: [ArticleLayoutComponent, ArticleListComponent, ArticleShowComponent, NavNodeComponent],
 })
 export class ArticleModule {
 }

@@ -1,0 +1,20 @@
+<ng-container *ngFor="let item of data.children; index as index">
+  <a *ngIf="item.type === 'article'" mat-list-item routerLinkActive="active" [routerLink]="['/articles', item.id]">
+    <div class="title">
+      <span *ngIf="item.level > 1">{{index + 1}}.&nbsp;</span>
+      {{item.title}}
+    </div>
+  </a>
+  <div *ngIf="item.type === 'group'">
+    <mat-list-item appToggle [isOn]="isActiveGroup(item)" [class.active]="isActiveGroup(item)" #toggle="appToggle"
+                   (click)="toggle.toggle()">
+      <div class="title">{{item.title}}</div>
+      <mat-icon *ngIf="toggle.isOn">expand_more</mat-icon>
+      <mat-icon *ngIf="toggle.isOff">chevron_right</mat-icon>
+    </mat-list-item>
+    <!--use hidden instead of ngIf to make SSR prerender happy-->
+    <div [hidden]="!toggle.isOn">
+      <app-nav-node [data]="item"></app-nav-node>
+    </div>
+  </div>
+</ng-container>

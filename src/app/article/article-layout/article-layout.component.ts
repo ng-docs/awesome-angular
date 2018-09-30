@@ -11,7 +11,7 @@ export class ArticleLayoutComponent implements OnInit {
   constructor() {
   }
 
-  items = articles;
+  articles = articles;
 
   ngOnInit() {
   }
