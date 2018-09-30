@@ -142,7 +142,9 @@ function isSamePath(path1: string, path2: string): boolean {
 function addArticlesToGroups(articles: ArticleModel[], articleGroups: ArticleGroupModel[]): void {
   articleGroups.forEach(group => {
     addArticlesToGroups(articles, group.children as ArticleGroupModel[]);
-    group.children.push(...articles.filter(article => isSamePath(article.path, group.path)));
+    const subArticles = articles.filter(article => isSamePath(article.path, group.path));
+    subArticles.forEach(article => article.level = group.level + 1);
+    group.children.push(...subArticles);
   });
 }
 
@@ -169,15 +171,15 @@ function sortByFilename(a: ArticleModel | ArticleGroupModel, b: ArticleModel | A
   }
 }
 
-function sort(group: ArticleGroupModel, level: number): ArticleGroupModel {
-  if (level < 2) {
-    group.children = group.children.sort((a, b) => sortByCreationDate(a, b));
-  } else {
+function sort(group: ArticleGroupModel): ArticleGroupModel {
+  if (group.level > 1) {
     group.children = group.children.sort((a, b) => sortByFilename(a, b));
+  } else {
+    group.children = group.children.sort((a, b) => sortByCreationDate(a, b));
   }
   group.children.forEach(item => {
     if (item instanceof ArticleGroupModel) {
-      sort(item, level + 1);
+      sort(item);
     }
   });
   return group;
@@ -191,5 +193,5 @@ export function buildArticleTree(articles: ArticleModel[]): ArticleGroupModel {
   const result = pathListToTree(dirList);
   addArticlesToGroups(articles, result);
   fillCreationDateForGroups(result);
-  return sort(result[0], 0);
+  return sort(result[0]);
 }
