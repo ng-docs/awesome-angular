@@ -1,8 +1,8 @@
 <ng-container *ngFor="let item of data.children; index as index">
-  <a *ngIf="item.type === 'article' && !item.isCover" mat-list-item routerLinkActive="active"
+  <a *ngIf="item.type === 'article'" mat-list-item routerLinkActive="active"
      [routerLink]="['/articles', item.id]">
     <div class="title" [title]="item.title">
-      <span *ngIf="item.level > 1">{{index + 1}}.&nbsp;</span>
+      <span *ngIf="item.level > 1">{{index}}.&nbsp;</span>
       {{item.title}}
     </div>
   </a>

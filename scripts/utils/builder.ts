@@ -147,12 +147,15 @@ function isSamePath(path1: string, path2: string): boolean {
 function addArticlesToGroups(articles: ArticleModel[], articleGroups: ArticleGroupModel[]): void {
   articleGroups.forEach(group => {
     addArticlesToGroups(articles, group.children as ArticleGroupModel[]);
-    const subArticles = articles.filter(article => isSamePath(article.path, group.path));
-    subArticles.forEach(article => article.level = group.level + 1);
+    const subArticles = articles
+      .filter(it => it.type === 'article')
+      .filter(it => isSamePath(it.path, group.path));
+    subArticles.forEach(it => it.level = group.level + 1);
     const coverArticle = subArticles.find(it => orderIdOf(it.filename) === 0);
     if (coverArticle) {
       coverArticle.isCover = true;
       group.title = coverArticle.title;
+      coverArticle.title = '连载简介';
       group.id = coverArticle.id;
       group.summary = coverArticle.content;
     }
@@ -184,7 +187,7 @@ function sortByFilename(a: ArticleModel | ArticleGroupModel, b: ArticleModel | A
 }
 
 function sort(group: ArticleGroupModel): ArticleGroupModel {
-  if (group.level > 1) {
+  if (group.level > 0) {
     group.children = group.children.sort((a, b) => sortByFilename(a, b));
   } else {
     group.children = group.children.sort((a, b) => sortByCreationDate(a, b));

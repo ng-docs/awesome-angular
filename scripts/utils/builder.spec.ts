@@ -124,15 +124,24 @@ Date:   Fri Sep 28 10:30:14 2018 +0800
       '/a/b',
     ];
     expect(pathListToTree(pathList)).to.eql([{
+      id: '',
+      level: 0,
+      type: 'group',
       path: '',
       title: '',
       children: [
         {
+          id: 'a',
+          level: 1,
+          type: 'group',
           path: '/a',
           title: 'a',
           children: [
             {
+              id: 'b',
+              level: 2,
               title: 'b',
+              type: 'group',
               path: '/a/b',
               children: [],
             },
@@ -142,6 +151,13 @@ Date:   Fri Sep 28 10:30:14 2018 +0800
     }]);
   });
   it('should build article groups', function () {
+    const article0 = new ArticleModel();
+    article0.id = '0';
+    article0.path = '/a/b';
+    article0.title = 'group';
+    article0.content = '# summary';
+    article0.filename = '0.md';
+    article0.creationDate = new Date('2018-02-01');
     const article1 = new ArticleModel();
     article1.id = '1';
     article1.path = '/a/b';
@@ -150,6 +166,7 @@ Date:   Fri Sep 28 10:30:14 2018 +0800
     const article2 = new ArticleModel();
     article2.id = '2';
     article2.path = '';
+    article2.filename = '2.md';
     article2.creationDate = new Date('2018-01-01');
     const article3 = new ArticleModel();
     article3.id = '3';
@@ -159,57 +176,304 @@ Date:   Fri Sep 28 10:30:14 2018 +0800
     const article4 = new ArticleModel();
     article4.id = '4';
     article4.path = '/a';
+    article4.filename = '4.md';
     article4.creationDate = new Date('2018-04-01');
 
-    const tree = buildArticleTree([article1, article2, article3, article4]);
+    const tree = buildArticleTree([article0, article1, article2, article3, article4]);
     expect(tree).to.eql(
       {
-        children: [
+        'type': 'group',
+        'children': [
           {
-            history: [],
-            id: '2',
-            path: '',
-            creationDate: new Date('2018-01-01T00:00:00.000Z'),
+            'type': 'article',
+            'isCover': false,
+            'history': [],
+            'id': '2',
+            'path': '',
+            'filename': '2.md',
+            'creationDate': new Date('2018-01-01T00:00:00.000Z'),
+            'level': 1,
           },
           {
-            children: [
+            'type': 'group',
+            'children': [
               {
-                children: [
+                'type': 'group',
+                title: 'group',
+                summary: '# summary',
+                'children': [
                   {
-                    history: [],
-                    id: '3',
-                    path: '/a/b',
-                    filename: '2.md',
-                    creationDate: new Date('2018-03-01T00:00:00.000Z'),
+                    'type': 'article',
+                    'isCover': true,
+                    'history': [],
+                    'id': '0',
+                    title: 'group',
+                    content: '# summary',
+                    'path': '/a/b',
+                    'filename': '0.md',
+                    'creationDate': new Date('2018-02-01T00:00:00.000Z'),
+                    'level': 3,
                   },
                   {
-                    history: [],
-                    id: '1',
-                    path: '/a/b',
-                    filename: '10.md',
-                    creationDate: new Date('2018-02-01T00:00:00.000Z'),
+                    'type': 'article',
+                    'isCover': false,
+                    'history': [],
+                    'id': '3',
+                    'filename': '2.md',
+                    'path': '/a/b',
+                    'creationDate': new Date('2018-03-01T00:00:00.000Z'),
+                    'level': 3,
+                  },
+                  {
+                    'type': 'article',
+                    'isCover': false,
+                    'history': [],
+                    'id': '1',
+                    'path': '/a/b',
+                    'filename': '10.md',
+                    'creationDate': new Date('2018-02-01T00:00:00.000Z'),
+                    'level': 3,
                   },
                 ],
-                title: 'b',
-                path: '/a/b',
-                creationDate: new Date('2018-02-01T00:00:00.000Z'),
+                'id': '0',
+                'level': 2,
+                'path': '/a/b',
+                'creationDate': new Date('2018-02-01T00:00:00.000Z'),
               },
               {
-                history: [],
-                id: '4',
-                path: '/a',
-                creationDate: new Date('2018-04-01T00:00:00.000Z'),
+                'type': 'article',
+                'isCover': false,
+                'history': [],
+                'id': '4',
+                'path': '/a',
+                'filename': '4.md',
+                'creationDate': new Date('2018-04-01T00:00:00.000Z'),
+                'level': 2,
               },
             ],
-            title: 'a',
-            path: '/a',
-            creationDate: new Date('2018-02-01T00:00:00.000Z'),
+            'id': 'a',
+            'title': 'a',
+            'level': 1,
+            'path': '/a',
+            'creationDate': new Date('2018-02-01T00:00:00.000Z'),
           },
         ],
-        title: '',
-        path: '',
-        creationDate: new Date('2018-01-01T00:00:00.000Z'),
+        'id': '',
+        'title': '',
+        'level': 0,
+        'path': '',
+        'creationDate': new Date('2018-01-01T00:00:00.000Z'),
       },
     );
+  });
+  it('should build real data', function () {
+    const a1 = new ArticleModel();
+    Object.assign(a1, {
+      'type': 'article',
+      'isCover': false,
+      'history': [
+        {
+          'date': new Date('2018-09-30T00:26:41.000Z'),
+          'message': 'feat: 普通文件按照创建时间排序，系列文章按照文件名前部的数字排序',
+          'details': '',
+          'author': '汪志成',
+        },
+        {
+          'date': new Date('2018-09-29T02:41:09.000Z'),
+          'message': 'docs: 给 Java 程序员的 Angular 指南',
+          'details': '',
+          'author': '汪志成',
+        },
+      ],
+      'id': '45c576d3_给_Java_程序员的_Angular_指南',
+      'title': '你的职业生涯',
+      'path': '/给 Java 程序员的 Angular 指南',
+      'filename': '1.md',
+      'creationDate': new Date('2018-09-29T02:41:09.000Z'),
+      'lastUpdated': new Date('2018-09-30T00:26:41.000Z'),
+      'content': '# 你的职业生涯\n\n\n',
+      'author': '汪志成',
+      'reviewers': [],
+      'level': 2,
+    });
+    const a2 = new ArticleModel();
+    Object.assign(a2, {
+      'type': 'article',
+      'isCover': false,
+      'history': [
+        {
+          'date': new Date('2018-09-29T04:31:09.000Z'),
+          'message': 'docs: 核心概念',
+          'details': '',
+          'author': '汪志成',
+        },
+      ],
+      'id': '0d70dc60_核心概念',
+      'title': '核心概念',
+      'path': '/给 Java 程序员的 Angular 指南',
+      'filename': '2.md',
+      'creationDate': new Date('2018-09-29T04:31:09.000Z'),
+      'content': '# 核心概念\n',
+      'author': '汪志成',
+      'reviewers': [],
+      'level': 2,
+    });
+    const a3 = new ArticleModel();
+    Object.assign(a3, {
+      'type': 'article',
+      'isCover': false,
+      'history': [
+        {
+          'date': new Date('2018-09-29T04:31:25.000Z'),
+          'message': 'docs: 测试驱动开发',
+          'details': '',
+          'author': '汪志成',
+        },
+      ],
+      'id': 'aeb60f27_测试驱动开发',
+      'title': '测试驱动开发',
+      'path': '/给 Java 程序员的 Angular 指南',
+      'filename': '10.md',
+      'creationDate': new Date('2018-09-29T04:31:25.000Z'),
+      'content': '# 测试驱动开发\n',
+      'author': '汪志成',
+      'reviewers': [],
+      'level': 2,
+    });
+    const a4 = new ArticleModel();
+    Object.assign(a4, {
+      'type': 'article',
+      'isCover': true,
+      'history': [
+        {
+          'date': new Date('2018-09-30T13:34:40.000Z'),
+          'message': 'docs: 给 Java 程序员的 Angular 系列教程',
+          'details': '',
+          'author': '汪志成',
+        },
+      ],
+      'id': '46dcfe65_给_Java_程序员的_Angular_系列教程',
+      'title': '给 Java 程序员的 Angular 系列教程',
+      'path': '/给 Java 程序员的 Angular 指南',
+      'filename': '0.md',
+      'creationDate': new Date('2018-09-30T13:34:40.000Z'),
+      'content': '# 给 Java 程序员的 Angular 系列教程\n\n',
+      'author': '汪志成',
+      'reviewers': [],
+      'level': 2,
+    });
+    const tree = buildArticleTree([a1, a2, a3, a4]);
+    expect(tree).to.eql({
+      'type': 'group',
+      'children': [
+        {
+          'type': 'group',
+          'children': [
+            {
+              'type': 'article',
+              'isCover': true,
+              'history': [
+                {
+                  'date': new Date('2018-09-30T13:34:40.000Z'),
+                  'message': 'docs: 给 Java 程序员的 Angular 系列教程',
+                  'details': '',
+                  'author': '汪志成',
+                },
+              ],
+              'id': '46dcfe65_给_Java_程序员的_Angular_系列教程',
+              'title': '给 Java 程序员的 Angular 系列教程',
+              'path': '/给 Java 程序员的 Angular 指南',
+              'filename': '0.md',
+              'creationDate': new Date('2018-09-30T13:34:40.000Z'),
+              'content': '# 给 Java 程序员的 Angular 系列教程\n\n',
+              'author': '汪志成',
+              'reviewers': [],
+              'level': 2,
+            },
+            {
+              'type': 'article',
+              'isCover': false,
+              'history': [
+                {
+                  'date': new Date('2018-09-30T00:26:41.000Z'),
+                  'message': 'feat: 普通文件按照创建时间排序，系列文章按照文件名前部的数字排序',
+                  'details': '',
+                  'author': '汪志成',
+                },
+                {
+                  'date': new Date('2018-09-29T02:41:09.000Z'),
+                  'message': 'docs: 给 Java 程序员的 Angular 指南',
+                  'details': '',
+                  'author': '汪志成',
+                },
+              ],
+              'id': '45c576d3_给_Java_程序员的_Angular_指南',
+              'title': '你的职业生涯',
+              'path': '/给 Java 程序员的 Angular 指南',
+              'filename': '1.md',
+              'creationDate': new Date('2018-09-29T02:41:09.000Z'),
+              'lastUpdated': new Date('2018-09-30T00:26:41.000Z'),
+              'content': '# 你的职业生涯\n\n\n',
+              'author': '汪志成',
+              'reviewers': [],
+              'level': 2,
+            },
+            {
+              'type': 'article',
+              'isCover': false,
+              'history': [
+                {
+                  'date': new Date('2018-09-29T04:31:09.000Z'),
+                  'message': 'docs: 核心概念',
+                  'details': '',
+                  'author': '汪志成',
+                },
+              ],
+              'id': '0d70dc60_核心概念',
+              'title': '核心概念',
+              'path': '/给 Java 程序员的 Angular 指南',
+              'filename': '2.md',
+              'creationDate': new Date('2018-09-29T04:31:09.000Z'),
+              'content': '# 核心概念\n',
+              'author': '汪志成',
+              'reviewers': [],
+              'level': 2,
+            },
+            {
+              'type': 'article',
+              'isCover': false,
+              'history': [
+                {
+                  'date': new Date('2018-09-29T04:31:25.000Z'),
+                  'message': 'docs: 测试驱动开发',
+                  'details': '',
+                  'author': '汪志成',
+                },
+              ],
+              'id': 'aeb60f27_测试驱动开发',
+              'title': '测试驱动开发',
+              'path': '/给 Java 程序员的 Angular 指南',
+              'filename': '10.md',
+              'creationDate': new Date('2018-09-29T04:31:25.000Z'),
+              'content': '# 测试驱动开发\n',
+              'author': '汪志成',
+              'reviewers': [],
+              'level': 2,
+            },
+          ],
+          'id': '46dcfe65_给_Java_程序员的_Angular_系列教程',
+          'title': '给 Java 程序员的 Angular 系列教程',
+          'level': 1,
+          'path': '/给 Java 程序员的 Angular 指南',
+          'summary': '# 给 Java 程序员的 Angular 系列教程\n\n',
+          'creationDate': new Date('2018-09-29T02:41:09.000Z'),
+        },
+      ],
+      'id': '',
+      'title': '',
+      'level': 0,
+      'path': '',
+      'creationDate': new Date('2018-09-29T02:41:09.000Z'),
+    });
   });
 });
