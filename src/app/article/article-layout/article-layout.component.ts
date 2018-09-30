@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { articles } from '../data/articles';
 
 @Component({
   selector: 'app-article-layout',
@@ -10,12 +11,7 @@ export class ArticleLayoutComponent implements OnInit {
   constructor() {
   }
 
-  items = [
-    {
-      id: '1',
-      label: 'Test',
-    },
-  ];
+  items = articles;
 
   ngOnInit() {
   }

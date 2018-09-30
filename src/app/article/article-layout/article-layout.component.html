@@ -5,7 +5,9 @@
         文章列表
       </a>
     </mat-list-item>
-    <a *ngFor="let item of items" mat-list-item [routerLink]="[item.id]"
-       routerLinkActive="active">{{item.label}}</a>
+    <ng-container *ngFor="let item of items">
+      <a *ngIf="!item.groups?.length" mat-list-item [routerLink]="[item.id]"
+         routerLinkActive="active">{{item.title}}</a>
+    </ng-container>
   </mat-nav-list>
 </app-layout-nav>

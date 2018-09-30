@@ -1,7 +1,16 @@
 import { expect } from 'chai';
-import { buildUuid, findFilesWithDuplicateIds, parseAuthor, parseCommit, splitGitLog } from './builder';
+import {
+  buildArticleTree,
+  buildUuid,
+  findFilesWithDuplicateIds,
+  parseAuthor,
+  parseCommit,
+  splitGitLog,
+} from './builder';
 import { FileCommitModel } from './file-commit.model';
 import { FileModel } from './file.model';
+import { pathListToTree } from './utils';
+import { ArticleModel } from '../../src/app/article/data/article.model';
 
 const log = `commit 303bcb286e7fea09fa5814e68b6384f36cf1d234
 Author: Zhicheng Wang <zcwang@thoughtworks.com>
@@ -30,7 +39,7 @@ Date:   Wed Sep 19 15:33:13 2018 +0800
     docs: 微前端概述
 `;
 
-describe('parse git log', () => {
+describe('test', () => {
   it('should split git log', function () {
     expect(splitGitLog(log)[0]).to.eql(`commit 303bcb286e7fea09fa5814e68b6384f36cf1d234
 Author: Zhicheng Wang <zcwang@thoughtworks.com>
@@ -106,5 +115,101 @@ Date:   Fri Sep 28 10:30:14 2018 +0800
 ## 作品`,
       joinTime: joinTime,
     });
+  });
+
+  it('should build tree from path list', function () {
+    const pathList = [
+      '',
+      '/a',
+      '/a/b',
+    ];
+    expect(pathListToTree(pathList)).to.eql([{
+      path: '',
+      title: '',
+      children: [
+        {
+          path: '/a',
+          title: 'a',
+          children: [
+            {
+              title: 'b',
+              path: '/a/b',
+              children: [],
+            },
+          ],
+        },
+      ],
+    }]);
+  });
+  it('should build article groups', function () {
+    const article1 = new ArticleModel();
+    article1.id = '1';
+    article1.path = '/a/b';
+    article1.filename = '10.md';
+    article1.creationDate = new Date('2018-02-01');
+    const article2 = new ArticleModel();
+    article2.id = '2';
+    article2.path = '';
+    article2.creationDate = new Date('2018-01-01');
+    const article3 = new ArticleModel();
+    article3.id = '3';
+    article3.filename = '2.md';
+    article3.path = '/a/b';
+    article3.creationDate = new Date('2018-03-01');
+    const article4 = new ArticleModel();
+    article4.id = '4';
+    article4.path = '/a';
+    article4.creationDate = new Date('2018-04-01');
+
+    const tree = buildArticleTree([article1, article2, article3, article4]);
+    expect(tree).to.eql(
+      {
+        children: [
+          {
+            history: [],
+            id: '2',
+            path: '',
+            creationDate: new Date('2018-01-01T00:00:00.000Z'),
+          },
+          {
+            children: [
+              {
+                children: [
+                  {
+                    history: [],
+                    id: '3',
+                    path: '/a/b',
+                    filename: '2.md',
+                    creationDate: new Date('2018-03-01T00:00:00.000Z'),
+                  },
+                  {
+                    history: [],
+                    id: '1',
+                    path: '/a/b',
+                    filename: '10.md',
+                    creationDate: new Date('2018-02-01T00:00:00.000Z'),
+                  },
+                ],
+                title: 'b',
+                path: '/a/b',
+                creationDate: new Date('2018-02-01T00:00:00.000Z'),
+              },
+              {
+                history: [],
+                id: '4',
+                path: '/a',
+                creationDate: new Date('2018-04-01T00:00:00.000Z'),
+              },
+            ],
+            title: 'a',
+            path: '/a',
+            creationDate: new Date('2018-02-01T00:00:00.000Z'),
+          },
+        ],
+        title: '',
+        path: '',
+        creationDate: new Date('2018-01-01T00:00:00.000Z'),
+      },
+    );
   });
 });

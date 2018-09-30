@@ -3,8 +3,10 @@ import { AuthorModel } from '../../author/data/author.model';
 
 export class ArticleModel {
   id: string;
+  type = 'article';
   title: string;
-  paths: string[];
+  path: string;
+  filename: string;
   content: string;
   author: AuthorModel;
   creationDate: Date;

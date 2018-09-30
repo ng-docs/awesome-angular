@@ -1,4 +1,4 @@
-import { difference, uniqBy } from 'lodash';
+import { difference, min, uniq, uniqBy } from 'lodash';
 import * as fs from 'fs';
 import { AuthorModel } from '../../src/app/author/data/author.model';
 import * as path from 'path';
@@ -7,7 +7,8 @@ import { FileModel } from './file.model';
 import { ArticleHistoryModel } from '../../src/app/article/data/article.history.model';
 import { ArticleModel } from '../../src/app/article/data/article.model';
 import * as spawn from 'cross-spawn';
-import { emailOf, firstOf, lastOf } from './utils';
+import { emailOf, firstOf, lastOf, pathListToTree } from './utils';
+import { ArticleGroupModel } from '../../src/app/article/data/article-group.model';
 
 export function parseCommit(gitLogEntry: string): FileCommitModel {
   const result = new FileCommitModel();
@@ -65,6 +66,9 @@ export function parseAuthor(filename: string, content: string, joinTime: Date): 
 
 function parseFile(filename: string): FileModel {
   const result = spawn.sync('git', ['log', '--follow', filename]).stdout as Buffer;
+  if (!result) {
+    throw new Error('Please commit all newly created documents ONE-BY-ONE first!');
+  }
   return parseLog(filename, result.toString('utf-8'));
 }
 
@@ -91,11 +95,16 @@ function buildArticle(file: FileModel, authors: AuthorModel[]): ArticleModel {
   const result = new ArticleModel();
   result.id = file.id;
   result.title = file.title;
-  result.paths = file.path
+  result.path = file.path
     .replace('./src/assets/content/articles/', '')
     .replace(/.md$/, '')
     .split('/')
-    .slice(0, -1);
+    .slice(0, -1)
+    .join('/');
+  if (result.path !== '') {
+    result.path = '/' + result.path;
+  }
+  result.filename = file.path.replace(/^.*\/(.*).md/, '$1');
   result.creationDate = lastOf(file.commits).date;
   result.lastUpdated = firstOf(file.commits).date;
   result.content = fs.readFileSync(file.path, 'utf-8');
@@ -106,8 +115,8 @@ function buildArticle(file: FileModel, authors: AuthorModel[]): ArticleModel {
   return result;
 }
 
-export function buildArticles(fileNames: string[], authors: AuthorModel[]): ArticleModel[] {
-  const files = parseFiles(fileNames);
+export function buildArticles(filenames: string[], authors: AuthorModel[]): ArticleModel[] {
+  const files = parseFiles(filenames);
 
   const conflictFiles = findFilesWithDuplicateIds(files);
   if (conflictFiles.length > 0) {
@@ -118,11 +127,69 @@ export function buildArticles(fileNames: string[], authors: AuthorModel[]): Arti
   return files.map(file => buildArticle(file, authors));
 }
 
-export function buildAuthors(fileNames: string[]): AuthorModel[] {
-  return parseFiles(fileNames)
+export function buildAuthors(filenames: string[]): AuthorModel[] {
+  return parseFiles(filenames)
     .map((file) => {
       const content = fs.readFileSync(file.path, 'utf-8');
       return parseAuthor(file.path, content, lastOf(file.commits).date);
     });
 }
 
+function isSamePath(path1: string, path2: string): boolean {
+  return path1.replace(/^\//, '') === path2.replace(/^\//, '');
+}
+
+function addArticlesToGroups(articles: ArticleModel[], articleGroups: ArticleGroupModel[]): void {
+  articleGroups.forEach(group => {
+    addArticlesToGroups(articles, group.children as ArticleGroupModel[]);
+    group.children.push(...articles.filter(article => isSamePath(article.path, group.path)));
+  });
+}
+
+function fillCreationDateForGroups(groups: ArticleGroupModel[]): void {
+  groups.forEach(group => {
+    fillCreationDateForGroups(group.children.filter(it => it instanceof ArticleGroupModel) as ArticleGroupModel[]);
+    group.creationDate = min(group.children.map(it => it.creationDate));
+  });
+}
+
+function sortByCreationDate(a, b) {
+  return a.creationDate.getTime() - b.creationDate.getTime();
+}
+
+function orderIdOf(filename: string): number {
+  return +filename.replace(/^(\d+).*$/, '$1');
+}
+
+function sortByFilename(a: ArticleModel | ArticleGroupModel, b: ArticleModel | ArticleGroupModel): number {
+  if (a instanceof ArticleModel && b instanceof ArticleModel) {
+    return orderIdOf(a.filename) - orderIdOf(b.filename);
+  } else {
+    return a.creationDate.getTime() - b.creationDate.getTime();
+  }
+}
+
+function sort(group: ArticleGroupModel, level: number): ArticleGroupModel {
+  if (level < 2) {
+    group.children = group.children.sort((a, b) => sortByCreationDate(a, b));
+  } else {
+    group.children = group.children.sort((a, b) => sortByFilename(a, b));
+  }
+  group.children.forEach(item => {
+    if (item instanceof ArticleGroupModel) {
+      sort(item, level + 1);
+    }
+  });
+  return group;
+}
+
+export function buildArticleTree(articles: ArticleModel[]): ArticleGroupModel {
+  const paths = articles.map(it => it.path);
+  const dirList = uniq(paths)
+    .sort((a, b) => a.localeCompare(b));
+
+  const result = pathListToTree(dirList);
+  addArticlesToGroups(articles, result);
+  fillCreationDateForGroups(result);
+  return sort(result[0], 0);
+}
