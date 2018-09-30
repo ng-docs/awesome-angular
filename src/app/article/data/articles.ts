@@ -5,13 +5,15 @@ declare function require(name: string): any;
 
 export const articles: ArticleGroupModel = require('./articles.json');
 
-function flatten(items: ArticleGroupModel): ArticleModel[] {
+function flatten(group: ArticleGroupModel): ArticleModel[] {
   const result = [];
-  items.children.forEach(item => {
-    if (item.type === 'article') {
-      result.push(item as ArticleModel);
-    } else if (item.type === 'group') {
-      result.push(...flatten(item as ArticleGroupModel));
+  group.children.forEach(it => {
+    if (it.type === 'article') {
+      const article = it as ArticleModel;
+      article.group = group;
+      result.push(article);
+    } else if (it.type === 'group') {
+      result.push(...flatten(it as ArticleGroupModel));
     }
   });
   return result;

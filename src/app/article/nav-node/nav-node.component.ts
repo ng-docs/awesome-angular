@@ -18,7 +18,7 @@ export class NavNodeComponent implements OnInit {
 
   isActiveGroup(node: ArticleModel | ArticleGroupModel): boolean {
     if (node.type === 'article') {
-      return this.router.isActive('/articles/' + node.id, false);
+      return this.router.isActive('/articles/' + node.id, true);
     }
     if (node.type === 'group') {
       return (node as ArticleGroupModel).children.some((subNode) => this.isActiveGroup(subNode));

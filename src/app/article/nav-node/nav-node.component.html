@@ -1,16 +1,16 @@
 <ng-container *ngFor="let item of data.children; index as index">
-  <a *ngIf="item.type === 'article'" mat-list-item routerLinkActive="active" [routerLink]="['/articles', item.id]">
-    <div class="title">
+  <a *ngIf="item.type === 'article' && !item.isCover" mat-list-item routerLinkActive="active"
+     [routerLink]="['/articles', item.id]">
+    <div class="title" [title]="item.title">
       <span *ngIf="item.level > 1">{{index + 1}}.&nbsp;</span>
       {{item.title}}
     </div>
   </a>
   <div *ngIf="item.type === 'group'">
-    <mat-list-item appToggle [isOn]="isActiveGroup(item)" [class.active]="isActiveGroup(item)" #toggle="appToggle"
-                   (click)="toggle.toggle()">
-      <div class="title">{{item.title}}</div>
-      <mat-icon *ngIf="toggle.isOn">expand_more</mat-icon>
-      <mat-icon *ngIf="toggle.isOff">chevron_right</mat-icon>
+    <mat-list-item appToggle [isOn]="isActiveGroup(item)" [class.active]="isActiveGroup(item)" #toggle="appToggle">
+      <a class="title" [title]="item.title" [routerLink]="['/articles', item.id]">{{item.title}}</a>
+      <mat-icon *ngIf="toggle.isOn" (click)="toggle.toggle()">expand_more</mat-icon>
+      <mat-icon *ngIf="toggle.isOff" (click)="toggle.toggle()">chevron_right</mat-icon>
     </mat-list-item>
     <!--use hidden instead of ngIf to make SSR prerender happy-->
     <div [hidden]="!toggle.isOn">

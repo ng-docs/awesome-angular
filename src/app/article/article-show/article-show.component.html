@@ -17,5 +17,10 @@
     <dt>修改：</dt>
     <dd>{{article.lastUpdated | date}}</dd>
   </dl>
+  <br/>
+  <dl *ngIf="article.group.level > 0">
+    <dt>连载：</dt>
+    <dd>{{article.group.title}}</dd>
+  </dl>
 </div>
 <app-markdown-viewer [data]="article.content" baseUrl="/assets/content/articles/"></app-markdown-viewer>

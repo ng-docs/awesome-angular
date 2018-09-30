@@ -149,13 +149,14 @@ function addArticlesToGroups(articles: ArticleModel[], articleGroups: ArticleGro
     addArticlesToGroups(articles, group.children as ArticleGroupModel[]);
     const subArticles = articles.filter(article => isSamePath(article.path, group.path));
     subArticles.forEach(article => article.level = group.level + 1);
-    const indexArticle = subArticles.find(it => orderIdOf(it.filename) === 0);
-    if (indexArticle) {
-      group.title = indexArticle.title;
-      group.summary = indexArticle.content;
+    const coverArticle = subArticles.find(it => orderIdOf(it.filename) === 0);
+    if (coverArticle) {
+      coverArticle.isCover = true;
+      group.title = coverArticle.title;
+      group.id = coverArticle.id;
+      group.summary = coverArticle.content;
     }
-    const contentArticles = subArticles.filter(it => orderIdOf(it.filename) !== 0);
-    group.children.push(...contentArticles);
+    group.children.push(...subArticles);
   });
 }
 
