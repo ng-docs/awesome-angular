@@ -1,7 +1,13 @@
 @import "../../styles/common";
 
+:host {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .sidenav-container {
-  height: 100%;
+  flex: auto;
 }
 
 .sidenav {
@@ -9,7 +15,7 @@
 }
 
 .mat-toolbar.mat-primary {
-  position: sticky;
+  flex: none;
   &.header {
     top: 0;
     margin-bottom: 8px;
@@ -31,6 +37,10 @@ img {
 }
 
 mat-sidenav-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
   padding-left: 1rem;
   padding-right: 1rem;
 }

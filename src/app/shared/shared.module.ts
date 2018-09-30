@@ -16,6 +16,7 @@ import { IconAngularComponent } from './icons/icon-angular/icon-angular.componen
 import { IconGithubComponent } from './icons/icon-github/icon-github.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { ToggleDirective } from './directives/toggle.directive';
+import { MarkdownViewerComponent } from './markdown-viewer/markdown-viewer.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { ToggleDirective } from './directives/toggle.directive';
     IconGithubComponent,
     SearchBoxComponent,
     ToggleDirective,
+    MarkdownViewerComponent,
   ],
   exports: [
     MatToolbarModule,
@@ -48,6 +50,7 @@ import { ToggleDirective } from './directives/toggle.directive';
     LayoutNavComponent,
     SearchBoxComponent,
     ToggleDirective,
+    MarkdownViewerComponent,
   ],
 })
 export class SharedModule {

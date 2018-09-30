@@ -1,0 +1,21 @@
+.doc-info {
+  margin: 1rem 0;
+  color: #777;
+}
+
+dl {
+  display: inline-flex;
+  margin: 0 2rem 0 0;
+  > dt {
+    flex: none;
+    font-style: normal;
+  }
+  > dd {
+    flex: auto;
+    margin-left: 0;
+    padding: 0;
+    > a {
+      margin-right: 1rem;
+    }
+  }
+}

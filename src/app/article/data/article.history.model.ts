@@ -1,7 +1,5 @@
-import { AuthorModel } from '../../author/data/author.model';
-
 export class ArticleHistoryModel {
-  author: AuthorModel;
+  author: string;
   date: Date;
   message: string;
   details: string;

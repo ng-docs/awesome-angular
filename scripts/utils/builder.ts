@@ -87,7 +87,7 @@ function buildArticleHistory(commit: FileCommitModel, authors: AuthorModel[]): A
   history.date = commit.date;
   history.message = commit.message;
   history.details = commit.details;
-  history.author = findAuthor(authors, commit.author);
+  history.author = findAuthor(authors, commit.author).name;
   return history;
 }
 
@@ -114,7 +114,8 @@ function buildArticle(file: FileModel, authors: AuthorModel[]): ArticleModel {
   result.content = fs.readFileSync(file.path, 'utf-8');
   result.history = file.commits.map(commit => buildArticleHistory(commit, authors));
   const authorId = lastOf(file.commits).author;
-  result.author = findAuthor(authors, authorId);
+  result.author = findAuthor(authors, authorId).name;
+  result.reviewers = difference(uniq(file.commits.map(commit => findAuthor(authors, commit.author).name)), [result.author]);
 
   return result;
 }

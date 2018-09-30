@@ -1,5 +1,4 @@
 import { ArticleHistoryModel } from './article.history.model';
-import { AuthorModel } from '../../author/data/author.model';
 
 export class ArticleModel {
   id: string;
@@ -9,7 +8,8 @@ export class ArticleModel {
   path: string;
   filename: string;
   content: string;
-  author: AuthorModel;
+  author: string;
+  reviewers: string[];
   creationDate: Date;
   lastUpdated?: Date;
   history: ArticleHistoryModel[] = [];

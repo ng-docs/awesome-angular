@@ -1,4 +1,21 @@
-<p>作者：<a [routerLink]="['/authors', article.author.name]">{{article.author.name}}</a></p>
-<p>发表：{{article.creationDate | date}}</p>
-<p *ngIf="article.lastUpdated">修改：{{article.lastUpdated | date}}</p>
-<markdown [data]="article.content"></markdown>
+<div class="doc-info">
+  <dl>
+    <dt>作者：</dt>
+    <dd><a [routerLink]="['/authors', article.author]">{{article.author}}</a></dd>
+  </dl>
+  <dl *ngIf="article.reviewers?.length>1">
+    <dt>修订：</dt>
+    <dd>
+      <a *ngFor="let reviewer of article.reviewers" [routerLink]="['/authors', reviewer]">{{reviewer}}</a>
+    </dd>
+  </dl>
+  <dl>
+    <dt>发表：</dt>
+    <dd>{{article.creationDate | date}}</dd>
+  </dl>
+  <dl *ngIf="article.lastUpdated">
+    <dt>修改：</dt>
+    <dd>{{article.lastUpdated | date}}</dd>
+  </dl>
+</div>
+<app-markdown-viewer [data]="article.content" baseUrl="/assets/content/articles/"></app-markdown-viewer>
