@@ -5,14 +5,20 @@ declare function require(name: string): any;
 
 export const articles: ArticleGroupModel = require('./articles.json');
 
-function findArticle(article: (ArticleModel | ArticleGroupModel), id: string): ArticleModel {
-  if (article.id === id) {
-    return article as ArticleModel;
-  } else if (article.type === 'group') {
-    return (article as ArticleGroupModel).children.find(it => !!findArticle(it, id)) as ArticleModel;
-  }
+function flatten(items: ArticleGroupModel): ArticleModel[] {
+  const result = [];
+  items.children.forEach(item => {
+    if (item.type === 'article') {
+      result.push(item as ArticleModel);
+    } else if (item.type === 'group') {
+      result.push(...flatten(item as ArticleGroupModel));
+    }
+  });
+  return result;
 }
 
+export const flattenArticles = flatten(articles);
+
 export function findArticleById(id: string): ArticleModel {
-  return findArticle(articles, id);
+  return flattenArticles.find(it => it.id === id);
 }

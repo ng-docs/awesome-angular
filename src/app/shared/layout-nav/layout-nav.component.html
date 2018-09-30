@@ -4,15 +4,19 @@
     aria-label="Toggle sidenav"
     mat-icon-button
     (click)="drawer.toggle()"
-    *ngIf="isHandset$ | async">
+    *ngIf="isHandset">
     <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
   </button>
-  <app-icon-angular></app-icon-angular>
-  <div *ngIf="!(isHandset$ | async)">
-    <img src="/assets/icons/logo.svg" alt="Angular 资源集锦"/>
-  </div>
+  <a routerLink="/">
+    <app-icon-angular></app-icon-angular>
+  </a>
+  <a routerLink="/">
+    <div *ngIf="!isHandset">
+      <img src="/assets/icons/logo.svg" alt="Angular 资源集锦"/>
+    </div>
+  </a>
   <app-search-box (search)="search($event)"></app-search-box>
-  <ng-container *ngIf="!(isHandset$ | async)">
+  <ng-container *ngIf="!isHandset">
     <div class="flex-spacer"></div>
     <a mat-button href="https://github.com/ng-docs/awesome-angular" target="_blank" aria-label="GitHub 仓库">
       <app-icon-github></app-icon-github>
@@ -23,9 +27,9 @@
   <mat-sidenav
     #drawer
     class="sidenav"
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="!(isHandset$ | async)">
+    [attr.role]="isHandset ? 'dialog' : 'navigation'"
+    [mode]="isHandset ? 'over' : 'side'"
+    [opened]="!isHandset" (click)="tryToClose(drawer)">
     <ng-content></ng-content>
   </mat-sidenav>
   <mat-sidenav-content>

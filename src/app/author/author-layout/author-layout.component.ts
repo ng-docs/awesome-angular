@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { authors } from '../data/authors';
 
 @Component({
   selector: 'app-author-layout',
@@ -9,6 +10,8 @@ export class AuthorLayoutComponent implements OnInit {
 
   constructor() {
   }
+
+  authors = authors;
 
   ngOnInit() {
   }

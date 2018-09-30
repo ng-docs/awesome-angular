@@ -16,8 +16,8 @@ export class ArticleShowComponent implements OnInit {
   article: ArticleModel;
 
   ngOnInit() {
-    this.route.params.subscribe(({ id }) => {
-      this.article = findArticleById(id);
+    this.route.paramMap.subscribe((params) => {
+      this.article = findArticleById(params.get('id'));
     });
   }
 

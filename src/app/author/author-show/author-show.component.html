@@ -1,3 +1,7 @@
-<p>
-  author-show works!
-</p>
+<app-markdown-viewer [data]="author.profile" baseUrl="/assets/content/authors"></app-markdown-viewer>
+<ng-container *ngIf="articles?.length > 0">
+  <h2>相关文章</h2>
+  <p>
+    <a *ngFor="let article of articles" [routerLink]="['/articles', article.id]">{{article.title}}</a>
+  </p>
+</ng-container>

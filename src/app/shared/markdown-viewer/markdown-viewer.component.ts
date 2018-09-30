@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import * as marked from 'marked';
 import { highlightAuto } from 'highlight.js';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-markdown-viewer',
@@ -42,7 +43,7 @@ export class MarkdownViewerComponent implements OnInit {
   }
 
   private update(): void {
-    if (!this.baseUrl || !this._data) {
+    if (isNullOrUndefined(this.baseUrl) || isNullOrUndefined(this._data)) {
       return;
     }
     marked.setOptions({
