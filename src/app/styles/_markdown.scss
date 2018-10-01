@@ -1,3 +1,5 @@
+@import "./common";
+
 app-markdown-viewer {
   /*
    * NOTE:
@@ -206,4 +208,49 @@ app-markdown-viewer {
   img {
     max-width: 100%;
   }
+
+  .alert {
+    padding: 16px;
+    margin: 24px 0;
+    font-size: 14px;
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
+    clear: both;
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 500;
+    }
+
+    &.danger {
+      border-left: 8px solid $red;
+      background-color: rgba($red, 0.05);
+
+      h1, h2, h3, h4, h5, h6 {
+        color: $red;
+      }
+    }
+
+    &.warning {
+      border-left: 8px solid $yellow;
+      background-color: rgba($yellow, 0.05);
+
+      h1, h2, h3, h4, h5, h6 {
+        color: $yellow;
+      }
+    }
+
+    &.info {
+      border-left: 8px solid $blue;
+      background-color: rgba($blue, 0.05);
+
+      h1, h2, h3, h4, h5, h6 {
+        color: $blue;
+      }
+    }
+
+    > * {
+      margin: 8px 16px;
+    }
+  }
+
 }
