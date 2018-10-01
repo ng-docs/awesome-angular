@@ -13,6 +13,9 @@ import { ArticleGroupModel } from '../../src/app/article/data/article-group.mode
 export function parseCommit(gitLogEntry: string): FileCommitModel {
   const result = new FileCommitModel();
   const matches = gitLogEntry.match(/^commit (\w+)\nAuthor: (.*)\nDate: (.*)\n\n(.*)\n?([\s\S]*)/);
+  if (!matches) {
+    throw new Error('Please commit all newly created documents ONE-BY-ONE first!');
+  }
   result.rev = matches[1].trim();
   result.author = matches[2].trim();
   result.date = new Date(matches[3].trim());
