@@ -14,3 +14,8 @@ app-nav-node {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+mat-list-item .title {
+  display: inline-block;
+  padding: 12px 0;
+}
