@@ -1,14 +1,14 @@
-import { difference, min, uniq, uniqBy } from 'lodash';
+import {difference, min, uniq, uniqBy} from 'lodash';
 import * as fs from 'fs';
-import { AuthorModel } from '../../src/app/author/data/author.model';
+import {AuthorModel} from '../../src/app/author/data/author.model';
 import * as path from 'path';
-import { FileCommitModel } from './file-commit.model';
-import { FileModel } from './file.model';
-import { ArticleHistoryModel } from '../../src/app/article/data/article.history.model';
-import { ArticleModel } from '../../src/app/article/data/article.model';
+import {FileCommitModel} from './file-commit.model';
+import {FileModel} from './file.model';
+import {ArticleHistoryModel} from '../../src/app/article/data/article.history.model';
+import {ArticleModel} from '../../src/app/article/data/article.model';
 import * as spawn from 'cross-spawn';
-import { emailOf, firstOf, lastOf, pathListToTree } from './utils';
-import { ArticleGroupModel } from '../../src/app/article/data/article-group.model';
+import {emailOf, firstOf, lastOf, pathListToTree} from './utils';
+import {ArticleGroupModel} from '../../src/app/article/data/article-group.model';
 
 export function parseCommit(gitLogEntry: string): FileCommitModel {
   const result = new FileCommitModel();
@@ -158,7 +158,7 @@ function addArticlesToGroups(articles: ArticleModel[], articleGroups: ArticleGro
     if (coverArticle) {
       coverArticle.isCover = true;
       group.title = coverArticle.title;
-      coverArticle.title = '连载简介';
+      coverArticle.title = '专栏简介';
       group.id = coverArticle.id;
       group.summary = coverArticle.content;
     }
