@@ -11,6 +11,8 @@ kill `lsof -t -i :4000` || true
 
 npm run serve:ssr &
 
+rm -fr preview
+
 git clone https://asnowwolf:${GITHUB_ACCESS_TOKEN}@github.com/ng-docs/awesome-angular-preview.git preview
 
 cp -r ./dist/awesome-angular/* ./preview/
