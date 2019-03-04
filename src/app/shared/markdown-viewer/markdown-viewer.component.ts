@@ -53,7 +53,7 @@ export class MarkdownViewerComponent implements OnInit {
       return;
     }
     marked.setOptions({
-      baseUrl: this._baseUrl,
+      baseUrl: this._baseUrl.replace(/\/?$/, '/'),
       highlight: function (code) {
         return highlightAuto(code).value;
       },
