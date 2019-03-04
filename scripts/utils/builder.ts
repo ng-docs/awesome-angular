@@ -37,7 +37,7 @@ export function parseLog(filename: string, gitLog: string): FileModel {
 
 function extractTitle(filename: string): string {
   const content = fs.readFileSync(filename, 'utf-8');
-  return content.replace(/^#\s+(.*)\n[\s\S]*/, '$1');
+  return content.replace(/^[\s\S]*?#\s+(.*)\n[\s\S]*/, '$1');
 }
 
 export function splitGitLog(log: string): string[] {
