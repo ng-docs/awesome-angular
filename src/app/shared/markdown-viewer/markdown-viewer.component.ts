@@ -1,7 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, ElementRef, Input, OnInit} from '@angular/core';
 import * as marked from 'marked';
-import { highlightAuto } from 'highlight.js';
-import { isNullOrUndefined } from 'util';
+import {highlightAuto} from 'highlight.js';
+import {isNullOrUndefined} from 'util';
+import {html} from '@awesome-fe/translate/dist';
+import addIdForHeaders = html.addIdForHeaders;
+import markAndSwapAll = html.markAndSwapAll;
 
 @Component({
   selector: 'app-markdown-viewer',
@@ -9,7 +12,11 @@ import { isNullOrUndefined } from 'util';
   styleUrls: ['./markdown-viewer.component.scss'],
 })
 export class MarkdownViewerComponent implements OnInit {
-  constructor() {
+  constructor(private elementRef: ElementRef<HTMLElement>) {
+  }
+
+  get element(): HTMLElement {
+    return this.elementRef.nativeElement;
   }
 
   html: string;
@@ -53,5 +60,11 @@ export class MarkdownViewerComponent implements OnInit {
       },
     });
     this.html = marked(this.data);
+    setTimeout(() => mark(this.element));
   }
+}
+
+function mark(root: HTMLElement): void {
+  addIdForHeaders(root);
+  markAndSwapAll(root);
 }
