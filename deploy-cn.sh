@@ -11,9 +11,11 @@ kill `lsof -t -i :4000` || true
 
 npm run serve:ssr &
 
-cp -r ./dist/awesome-angular/* ./prebuilt/
+git clone https://asnowwolf:${GITHUB_ACCESS_TOKEN}@github.com/ng-docs/awesome-angular-preview.git preview
 
-cp ./dist/awesome-angular/index.html ./prebuilt/404.html
+cp -r ./dist/awesome-angular/* ./preview/
+
+cp ./dist/awesome-angular/index.html ./preview/404.html
 
 sleep 3
 
@@ -21,13 +23,13 @@ wget -m --adjust-extension localhost:4000 -P /tmp
 
 kill `lsof -t -i :4000`
 
-cp -r /tmp/localhost:4000/* prebuilt
+cp -r /tmp/localhost:4000/* preview/
 
 rm -fr /tmp/localhost:4000
 
 commitMessage=$(git log --oneline -n 1)
 
-cd prebuilt
+cd preview
 
 git add .
 git commit -am "${commitMessage}"
