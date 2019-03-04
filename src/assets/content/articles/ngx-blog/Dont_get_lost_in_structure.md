@@ -117,7 +117,7 @@ That’s the outline of our architecture.
 
 我们这个架构的大纲是这样的。
 
-![架构大纲](ngx-blog/images/folder.png)
+![架构大纲](images/folder.png)
 
 Now let's have a look at a very common user interface (UI).
 
@@ -127,7 +127,7 @@ Most of the apps have a navigation, a header and something very often called "co
 
 大多数应用都有一个导航、一个标题，和一些名叫容器（`container`）或视图（`view`）的东西。
 
-![架构](ngx-blog/images/architecture.png)
+![架构](images/architecture.png)
 
 Those parts together are known as the <strong>app shell</strong>.
 The app shell is a very important part of your app. It's visible almost everywher and an important piece of code when you start thinking about Progressive Web Applications (PWAs).
@@ -148,7 +148,7 @@ To get the idea of the features of an app it's always a good strategy to look at
 
 接下来让我们谈谈这些 `features`。要了解应用的这些特性，看菜单/导航是一个很好的方式。
 
-![特性清单](ngx-blog/images/features.png)
+![特性清单](images/features.png)
 
 All this entries are features.
 
@@ -225,7 +225,7 @@ container components and presentational (or dumb) components.
 
    哑组件没有依赖，它们只有那些直接用于其视图的逻辑。他们通过 @Input 装饰器获取所需的全部数据，并通过 @Output 装饰器与父级进行通信，并且可被复用。
 
-![组件](ngx-blog/images/components.png)
+![组件](images/components.png)
 
 Just a small explanation of the connection and the data flow here
 
@@ -236,19 +236,19 @@ All the data the presentational components need are passed through the @Input de
 
 我们有一个带有一些逻辑的容器组件，它拥有一些展现组件。展现组件需要的所有数据都会通过 @Input 装饰器传入。如果它们想和父组件交谈，就要利用 @Output 装饰器。如果我们要使用某个服务，就应该只在容器组件中使用它。
 
-![数据流](ngx-blog/images/dataflow.png)
+![数据流](images/dataflow.png)
 
 To identify these kind of components take a look at the mockups. Sections which can be splitted into smaller parts are container components.
 
 为了识别出这些组件，我们来看一下这些模型。容器组件可以拆分成一些小部件。
 
-![容器组件](ngx-blog/images/container_component.png)
+![容器组件](images/container_component.png)
 
 Those small parts can be presentational components
 
 这些小部件可以作成展现组件
 
-![展现组件](ngx-blog/images/dump_component.png)
+![展现组件](images/dump_component.png)
 
 #### Reuse code
 
@@ -332,9 +332,9 @@ import { MyService } from "@my-logic/my-service/my.service";
 
 that’s the structure of our companies feature
 
-这就是我们公司特色的结构
+这就是 company 特性的目录结构
 
-![命名约定](ngx-blog/images/naming-conventions.png)
+![命名约定](images/naming-conventions.png)
 
 The naming conventions is very important.
 
@@ -383,24 +383,10 @@ I would like to give special thanks to the awesome people that reviewed this pos
 我要特别感谢点评过这篇文章的大牛们，他们给了我很多指点：
 
 - <a href="https://twitter.com/bobrov1989" target="_blank">Vitalii Bobrov</a>
-
-  [Vitalii Bobrov](https://twitter.com/bobrov1989)
-
 - <a href="https://twitter.com/FabianGosebrink" target="_blank">Fabian Gosebrink</a>
-
-  [Fabian Gosebrink](https://twitter.com/FabianGosebrink)
-
 - <a href="https://twitter.com/mhartington" target="_blank">Mike Hartington</a>
-
-  [Mike Hartington](https://twitter.com/mhartington)
-
 - <a href="https://twitter.com/niklas_wortmann" target="_blank">Jan-Niklas Wortmann</a>
-
-  [Jan-Niklas Wortmann](https://twitter.com/niklas_wortmann)
-
 - <a href="https://twitter.com/Sureshkumar_Ash" target="_blank">Ashwin Sureshkumar</a>
-
-  [Ashwin Sureshkumar，Ashwin Sureshkumar](https://twitter.com/Sureshkumar_Ash)
 
 Thanks, guys! It means a lot!
 
