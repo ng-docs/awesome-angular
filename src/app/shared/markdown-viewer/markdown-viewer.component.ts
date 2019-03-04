@@ -1,8 +1,7 @@
 import {Component, ElementRef, Input, OnInit} from '@angular/core';
 import * as marked from 'marked';
 import {highlightAuto} from 'highlight.js';
-import {isNullOrUndefined} from 'util';
-import {html} from '@awesome-fe/translate/dist';
+import {html} from './translator/html';
 import addIdForHeaders = html.addIdForHeaders;
 import markAndSwapAll = html.markAndSwapAll;
 
@@ -50,7 +49,7 @@ export class MarkdownViewerComponent implements OnInit {
   }
 
   private update(): void {
-    if (isNullOrUndefined(this.baseUrl) || isNullOrUndefined(this._data)) {
+    if (!this.baseUrl || !this._data) {
       return;
     }
     marked.setOptions({
