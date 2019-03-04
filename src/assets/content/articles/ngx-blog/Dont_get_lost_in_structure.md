@@ -1,4 +1,8 @@
-<strong>Don't get lost in structure</strong>
+> 原文：<https://webdave.de/blog/Dont_get_lost_in_structure>
+>
+> 原文作者：David Müllerchen
+
+# Don't get lost in structure
 
 Most of us started developing Angular apps with one of these many tutorials out in the internet.
 
@@ -148,7 +152,7 @@ That's no problem if your IDE is able to manage the imports automatically but if
 `pathmap`.
 The pathmap is an awesome typescript feature. You can define a mapping table in your tsconfig.json
 
-<strong>tsconfig.json</strong>
+## tsconfig.json
 
 ```javascript
  "compilerOptions": {

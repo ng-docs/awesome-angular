@@ -1,3 +1,7 @@
+> 原文：<https://webdave.de/blog/code_extentions>
+>
+> 原文作者：David Müllerchen
+
 # Useful @code extentions for Angular developers
 
 My IDE of choice is visual studio code.

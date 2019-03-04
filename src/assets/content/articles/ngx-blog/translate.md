@@ -1,12 +1,16 @@
-<strong>Translate (i18n) your Angular Apps with @ngx-translate/core</strong>
+> 原文：<https://webdave.de/blog/translate>
+>
+> 原文作者：David Müllerchen
+
+# Translate (i18n) your Angular Apps with @ngx-translate/core
 
 Our apps are used by different people, with differnet languages and different gender. So, to provide them the best experience, we want to provide them the content of the app in their language, or we want to address our customers according to their gender.
 This is only possibile with some translating tools. Angular has one on board, (@angular/i18n) wich is not very handy, in my opinion.
 I would like to introduce you to a nice alternative here
 
-#### @ngx-translate/core
+## @ngx-translate/core
 
-##### How to use @ngx-translate/core?
+### How to use @ngx-translate/core?
 
 OK, first of all we have to install @ngx-translate/core.
 
@@ -45,7 +49,7 @@ export class AppModule {
 }
 ```
 
-#### Define the translations
+## Define the translations
 
 Put your translation files in a json file which will be imported by the TranslateHttpLoader
 The following translations should be stored in en.json
@@ -85,12 +89,12 @@ TranslateDirective
 <h3 translate="HELLO" translate-params="{value: 'world'}" ><h3>
 ```
 
-#### pluralization and gernderization with ngx-translate-messageformat-compiler
+## pluralization and gernderization with ngx-translate-messageformat-compiler
 
 Compiler for ngx-translate that uses messageformat.js to compile translations.
 It uses ICU syntax for handling pluralization and gender
 
-#### Installation
+## Installation
 
 This assumes that you've already installed <a href="https://github.com/ngx-translate/core" rel="noopener" target="_blank">ngx-translate</a>
 
@@ -127,7 +131,7 @@ export class AppModule {
 
 Please note that while you can still use nesting in your translations (`{ login: { welcome: 'Welcome!' }}`) with respective keys (`login.welcome`), you lose the ability to access object properties in your placeholders: `'Hello {name.first} {name.last}'` won't work. Also note that this format uses single braces instead of double braces for placeholders.
 
-#### Load translation files
+## Load translation files
 
 To load the files we have to define a loader.
 By default, there is no loader available. You can add translations manually using setTranslation but it is better to use a loader. You can write your own loader, or import an existing one. For example you can use the TranslateHttpLoader that will load translations from files using HttpClient.
