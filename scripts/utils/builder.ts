@@ -184,8 +184,15 @@ function fillCreationDateForGroups(groups: ArticleGroupModel[]): void {
   });
 }
 
+function timeOf(a: ArticleModel): number {
+  if (a.filename === 'welcome.md' && a.path === '') {
+    return 0;
+  }
+  return a.creationDate.getTime();
+}
+
 function sortByCreationDate(a, b) {
-  return a.creationDate.getTime() - b.creationDate.getTime();
+  return timeOf(a) - timeOf(b);
 }
 
 function orderIdOf(filename: string): number {
