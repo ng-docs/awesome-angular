@@ -4,6 +4,6 @@ export class FileModel {
   id: string;
   path: string;
   title: string;
-  isTranslation: boolean;
+  originTitle: string;
   commits: FileCommitModel[] = [];
 }

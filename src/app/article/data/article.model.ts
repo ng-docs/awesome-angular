@@ -5,16 +5,23 @@ export class ArticleModel {
   id: string;
   type = 'article';
   title: string;
+  originTitle: string;
   level: number;
   path: string;
   filename: string;
   content: string;
-  isCover = false;
-  isTranslation = false;
   group?: ArticleGroupModel;
   author: string;
   reviewers: string[];
   creationDate: Date;
   lastUpdated?: Date;
   history: ArticleHistoryModel[] = [];
+}
+
+export function articleIsCover(article: ArticleModel): boolean {
+  return ['0.md', 'cover.md', '_cover.md'].indexOf(article.filename) !== -1;
+}
+
+export function articleIsTranslation(article: ArticleModel): boolean {
+  return !!article.originTitle;
 }

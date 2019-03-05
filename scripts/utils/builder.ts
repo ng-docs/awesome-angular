@@ -5,7 +5,7 @@ import * as path from 'path';
 import {FileCommitModel} from './file-commit.model';
 import {FileModel} from './file.model';
 import {ArticleHistoryModel} from '../../src/app/article/data/article.history.model';
-import {ArticleModel} from '../../src/app/article/data/article.model';
+import {articleIsCover, ArticleModel} from '../../src/app/article/data/article.model';
 import * as spawn from 'cross-spawn';
 import {emailOf, firstOf, lastOf, pathListToTree} from './utils';
 import {ArticleGroupModel} from '../../src/app/article/data/article-group.model';
@@ -34,8 +34,8 @@ export function parseLog(filename: string, gitLog: string): FileModel {
   const commits = result.commits = entries.map(parseCommit);
   result.id = buildUuid(commits[commits.length - 1]);
   const {chineseTitle, englishTitle} = extractTitles(filename);
-  result.title = [chineseTitle, englishTitle].join('\n') || result.id;
-  result.isTranslation = !!englishTitle;
+  result.title = chineseTitle;
+  result.originTitle = englishTitle;
   return result;
 }
 
@@ -110,13 +110,13 @@ function buildArticle(file: FileModel, authors: AuthorModel[]): ArticleModel {
   const result = new ArticleModel();
   result.id = file.id;
   result.title = file.title;
+  result.originTitle = file.originTitle;
   result.path = file.path
     .replace('./src/assets/content/articles/', '')
     .replace(/.md$/, '')
     .split('/')
     .slice(0, -1)
     .join('/');
-  result.isTranslation = file.isTranslation;
   if (result.path !== '') {
     result.path = '/' + result.path;
   }
@@ -167,11 +167,12 @@ function addArticlesToGroups(articles: ArticleModel[], articleGroups: ArticleGro
       .filter(it => it.type === 'article')
       .filter(it => isSamePath(it.path, group.path));
     subArticles.forEach(it => it.level = group.level + 1);
-    const coverArticle = subArticles.find(it => ['0.md', 'cover.md', '_cover.md'].indexOf(it.filename) !== -1);
+    const coverArticle = subArticles.find(articleIsCover);
     if (coverArticle) {
-      coverArticle.isCover = true;
       group.title = coverArticle.title;
+      group.originTitle = coverArticle.originTitle;
       coverArticle.title = '专栏简介';
+      coverArticle.originTitle = '';
       group.id = coverArticle.id;
       group.summary = coverArticle.content;
     }
