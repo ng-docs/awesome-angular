@@ -165,7 +165,7 @@ function addArticlesToGroups(articles: ArticleModel[], articleGroups: ArticleGro
       .filter(it => it.type === 'article')
       .filter(it => isSamePath(it.path, group.path));
     subArticles.forEach(it => it.level = group.level + 1);
-    const coverArticle = subArticles.find(it => orderIdOf(it.filename) === 0);
+    const coverArticle = subArticles.find(it => ['0.md', 'cover.md', '_cover.md'].indexOf(it.filename) !== -1);
     if (coverArticle) {
       coverArticle.isCover = true;
       group.title = coverArticle.title;
