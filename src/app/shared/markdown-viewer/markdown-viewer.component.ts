@@ -72,11 +72,16 @@ export class MarkdownViewerComponent implements OnInit {
         return highlightAuto(code).value;
       },
     });
-    this.html = marked(this.data);
+    const escapedRegex = escapeRegex(this.baseUrl + '//');
+    this.html = marked(this.data).replace(new RegExp(escapedRegex, 'gi'), '/');
     if (this.isTranslation) {
       setTimeout(() => mark(this.element));
     }
   }
+}
+
+function escapeRegex(s: string): string {
+  return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
 }
 
 function mark(root: HTMLElement): void {

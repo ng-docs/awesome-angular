@@ -1,6 +1,6 @@
 > 原文：<https://webdave.de/blog/code_extentions>
 >
-> 原文作者：David Müllerchen
+> 作者：[David Müllerchen](/authors/web-deve)
 >
 
 # Useful @code extentions for Angular developers
