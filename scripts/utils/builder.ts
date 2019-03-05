@@ -195,16 +195,21 @@ function sortByCreationDate(a, b) {
   return timeOf(a) - timeOf(b);
 }
 
-function orderIdOf(filename: string): number {
-  return +filename.replace(/^(\d+).*$/, '$1');
+function orderIdOf(article: ArticleModel | ArticleGroupModel): number {
+  if (article instanceof ArticleModel) {
+    const id = article.filename.replace(/^(\d+).*$/, '$1');
+    if (id) {
+      return +id;
+    } else {
+      return article.creationDate.getTime();
+    }
+  } else {
+    return article.creationDate.getTime();
+  }
 }
 
 function sortByFilename(a: ArticleModel | ArticleGroupModel, b: ArticleModel | ArticleGroupModel): number {
-  if (a instanceof ArticleModel && b instanceof ArticleModel) {
-    return orderIdOf(a.filename) - orderIdOf(b.filename);
-  } else {
-    return a.creationDate.getTime() - b.creationDate.getTime();
-  }
+  return orderIdOf(a) - orderIdOf(b);
 }
 
 function sort(group: ArticleGroupModel): ArticleGroupModel {
