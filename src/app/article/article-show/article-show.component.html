@@ -19,8 +19,10 @@
   </dl>
   <br/>
   <dl *ngIf="article.group.level > 0">
-    <dt>专栏：</dt>
-    <dd>{{article.group.title}}</dd>
+    <dt>收录：</dt>
+    <dd>
+      <a [routerLink]="['../', article.group.id]">{{article.group.title}}</a>
+    </dd>
   </dl>
 </div>
 <app-markdown-viewer [data]="article.content" [isTranslation]="isTranslation(article)"
