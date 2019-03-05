@@ -1,5 +1,5 @@
-import { ArticleHistoryModel } from './article.history.model';
-import { ArticleGroupModel } from './article-group.model';
+import {ArticleHistoryModel} from './article.history.model';
+import {ArticleGroupModel} from './article-group.model';
 
 export class ArticleModel {
   id: string;
@@ -10,6 +10,7 @@ export class ArticleModel {
   filename: string;
   content: string;
   isCover = false;
+  isTranslation = false;
   group?: ArticleGroupModel;
   author: string;
   reviewers: string[];
