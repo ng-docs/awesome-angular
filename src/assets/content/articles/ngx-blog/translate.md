@@ -65,9 +65,9 @@ export class AppModule {
 }
 ```
 
-## Define the translations
+Define the translations
 
-## 定义翻译
+接下来，定义翻译结果
 
 Put your translation files in a json file which will be imported by the TranslateHttpLoader
 The following translations should be stored in en.json
@@ -80,10 +80,10 @@ The following translations should be stored in en.json
 }
 ```
 
-4. Use the Service, Pipe or the Directive
+Use the Service, Pipe or the Directive
    TranslateService
 
-   使用 TranslateService 服务、管道或指令
+最后，使用 TranslateService 服务、管道或指令
 
 ```javascript
 // app.component.ts
@@ -134,7 +134,7 @@ npm install ngx-translate-messageformat-compiler messageformat --save
 
 ## Setup
 
-## 设置
+## 准备工作
 
 You need to configure `TranslateModule` so it uses `TranslateMessageFormatCompiler` as the compiler:
 
