@@ -86,12 +86,6 @@ app-markdown-viewer {
     margin: 0.5em 0;
   }
 
-  /* Space paragraphs in a list the same as the list itself. */
-  li p {
-    /* Needs !important to override rule above. */
-    margin: 0.5em 0 !important;
-  }
-
   /* Smaller spacing for sub-lists */
   ul ul, ul ol, ol ul, ol ol {
     margin: 0;
@@ -217,6 +211,7 @@ app-markdown-viewer {
     width: 100%;
     box-sizing: border-box;
     clear: both;
+
     h1, h2, h3, h4, h5, h6 {
       font-weight: 500;
     }
