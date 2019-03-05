@@ -172,7 +172,6 @@ function addArticlesToGroups(articles: ArticleModel[], articleGroups: ArticleGro
       group.title = coverArticle.title;
       group.originTitle = coverArticle.originTitle;
       coverArticle.title = '专栏简介';
-      coverArticle.originTitle = '';
       group.id = coverArticle.id;
       group.summary = coverArticle.content;
     }
