@@ -30,7 +30,7 @@ In this blogpost I'll try to skim on some examples of what I have come up with a
 
 > Please keep in mind: these are my solutions. If you disagree let's discuss this here or on twitter @webdave_de.
 >
-> 请记住：这些都是我的解决方案。如果你不同意，欢迎在这里或 twitter 上讨论 @webdave_de。
+> 请记住：这些都是我的解决方案。如果你有别的想法，欢迎在这里或 twitter 上讨论 @webdave_de。
 >
 
 Here are the questions and problems:
