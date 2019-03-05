@@ -31,13 +31,23 @@ export function parseLog(filename: string, gitLog: string): FileModel {
   const entries = splitGitLog(gitLog);
   const commits = result.commits = entries.map(parseCommit);
   result.id = buildUuid(commits[commits.length - 1]);
-  result.title = extractTitle(filename) || result.id;
+  const {chineseTitle, englishTitle} = extractTitles(filename);
+  result.title = [chineseTitle, englishTitle].join('\n') || result.id;
+  result.isTranslation = !!englishTitle;
   return result;
 }
 
-function extractTitle(filename: string): string {
+function extractTitles(filename: string): { englishTitle?: string, chineseTitle?: string } {
   const content = fs.readFileSync(filename, 'utf-8');
-  return content.replace(/^[\s\S]*?#\s+(.*)\n[\s\S]*/, '$1');
+  // 先尝试按照中英对照的方式提取标题，再尝试按照纯中文的方式提取标题
+  const matches = content.match(/^[\s\S]*?#\s+(.*)\n\n#\s+(.*)/) || content.match(/^[\s\S]*?#\s+(.*)/);
+  if (!matches) {
+    return {};
+  } else if (matches.length === 2) {
+    return {chineseTitle: matches[1]};
+  } else if (matches.length === 3) {
+    return {chineseTitle: matches[2], englishTitle: matches[1]};
+  }
 }
 
 export function splitGitLog(log: string): string[] {
@@ -104,6 +114,7 @@ function buildArticle(file: FileModel, authors: AuthorModel[]): ArticleModel {
     .split('/')
     .slice(0, -1)
     .join('/');
+  result.isTranslation = file.isTranslation;
   if (result.path !== '') {
     result.path = '/' + result.path;
   }

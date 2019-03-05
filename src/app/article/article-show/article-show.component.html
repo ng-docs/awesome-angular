@@ -23,4 +23,4 @@
     <dd>{{article.group.title}}</dd>
   </dl>
 </div>
-<app-markdown-viewer [data]="article.content" baseUrl="/assets/content/articles{{article.path}}"></app-markdown-viewer>
+<app-markdown-viewer [data]="article.content" [isTranslation]="article.isTranslation" baseUrl="/assets/content/articles{{article.path}}"></app-markdown-viewer>

@@ -33,6 +33,20 @@ export class MarkdownViewerComponent implements OnInit {
     this.update();
   }
 
+  private _isTranslation = false;
+
+  get isTranslation(): boolean {
+    return this._isTranslation;
+  }
+
+  @Input()
+  set isTranslation(value: boolean) {
+    if (this._isTranslation !== !!value) {
+      this._isTranslation = value;
+      this.update();
+    }
+  }
+
   get data(): string {
     return this._data;
   }
@@ -59,7 +73,9 @@ export class MarkdownViewerComponent implements OnInit {
       },
     });
     this.html = marked(this.data);
-    setTimeout(() => mark(this.element));
+    if (this.isTranslation) {
+      setTimeout(() => mark(this.element));
+    }
   }
 }
 
