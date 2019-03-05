@@ -29,6 +29,8 @@ cp -r /tmp/localhost:4000/* /tmp/awesome-preview.angular.live/
 
 rm -fr /tmp/localhost:4000
 
+cd /tmp/awesome-preview.angular.live/
+
 commitMessage=$(git log --oneline -n 1)
 
 git add .
