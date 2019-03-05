@@ -171,12 +171,23 @@ function addArticlesToGroups(articles: ArticleModel[], articleGroups: ArticleGro
     if (coverArticle) {
       group.title = coverArticle.title;
       group.originTitle = coverArticle.originTitle;
-      coverArticle.title = '专栏简介';
+      coverArticle.title = subTitleOf(coverArticle.content).chineseTitle || '专栏简介';
       group.id = coverArticle.id;
       group.summary = coverArticle.content;
     }
     group.children.push(...subArticles);
   });
+}
+
+function subTitleOf(content: string): { englishTitle?: string, chineseTitle?: string } {
+  const matches = content.match(/^[\s\S]*?##\s+(.*)\n\n##\s+(.*)/) || content.match(/^[\s\S]*?##\s+(.*)/);
+  if (!matches) {
+    return {};
+  } else if (matches.length === 2) {
+    return {chineseTitle: matches[1]};
+  } else if (matches.length === 3) {
+    return {englishTitle: matches[1], chineseTitle: matches[2]};
+  }
 }
 
 function fillCreationDateForGroups(groups: ArticleGroupModel[]): void {
