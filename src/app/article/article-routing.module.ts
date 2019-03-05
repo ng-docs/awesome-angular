@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { ArticleLayoutComponent } from './article-layout/article-layout.component';
-import { ArticleListComponent } from './article-list/article-list.component';
-import { ArticleShowComponent } from './article-show/article-show.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {ArticleLayoutComponent} from './article-layout/article-layout.component';
+import {ArticleShowComponent} from './article-show/article-show.component';
+import {ArticleHomeComponent} from './article-home/article-home.component';
 
 const routes: Routes = [
   {
@@ -11,7 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: ArticleListComponent,
+        component: ArticleHomeComponent,
       },
       {
         path: ':id',
