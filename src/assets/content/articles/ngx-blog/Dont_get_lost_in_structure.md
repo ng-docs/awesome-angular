@@ -1,6 +1,6 @@
 > 原文：<https://webdave.de/blog/Dont_get_lost_in_structure>
 >
-> 原文作者：David Müllerchen
+> 作者：[David Müllerchen](/authors/web-deve)
 >
 
 # Don't get lost in structure
