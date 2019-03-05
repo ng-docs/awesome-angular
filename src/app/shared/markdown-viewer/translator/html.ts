@@ -31,8 +31,7 @@ export namespace html {
 
   export function markAndSwapAll(body: HTMLElement, selectors: string[] = defaultSelectors): void {
     restructureTable(body);
-    selectors.forEach(selector => mark(body, selector));
-    swap(body);
+    selectors.forEach(selector => markAndSwap(body, selector));
   }
 
   function clearAiraHidden(body: HTMLElement): void {
@@ -58,14 +57,15 @@ export namespace html {
       prev.tagName === element.tagName && prev.className === element.className;
   }
 
-  export function mark(root: Element, selector: string): void {
-    const elements = root.querySelectorAll(selector);
+  export function markAndSwap(root: Element, selector: string): void {
+    const elements = root.querySelectorAll<HTMLElement>(selector);
     elements.forEach(element => {
       if (containsChinese(element.innerHTML)) {
         const prev = element.previousElementSibling;
         if (isPaired(prev, element) && !containsChinese(prev.innerHTML)) {
           element.setAttribute('translation-result', 'on');
           prev.setAttribute('translation-origin', 'off');
+          element.parentElement.insertBefore(element, prev);
           // 交换 id，中文内容应该占用原文的 id
           const id = prev.getAttribute('id');
           if (id) {
@@ -139,13 +139,5 @@ export namespace html {
         originCell.innerHTML = `<p>${originCell.innerHTML}</p><p>${translationCell.innerHTML}</p>`;
       }
     }
-  }
-
-  export function swap(root: Element): void {
-    const pairList = root.querySelectorAll('[translation-origin]+[translation-result]');
-    pairList.forEach(element => {
-      const prev = element.previousElementSibling;
-      element.parentElement.insertBefore(element, prev);
-    });
   }
 }
