@@ -32,7 +32,7 @@
     [opened]="!isHandset" (click)="tryToClose(drawer)">
     <ng-content></ng-content>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content appPartialScroller>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

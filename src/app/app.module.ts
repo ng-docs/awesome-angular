@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import localeZh from '@angular/common/locales/zh';
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData, ViewportScroller } from '@angular/common';
+import { PartialScroller } from './core/services/partial-scroller.service';
 
 registerLocaleData(localeZh);
 
@@ -22,6 +23,7 @@ registerLocaleData(localeZh);
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'zh' },
+    { provide: ViewportScroller, useClass: PartialScroller },
   ],
   bootstrap: [AppComponent],
 })
