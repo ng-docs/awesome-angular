@@ -169,7 +169,7 @@ All this entries are features.
 
   that’s called <strong> single responsibility principle (SRP)</strong>
 
-  这也被成为**单一职责原则（SRP）**
+  这也被称为**单一职责原则（SRP）**
 
 in fact that means:
 
