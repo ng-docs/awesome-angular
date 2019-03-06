@@ -1,7 +1,7 @@
-import {Component, ElementRef, Input, OnInit} from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import * as marked from 'marked';
-import {highlightAuto} from 'highlight.js';
-import {html} from './translator/html';
+import { highlightAuto } from 'highlight.js';
+import { html } from './translator/html';
 import addIdForHeaders = html.addIdForHeaders;
 import markAndSwapAll = html.markAndSwapAll;
 

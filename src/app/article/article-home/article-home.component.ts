@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {articles} from '../data/articles';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { articles } from '../data/articles';
 
 @Component({
   selector: 'app-article-home',
@@ -13,7 +13,7 @@ export class ArticleHomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.navigate([articles.children[0].id], {relativeTo: this.route});
+    this.router.navigate([articles.children[0].id], { relativeTo: this.route });
   }
 
 }

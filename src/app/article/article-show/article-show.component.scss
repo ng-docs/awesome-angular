@@ -6,14 +6,17 @@
 dl {
   display: inline-flex;
   margin: 0 2rem 1rem 0;
+
   > dt {
     flex: none;
     font-style: normal;
   }
+
   > dd {
     flex: auto;
     margin-left: 0;
     padding: 0;
+
     > a {
       margin-right: 1rem;
     }

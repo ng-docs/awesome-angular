@@ -1,5 +1,5 @@
-import {ArticleHistoryModel} from './article.history.model';
-import {ArticleGroupModel} from './article-group.model';
+import { ArticleHistoryModel } from './article.history.model';
+import { ArticleGroupModel } from './article-group.model';
 
 export class ArticleModel {
   id: string;

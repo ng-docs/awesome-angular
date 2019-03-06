@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {findArticleById} from '../data/articles';
-import {articleIsTranslation, ArticleModel} from '../data/article.model';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { findArticleById } from '../data/articles';
+import { articleIsTranslation, ArticleModel } from '../data/article.model';
 
 @Component({
   selector: 'app-article-show',
