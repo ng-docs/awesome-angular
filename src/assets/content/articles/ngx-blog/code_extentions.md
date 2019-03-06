@@ -34,7 +34,7 @@ While vscode is very powerfull connectet to git, there is no way to see the git 
 For that i use <a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory" target="_blank" rel="noopener">Git History</a>.
 So you can see the git log and git history.
 
-虽然 vscode 对 git 的支持非常强大，但还是它没办法看到 git 的历史。为此，我使用了 [Git History](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory) 插件。这样依赖，你就可以看到 git log 和 git history 了。
+虽然 vscode 对 git 的支持非常强大，但还是它没办法看到 git 的历史。为此，我使用了 [Git History](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory) 插件。这样以来，你就可以看到 git log 和 git history 了。
 
 In some cases, there is no connection between Jira and your Git Repo. So I wrote a plugin to put a commit message as a Jira ticket comment.
 It's called <a href="https://marketplace.visualstudio.com/items?itemName=web-dave.jira" target="_blank" rel="noopener">vsc-jira</a>.
