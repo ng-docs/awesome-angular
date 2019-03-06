@@ -17,6 +17,7 @@ import { IconGithubComponent } from './icons/icon-github/icon-github.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { ToggleDirective } from './directives/toggle.directive';
 import { MarkdownViewerComponent } from './markdown-viewer/markdown-viewer.component';
+import { PartialScrollerDirective } from './directives/partial-scroller.directive';
 
 @NgModule({
   imports: [
@@ -38,6 +39,7 @@ import { MarkdownViewerComponent } from './markdown-viewer/markdown-viewer.compo
     SearchBoxComponent,
     ToggleDirective,
     MarkdownViewerComponent,
+    PartialScrollerDirective,
   ],
   exports: [
     MatToolbarModule,
