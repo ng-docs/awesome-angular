@@ -6,6 +6,9 @@ node_js:
 cache:
   directories:
     - "./node_modules"
+git:
+  depth: false
+
 before_install:
   - sudo locale-gen zh_CN.GB18030
 script:
