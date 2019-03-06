@@ -1,4 +1,4 @@
-import {ArticleModel} from './article.model';
+import { ArticleModel } from './article.model';
 
 export class ArticleGroupModel {
   id: string;

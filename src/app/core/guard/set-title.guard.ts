@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivateChild, RouterStateSnapshot} from '@angular/router';
-import {Observable} from 'rxjs';
-import {findArticleById} from '../../article/data/articles';
-import {Title} from '@angular/platform-browser';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivateChild, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs';
+import { findArticleById } from '../../article/data/articles';
+import { Title } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root',

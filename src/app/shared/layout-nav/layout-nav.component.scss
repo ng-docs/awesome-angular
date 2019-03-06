@@ -16,6 +16,7 @@
 
 .mat-toolbar.mat-primary {
   flex: none;
+
   &.header {
     top: 0;
     margin-bottom: 8px;
@@ -30,6 +31,7 @@ img {
 
 [mat-button] {
   min-width: auto;
+
   &.active {
     margin-bottom: -2px;
     border-bottom: 2px solid white;

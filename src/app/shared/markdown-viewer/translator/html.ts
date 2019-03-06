@@ -46,7 +46,7 @@ export namespace html {
     resultElements.forEach((origin) => {
       const result = origin.previousElementSibling;
       if (!containsChinese(origin.textContent)) {
-        results.push({english: origin, chinese: result});
+        results.push({ english: origin, chinese: result });
       }
     });
     return results;
