@@ -32,7 +32,7 @@
 
 ### 注册作者
 
-请参照 <https://github.com/ng-docs/awesome-angular/blob/master/src/assets/content/authors/%E6%B1%AA%E5%BF%97%E6%88%90.md> 填写作者信息。注意，你往【邮箱：】中填写的邮箱必须包括你在 git 提交记录中可能用到的所有邮箱，应用会根据它来反查作者信息。其它部分可随意填写。
+请参照[这里](https://github.com/ng-docs/awesome-angular/blob/master/src/assets/content/authors/%E6%B1%AA%E5%BF%97%E6%88%90.md)填写作者信息。注意，你往【邮箱：】中填写的邮箱必须包括你在 git 提交记录中可能用到的所有邮箱，应用会根据它来反查作者信息。其它部分可随意填写。
 
 ### 添加专栏
 
@@ -109,3 +109,4 @@ Hello
 
 新增文档之后，要先把它提交才能进行构建，但不要提交空白的文档，否则可能会影响对后续改名操作的正确跟踪。
 
+对文章进行审校时，请认真填写提交信息，这些提交信息将变成该文章的修改记录。
