@@ -40,3 +40,5 @@ Thumbs.db
 
 src/app/article/data/articles.json
 src/app/author/data/authors.json
+
+/temp
