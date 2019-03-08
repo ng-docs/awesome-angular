@@ -75,7 +75,18 @@ export class MarkdownViewerComponent implements OnInit {
     const escapedRegex = escapeRegex(this.baseUrl + '//');
     this.html = marked(this.data).replace(new RegExp(escapedRegex, 'gi'), '/');
     if (this.isTranslation) {
-      setTimeout(() => mark(this.element));
+      setTimeout(() => {
+        mark(this.element);
+        const anchors = this.element.querySelectorAll<HTMLAnchorElement>('a[href]');
+        anchors.forEach((a) => {
+          const { host } = new URL(a.href);
+          if (host !== location.host) {
+            if (!a.hasAttribute('target')) {
+              a.setAttribute('target', '_blank');
+            }
+          }
+        });
+      });
     }
   }
 }
