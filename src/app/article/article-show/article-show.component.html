@@ -1,6 +1,8 @@
 <div class="doc-info">
   <dl>
-    <dt>作者：</dt>
+    <dt>
+      {{isTranslation(article) ? '译' : '作'}}者：
+    </dt>
     <dd><a [routerLink]="['/authors', article.author]">{{article.author}}</a></dd>
   </dl>
   <dl *ngIf="article.reviewers?.length>1">
