@@ -4,7 +4,7 @@
 
 > 原文：<https://juristr.com/blog/2019/04/rxjs-finalize-operator/>
 >
-> 原作者：[Juri Strumpflohner](/authors/juristr)
+> 作者：[Juri Strumpflohner](/authors/juristr)
 >
 > In this article we’re going to have a look at the RxJS `finalize` operator. To have a practical use case, let’s take a look at disabling/enabling a form submit button during an HTTP request.
 >
