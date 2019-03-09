@@ -48,7 +48,7 @@
     "@angular/compiler-cli": "^7.2.7",
     "@angular/language-service": "^7.2.7",
     "@angular/platform-server": "^7.2.7",
-    "@awesome-fe/prerender": "0.0.3",
+    "@awesome-fe/prerender": "0.0.4",
     "@nguniversal/express-engine": "^7.1.0",
     "@nguniversal/module-map-ngfactory-loader": "^7.1.0",
     "@types/chokidar": "^1.7.5",
