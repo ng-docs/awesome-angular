@@ -1,14 +1,14 @@
-import {difference, min, uniq, uniqBy} from 'lodash';
+import { difference, min, uniq, uniqBy } from 'lodash';
 import * as fs from 'fs';
-import {AuthorModel} from '../../src/app/author/data/author.model';
+import { AuthorModel } from '../../src/app/author/data/author.model';
 import * as path from 'path';
-import {FileCommitModel} from './file-commit.model';
-import {FileModel} from './file.model';
-import {ArticleHistoryModel} from '../../src/app/article/data/article.history.model';
-import {articleIsCover, ArticleModel} from '../../src/app/article/data/article.model';
+import { FileCommitModel } from './file-commit.model';
+import { FileModel } from './file.model';
+import { ArticleHistoryModel } from '../../src/app/article/data/article.history.model';
+import { articleIsCover, ArticleModel } from '../../src/app/article/data/article.model';
 import * as spawn from 'cross-spawn';
-import {emailOf, firstOf, lastOf, pathListToTree} from './utils';
-import {ArticleGroupModel} from '../../src/app/article/data/article-group.model';
+import { emailOf, firstOf, lastOf, pathListToTree } from './utils';
+import { ArticleGroupModel } from '../../src/app/article/data/article-group.model';
 
 export function parseCommit(gitLogEntry: string): FileCommitModel {
   const result = new FileCommitModel();
@@ -33,7 +33,7 @@ export function parseLog(filename: string, gitLog: string): FileModel {
   const entries = splitGitLog(gitLog);
   const commits = result.commits = entries.map(parseCommit);
   result.id = buildUuid(commits[commits.length - 1]);
-  const {chineseTitle, englishTitle} = extractTitles(filename);
+  const { chineseTitle, englishTitle } = extractTitles(filename);
   result.title = chineseTitle;
   result.originTitle = englishTitle;
   return result;
@@ -46,9 +46,9 @@ function extractTitles(filename: string): { englishTitle?: string, chineseTitle?
   if (!matches) {
     return {};
   } else if (matches.length === 2) {
-    return {chineseTitle: matches[1]};
+    return { chineseTitle: matches[1] };
   } else if (matches.length === 3) {
-    return {chineseTitle: matches[2], englishTitle: matches[1]};
+    return { chineseTitle: matches[2], englishTitle: matches[1] };
   }
 }
 
@@ -184,9 +184,9 @@ function subTitleOf(content: string): { englishTitle?: string, chineseTitle?: st
   if (!matches) {
     return {};
   } else if (matches.length === 2) {
-    return {chineseTitle: matches[1]};
+    return { chineseTitle: matches[1] };
   } else if (matches.length === 3) {
-    return {englishTitle: matches[1], chineseTitle: matches[2]};
+    return { englishTitle: matches[1], chineseTitle: matches[2] };
   }
 }
 
@@ -204,13 +204,13 @@ function timeOf(a: ArticleModel): number {
   return a.creationDate.getTime();
 }
 
-function sortByCreationDate(a, b) {
-  return timeOf(a) - timeOf(b);
-}
-
 function orderIdOf(article: ArticleModel | ArticleGroupModel): number {
   if (article instanceof ArticleModel) {
-    const id = article.filename.replace(/^(\d+).*$/, '$1');
+    if (article.filename === '_cover.md' || article.filename === 'cover.md' || article.filename === 'welcome.md') {
+      return 0;
+    }
+    const matches = article.filename.match(/^(\d+).*$/);
+    const id = matches && matches[1];
     if (id) {
       return +id;
     } else {
@@ -221,16 +221,12 @@ function orderIdOf(article: ArticleModel | ArticleGroupModel): number {
   }
 }
 
-function sortByFilename(a: ArticleModel | ArticleGroupModel, b: ArticleModel | ArticleGroupModel): number {
+function sortByFilenameOrHistory(a: ArticleModel | ArticleGroupModel, b: ArticleModel | ArticleGroupModel): number {
   return orderIdOf(a) - orderIdOf(b);
 }
 
 function sort(group: ArticleGroupModel): ArticleGroupModel {
-  if (group.level > 0) {
-    group.children = group.children.sort((a, b) => sortByFilename(a, b));
-  } else {
-    group.children = group.children.sort((a, b) => sortByCreationDate(a, b));
-  }
+  group.children = group.children.sort((a, b) => sortByFilenameOrHistory(a, b));
   group.children.forEach(item => {
     if (item instanceof ArticleGroupModel) {
       sort(item);
