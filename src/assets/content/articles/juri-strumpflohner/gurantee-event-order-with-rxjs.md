@@ -25,7 +25,7 @@ In order to illustrate **the problem** I created an example use case, simplified
 
 - [TL;DR: Here’s the corresponding Egghead lesson](#tl-dr-here-s-the-corresponding-egghead-lesson)
 
-  [TL; DR：这是相应的 Egghead 课程](#tl-dr-here-s-the-corresponding-egghead-lesson)
+  [太长不读版：这是相应的 Egghead 课程](#tl-dr-here-s-the-corresponding-egghead-lesson)
 
 
 - [The Problem](#the-problem)
