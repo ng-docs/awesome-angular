@@ -38,6 +38,11 @@ app-markdown-viewer {
     display: inline; /* added to fix Yahoo block display of inline code */
   }
 
+  em {
+    font-style: normal;
+    font-weight: lighter;
+  }
+
   pre {
     font-size: 1em;
     line-height: 1.2em;
