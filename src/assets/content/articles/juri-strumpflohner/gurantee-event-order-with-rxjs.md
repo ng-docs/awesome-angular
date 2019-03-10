@@ -67,7 +67,7 @@ We basically have the following user interface:
 我们大致会有如下用户界面：
 
 
-![](/blog/assets/imgs/rxjs-order-guarantee.png)
+![](./gurantee-event-order-with-rxjs_images/rxjs-order-guarantee.png)
 
 
 When the user **checks** some option, an http request is made to retrieve some value and once the request returns, the response is added to a list visualized below.
@@ -107,8 +107,7 @@ The async request made when checking an option might take a while before coming 
 
 Well, try by yourself:
 
-好，来亲自试试：
-
+[亲自试试](https://stackblitz.com/edit/blog-guarantee-order-wrong)吧。
 
 As you can see, we might get an inconsistent state. When - for instance - quickly double-clicking on “Option 1” we get the option selected & then unselected again, but the async call coming later still adds the option to the list.
 
@@ -343,6 +342,7 @@ Here’s the according Stackblitz example to play around with. Check it out, dou
 
 下面是 Stackblitz 上的例子。看！它对双击操作处理得完美！
 
+[在线例子](https://stackblitz.com/edit/blog-guarantee-order-switchmap?ctl=1)
 
 ## Optimizing with `switchMap`
 
@@ -368,6 +368,7 @@ Here’s a Stackblitz example. Pay particular attention to the console log. In t
 
 这是 Stackblitz 上的一个例子。要特别留意控制台日志。我们在 `setTimeout(..)` 中写了一个日志（`console.log('Returning data');`）。如果双击，该日志就不会出现，表示该异步操作甚至没有执行过。
 
+[在线例子](https://stackblitz.com/edit/blog-guarantee-order-switchmap)。
 
 ## `switchMap` - potential race conditions
 
@@ -420,6 +421,7 @@ And here’s the according modified Stackblitz to play around with.
 
 下面是修改后的 Stackblitz 版本。
 
+[在线例子](https://stackblitz.com/edit/blog-guarantee-order-mergemap)。
 
 ## Conclusion
 
