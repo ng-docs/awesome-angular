@@ -79,12 +79,20 @@ export class MarkdownViewerComponent implements OnInit {
         mark(this.element);
         const anchors = this.element.querySelectorAll<HTMLAnchorElement>('a[href]');
         anchors.forEach((a) => {
-          const { host } = new URL(a.href);
+          const { hash, host } = new URL(a.href);
           if (host !== location.host) {
             if (!a.hasAttribute('target')) {
               a.setAttribute('target', '_blank');
             }
           }
+
+          a.addEventListener('click', (event) => {
+            const targetElement = this.element.querySelector(hash);
+            if (targetElement) {
+              targetElement.scrollIntoView();
+            }
+            event.preventDefault();
+          });
         });
       });
     }
