@@ -52,9 +52,9 @@ In order to illustrate **the problem** I created an example use case, simplified
   [用 `switchMap` 进行优化](#optimizing-with-switchmap)
 
 
-- [`switchMap` - potential race conditions](#switchmap-potential-race-conditions)
+- [`switchMap` - potential race conditions](#switchmap---potential-race-conditions)
 
-  [`switchMap` - 潜在的静态条件](#switchmap-potential-race-conditions)
+  [`switchMap` - 潜在的竞态条件](#switchmap---potential-race-conditions)
 
 
 - [Conclusion](#conclusion)
