@@ -10,7 +10,10 @@
   <a routerLink="/">
     <app-icon-angular></app-icon-angular>
   </a>
-  <a routerLink="/">
+  <a routerLink="/" class="site-title">
+    <div *ngIf="isHandset">
+      Angular 资源集锦
+    </div>
     <div *ngIf="!isHandset">
       <img src="/assets/icons/logo.svg" alt="Angular 资源集锦"/>
     </div>

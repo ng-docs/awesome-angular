@@ -49,3 +49,11 @@ mat-sidenav-content {
   padding-right: 1rem;
 }
 
+a.site-title {
+  text-decoration: none;
+  color: white;
+
+  &:visited {
+    color: white;
+  }
+}
