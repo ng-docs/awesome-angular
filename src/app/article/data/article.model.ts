@@ -4,6 +4,7 @@ import { ArticleGroupModel } from './article-group.model';
 export class ArticleModel {
   id: string;
   type = 'article';
+  originUrl: string;
   title: string;
   originTitle: string;
   level: number;
@@ -12,6 +13,7 @@ export class ArticleModel {
   content: string;
   group?: ArticleGroupModel;
   author: string;
+  originAuthor: string;
   reviewers: string[];
   creationDate: Date;
   lastUpdated?: Date;

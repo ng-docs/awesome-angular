@@ -1,4 +1,16 @@
 <div class="doc-info">
+  <dl *ngIf="article.originAuthor">
+    <dt>作者：</dt>
+    <dd>
+      <a [routerLink]="['/authors', article.originAuthor]">{{article.originAuthor}}</a>
+    </dd>
+  </dl>
+  <dl *ngIf="article.originUrl">
+    <dt>原文：</dt>
+    <dd>
+      <a [href]="article.originUrl" target="_blank">点此</a>
+    </dd>
+  </dl>
   <dl>
     <dt>
       {{isTranslation(article) ? '译' : '作'}}者：
