@@ -33,9 +33,6 @@ export function parseLog(filename: string, gitLog: string): FileModel {
   const entries = splitGitLog(gitLog);
   const commits = result.commits = entries.map(parseCommit);
   result.id = buildUuid(commits[commits.length - 1]);
-  const { chineseTitle, englishTitle } = extractTitles(filename);
-  result.title = chineseTitle;
-  result.originTitle = englishTitle;
   return result;
 }
 
@@ -106,11 +103,28 @@ function buildArticleHistory(commit: FileCommitModel, authors: AuthorModel[]): A
   return history;
 }
 
+function parseOriginInfo(details: string): { originAuthor?: string, originUrl?: string } {
+  const authorMatch = details.match(/^ *Author: ?(.*)$/mi);
+  const originAuthor = authorMatch ? authorMatch[1] : '';
+  const urlMatch = details.match(/^ *URL: ?(.*)$/mi);
+  const originUrl = urlMatch ? urlMatch[1] : '';
+  return { originAuthor, originUrl };
+}
+
 function buildArticle(file: FileModel, authors: AuthorModel[]): ArticleModel {
   const result = new ArticleModel();
   result.id = file.id;
-  result.title = file.title;
-  result.originTitle = file.originTitle;
+  const { chineseTitle, englishTitle } = extractTitles(file.path);
+  result.title = chineseTitle;
+  result.originTitle = englishTitle;
+  result.title = chineseTitle;
+  result.originTitle = englishTitle;
+  const firstCommit = file.commits[file.commits.length - 1];
+  if (firstCommit.details) {
+    const { originAuthor, originUrl } = parseOriginInfo(firstCommit.details);
+    result.originAuthor = originAuthor;
+    result.originUrl = originUrl;
+  }
   result.path = file.path
     .replace('./src/assets/content/articles/', '')
     .replace(/.md$/, '')

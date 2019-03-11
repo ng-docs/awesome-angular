@@ -2,10 +2,6 @@
 
 # 用 RxJS 的 finalize 操作符在 Observable 终止时执行逻辑
 
-> 原文：<https://juristr.com/blog/2019/04/rxjs-finalize-operator/>
->
-> 作者：[Juri Strumpflohner](/authors/juristr)
->
 > In this article we’re going to have a look at the RxJS `finalize` operator. To have a practical use case, let’s take a look at disabling/enabling a form submit button during an HTTP request.
 >
 > 在本文中，我们要介绍 RxJS 的 `finalize` 操作符。作为范例，我们来实现一个 HTTP 请求期间禁用/启用表单提交按钮的功能。

@@ -1,8 +1,3 @@
-> 原文：<https://webdave.de/blog/code_extentions>
->
-> 作者：[David Müllerchen](/authors/web-deve)
->
-
 # Useful @code extentions for Angular developers
 
 # 对 Angular 开发者有用的 @code 扩展

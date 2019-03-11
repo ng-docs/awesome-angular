@@ -1,8 +1,3 @@
-> 原文：<https://webdave.de/blog/translate>
->
-> 作者：[David Müllerchen](/authors/web-deve)
->
-
 # Translate (i18n) your Angular Apps with @ngx-translate/core
 
 # 使用 @ngx-translate/core 翻译（i18n）你的 Angular 应用
