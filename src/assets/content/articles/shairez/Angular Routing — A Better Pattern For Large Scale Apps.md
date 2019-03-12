@@ -3,10 +3,6 @@
 # Angular Routing - 大规模应用中更好的模式
 
 
-[![Go to the profile of Shai Reznik](https://cdn-images-1.medium.com/fit/c/100/100/1*C2ZvPywplWjtVFvu2qDE-Q.jpeg)](https://medium.com/@shairez?source=post_header_lockup)
-
-[![转到 Shai Reznik 的个人主页](https://cdn-images-1.medium.com/fit/c/100/100/1*C2ZvPywplWjtVFvu2qDE-Q.jpeg)](https://medium.com/@shairez?source=post_header_lockup)
-
 Sep 21, 2018
 
 2018年9月21日
@@ -217,7 +213,7 @@ Yeah, you can imagine the child routes of the lazy loaded module “stacking” 
 是的，你可以把惰性加载模块的子路由想象成“堆叠”在父加载路由之上。
 
 
-![](https://cdn-images-1.medium.com/max/1600/1*FAMyCqV-JtlGasWp7-HRDQ.png)
+![](./_images/1*FAMyCqV-JtlGasWp7-HRDQ.png)
 
 By the way, that’s why we use `loadChildren` to load lazy loaded modules, as if to say: “Set this sucker’s routes as the loading route’s children”
 
@@ -413,7 +409,7 @@ I HATE duplicated strings!
 我**讨！厌！**重复的字符串！
 
 
-![](https://cdn-images-1.medium.com/max/1600/0*jM2Vs_6CIRNB6uoL.jpg)
+![](./_images/0*jM2Vs_6CIRNB6uoL.jpg)
 
 Some guy that probably hates duplicated strings as well… who happens to also wear a squirrel suit.
 
