@@ -1,3 +1,5 @@
+# 中文 Wiki Angular 词条编辑
+```
 {{NoteTA|G1=IT|G2=FL}}
 {{short description|Web 应用框架}}
 {{About|Angular|AngularJS 1.x|AngularJS}}
@@ -137,3 +139,4 @@ Angular Material 是一个 [[User interface|UI]] 组件库，它在 Angular 中�
 [[Category:富網路應用程式框架]]
 [[Category:使用MIT许可证的软件]]
 [[Category:AJAX]]
+```
