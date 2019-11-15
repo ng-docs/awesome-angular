@@ -1,4 +1,5 @@
-{{short description|Web application framework}}
+{{NoteTA|G1=IT|G2=FL}}
+{{short description|Web 应用框架}}
 {{About|Angular|AngularJS 1.x|AngularJS}}
 {{Infobox software
 | name = Angular
@@ -10,127 +11,129 @@
 | latest release date = {{Start date and age|2019|10|30|df=yes}}<ref>{{cite web|url=https://github.com/angular/angular/releases|title=GitHub - angular/angular: One framework. Mobile & desktop.|date=31 December 2018|publisher=|via=GitHub}}</ref>
 | latest preview version = 9.0.0-next.15
 | latest preview date = {{Start date and age|2019|10|30|df=yes}}<ref>{{cite web|url=https://github.com/angular/angular/releases|website=GitHub|accessdate=2019-10-19|title=angular/CHANGELOG.md at master · angular/angular}}</ref>
-| repo = {{URL|https://github.com/angular/angular|Angular Repository}}
+| repo = {{URL|https://github.com/angular/angular|Angular 仓库}}
 | programming language = [[TypeScript]]
-| platform = [[Web platform]]
-| genre = [[Web framework]]
+| platform = [[Web平台|Web 平台]]
+| genre = [[Web应用框架| Web 应用框架]]
 | license = [[MIT License]]
 | website = {{url|https://angular.io/}}
 | Tutorials = {{url|https://www.tutorialslogic.com/angular/}}
 | status = Active
 }}
-'''Angular''' (commonly referred to as "'''Angular 2+'''" or "'''Angular v2 and above'''")<ref>{{cite web|url=https://www.reddit.com/r/Angular2/|title=r/Angular2|website=reddit}}</ref><ref>{{cite web|url=https://www.sitepoint.com/angularjs-vs-angular/|title=AngularJS and Angular 2+: a Detailed Comparison|date=6 April 2018|publisher=}}</ref> is a [[TypeScript]]-based [[open-source]] [[Web framework|web application framework]] led by the Angular Team at [[Google]] and by a community of individuals and corporations. Angular is a complete rewrite from the same team that built [[AngularJS]].
+'''Angular''' (通常是指 "'''Angular 2+'''" 或 "'''Angular v2 及更高版本'''")<ref>{{cite web|url=https://www.reddit.com/r/Angular2/|title=r/Angular2|website=reddit}}</ref><ref>{{cite web|url=https://www.sitepoint.com/angularjs-vs-angular/|title=AngularJS 与 Angular 2+: 一份详细的比较|date=6 April 2018|publisher=}}</ref> 是一个基于 [[TypeScript]] 的 [[开源]] [[Web应用框架|Web 应用框架]] 由 [[Google]] 的 Angular 团队以及社区中的一些个人和公司共同领导。Angular 是由 [[AngularJS]] 的同一个开发团队完全重写的。
 
-==Differences between Angular and AngularJS==
+==Angular 和 AngularJS 之间的区别==
 
-[[File:Architecture of an Angular 2 application.png|thumb|right|upright=1.5|Architecture of an Angular application. The main building blocks are modules, components, templates, metadata, data binding, directives, services and dependency injection.]]
+[[File:Architecture of an Angular 2 application.png|thumb|right|upright=1.5|Angular 应用的架构。其主要的构造块是模块、组件、模板、元数据、数据绑定、指令、服务和依赖注入。]]
 
-Angular was designed as a ground-up rewrite of AngularJS.
-* Angular does not have a concept of "scope" or controllers, instead it uses a hierarchy of components as its primary architectural characteristic.<ref>{{cite web|url=https://angular.io/guide/architecture|title=Angular Docs|website=angular.io}}</ref>
-* Angular has a different expression syntax, focusing on <code>"[ ]"</code> for [[Property_(programming)|property]] binding, and <code>"( )"</code> for [[Event_(computing)|event]] binding<ref>{{cite web |url=https://gorrion.io/blog/angularjs-vs-angular/ |title= What’s the difference between AngularJS and Angular?  |date=September 19, 2017 |website= gorrion.io |access-date=2018-01-28}}</ref>
-* Modularity – much core functionality has moved to modules
-* Angular recommends the use of Microsoft's [[TypeScript]] language, which introduces the following features:
-** [[Static typing|Static Typing]], including [[Generic programming|Generics]]
-** [[Annotation|Annotations]]
-* [[TypeScript]] is a superset of [[ECMAScript 6]] (ES6), and is [[Backward compatibility|backwards compatible]] with [[ECMAScript 5]] (i.e.: JavaScript).
-* [[Dynamic loading]]
-* Asynchronous template compilations
-* Iterative callbacks provided by RxJS. RxJS limits state visibility and debugging, but these can be solved with reactive add-ons like ngReact or ngrx.
-* Support for Angular Universal, which runs Angular applications on servers
+在设计上，Angular 是 AngularJS 的完全重写。
+* Angular 没有“作用域”或控制器的概念，其架构中的主要角色是一些层次化的组件。<ref>{{cite web|url=https://angular.io/guide/architecture|title=Angular 文档|website=angular.io}}</ref>
+* Angular 具有不同的表达式语法，主要是用 <code>"[ ]"</code> 来表示[[Property_(programming)|属性]]绑定，以及用 <code>"( )"</code> 来表示[[Event_(computing)|事件]]绑定<ref>{{cite web |url=https://gorrion.io/blog/angularjs-vs-angular/ |title=AngularJS 和 Angular 之间有什么区别？|date=September 19, 2017 |website= gorrion.io |access-date=2018-01-28}}</ref>
+* 模块化 – 许多核心功能都已模块化
+* Angular 建议使用 Microsoft 的 [[TypeScript]] 语言，该语言引入了如下特性：
+** [[Static typing|静态类型]]，包括 [[Generic programming|泛型]]
+** [[Decorator|装饰器]]，语法上类似于[[Annotation|注解]]
+* [[TypeScript]] 是 [[ECMAScript 6]] (ES6) 的超集，并且与 [[ECMAScript 5]] (即: JavaScript) [[向下兼容]]。
+* [[动态加载]]
+* 异步模板编译
+* RxJS 提供了迭代式回调。RxJS 在状态可见性和调试方面有局限，不过可以使用诸如 ngReact 或 ngrx 之类的响应式第三方库来解决这些问题
+* 支持 Angular Universal，它可以在服务器上运行 Angular 应用程序
 
-==History==
-===Naming===
-Originally, the rewrite of AngularJS was called "Angular 2" by the team, but this led to confusion among developers. To clarify, the team announced that separate terms should be used for each framework with "AngularJS" referring to the 1.X versions and "Angular" without the "JS" referring to versions 2 and up.<ref>{{Cite web|url=http://angularjs.blogspot.com/2017/01/branding-guidelines-for-angular-and.html|title=Angular: Branding Guidelines for AngularJS|accessdate=2017-03-04}}</ref>
+==历史==
+===命名===
+最初，团队将这份 AngularJS 的重写版本称为 “Angular 2”，但这在开发人员之间引起了混乱。为了明确起见，该团队宣布应该为这两个框架分别使用各自的术语，其中 “AngularJS” 专指 1.X 版本，而不带 “JS” 的 “Angular” 则专指版本2及更高版本。<ref>{{Cite web|url=http://angularjs.blogspot.com/2017/01/branding-guidelines-for-angular-and.html|title=Angular: Branding Guidelines for AngularJS|accessdate=2017-03-04}}</ref>
 
-===Version 2===
-Angular 2.0 was announced at the ng-Europe conference 22–23. October 2014.<ref>{{cite web |title= A sneak peek at the radically new Angular 2.0 |author= Coman Hamilton |url= https://jaxenter.com/angular-2-0-112094.html |accessdate= 2015-10-21 }}</ref><ref>{{cite web |title= Ng-Europe schedule |url= https://2015.ngeurope.org/#schedule}}</ref> The drastic changes in the 2.0 version created considerable controversy among developers.<ref>{{cite web | title = Angular 2.0 announcement backfires | author = Coman Hamilton| url = https://jaxenter.com/angular-2-0-announcement-backfires-112127.html | accessdate= 2015-10-21 }}</ref> On April 30, 2015, the Angular developers announced that Angular 2 moved from Alpha to Developer Preview.<ref>{{Cite tweet |title=Angular 2 moves from Alpha to Developer Preview! Dev guide and API docs now available at ... angular.io/docs/js/latest |user=angularjs |number=593797019258359809 |date=30 Apr 2015 |accessdate=2015-10-21}}</ref> Angular 2 moved to Beta in December 2015,<ref>{{Cite web|url=http://angularjs.blogspot.it/2015/12/angular-2-beta.html|title=Angular: Angular 2 Beta|website=angularjs.blogspot.it|access-date=2016-07-13}}</ref> and the first release candidate was published in May 2016.<ref>{{Cite web|url=https://github.com/angular/angular/blob/master/CHANGELOG.md#200-rc0-2016-05-02|title=angular/angular|website=GitHub|access-date=2016-05-04}}</ref> The final version was released on September 14, 2016.
+===版本 2===
+在2014年10月22~23日的 ng-Europe 会议上发布了Angular 2.0。<ref>{{cite web |title= A sneak peek at the radically new Angular 2.0 |author= Coman Hamilton |url= https://jaxenter.com/angular-2-0-112094.html |accessdate= 2015-10-21 }}</ref><ref>{{cite web |title= Ng-Europe schedule |url= https://2015.ngeurope.org/#schedule}}</ref> 2.0 版的重大变化在开发人员之间引起了很大争议。<ref>{{cite web | title = Angular 2.0 announcement backfires | author = Coman Hamilton| url = https://jaxenter.com/angular-2-0-announcement-backfires-112127.html | accessdate= 2015-10-21 }}</ref> 2015年4月30日，Angular 开发组宣布 Angular 2 从 Alpha 推进到 Developer Preview。<ref>{{Cite tweet |title=Angular 2 moves from Alpha to Developer Preview! Dev guide and API docs now available at ... angular.io/docs/js/latest |user=angularjs |number=593797019258359809 |date=30 Apr 2015 |accessdate=2015-10-21}}</ref> Angular 2 于2015年12月推进至 Beta 版，<ref>{{Cite web|url=http://angularjs.blogspot.it/2015/12/angular-2-beta.html|title=Angular: Angular 2 Beta|website=angularjs.blogspot.it|access-date=2016-07-13}}</ref> 并于 2016年5月发布了首个 rc 版本。<ref>{{Cite web|url=https://github.com/angular/angular/blob/master/CHANGELOG.md#200-rc0-2016-05-02|title=angular/angular|website=GitHub|access-date=2016-05-04}}</ref> 其最终版本于2016年9月14日发布。
 
-=== Version 4 ===
-On 13 December 2016 Angular 4 was announced, skipping 3 to avoid a confusion due to the misalignment of the router package's version which was already distributed as v3.3.0.<ref>{{Cite web|url=http://angularjs.blogspot.kr/2016/12/ok-let-me-explain-its-going-to-be.html|title=Ok... let me explain: it's going to be Angular 4.0|website=angularjs.blogspot.kr|access-date=2016-12-14}}</ref> The final version was released on March 23, 2017.<ref>{{Cite web|url=http://angularjs.blogspot.ca/2017/03/angular-400-now-available.html|title=Angular 4.0.0 Now Available|website=angularjs.blogspot.ca|access-date=2017-03-23}}</ref> Angular 4 is backward compatible with Angular 2.<ref>{{Cite web|url=https://react-etc.net/entry/angular-4-coming-in-2017-backwards-compatible-angular-2|title=Angular 4 coming in 2017, to be backwards compatible with Angular 2|website=react-etc.net|access-date=2016-12-14}}</ref>
+=== 版本 4 ===
+2016年12月13日发布了 Angular 4，它跳过了版本号 3，以免由于路由模块的版本的未和其它模块对齐而造成混淆（路由模块在之前已经作为 v3.3.0 发布了）。<ref>{{Cite web|url=http://angularjs.blogspot.kr/2016/12/ok-let-me-explain-its-going-to-be.html|title=Ok... let me explain: it's going to be Angular 4.0|website=angularjs.blogspot.kr|access-date=2016-12-14}}</ref> 其最终版本于2017年3月23日发布。<ref>{{Cite web|url=http://angularjs.blogspot.ca/2017/03/angular-400-now-available.html|title=Angular 4.0.0 Now Available|website=angularjs.blogspot.ca|access-date=2017-03-23}}</ref> Angular 4 向后兼容 Angular2。<ref>{{Cite web|url=https://react-etc.net/entry/angular-4-coming-in-2017-backwards-compatible-angular-2|title=Angular 4 coming in 2017, to be backwards compatible with Angular 2|website=react-etc.net|access-date=2016-12-14}}</ref>
 
-Angular version 4.3 is a minor release, meaning that it contains no breaking changes and that it is a drop-in replacement for 4.x.x.
+Angular 4.3 版是次要版本，这意味着它没有破坏性变更，是 4.xx 的直接替代品。
 
-Features in version 4.3
-* Introducing '''HttpClient''', a smaller, easier to use, and more powerful library for making HTTP Requests.
-* New '''router life cycle''' events for Guards and Resolvers. Four new events: '''GuardsCheckStart''', '''GuardsCheckEnd''', '''ResolveStart''', '''ResolveEnd''' join the existing set of life cycle event such as NavigationStart.
-* Conditionally '''disable''' animations.
+版本 4.3 中的特性
 
-=== Version 5 ===
-Angular 5 was released on November 1, 2017.<ref>{{cite web|last1=Fluin|first1=Stephen|url=https://blog.angular.io/version-5-0-0-of-angular-now-available-37e414935ced|title=Version 5.0.0 of Angular Now Available|accessdate=2 November 2017}}</ref> Key improvements in Angular 5 include support for [[Progressive web app|progressive web apps]], a build optimizer and improvements related to Material Design.<ref>{{cite web|url=https://www.infoworld.com/article/3225511/javascript/angular-5-javascript-framework-delayed.html|title=Angular 5 JavaScript framework delayed}}</ref>
+* 引入了 '''HttpClient'''，这是一个更小、更易于使用且功能更强大的库，可用于发起 HTTP 请求。
+* 一些新的'''路由器生命周期'''事件，用于追踪守卫和解析过程。生命周期事件（比如 NavigationStart）集合中加入了四个新事件：'''GuardsCheckStart''', '''GuardsCheckEnd''', '''ResolveStart''', '''ResolveEnd'''。
+* 有条件的'''禁用'''动画。
 
-=== Version 6===
-Angular 6 was released on May 4, 2018.<ref>{{cite web|url=https://blog.angular.io/version-6-of-angular-now-available-cc56b0efa7a4|title=Version 6.0.0 of Angular Now Available|accessdate=4 May 2018}}</ref>. This is a major release focused less on the underlying framework, and more on the toolchain and on making it easier to move quickly with Angular in the future, like: ng update, ng add, Angular Elements, Angular Material + CDK Components, Angular Material Starter Components, CLI Workspaces, Library Support, Tree Shakable Providers, Animations Performance Improvements, and RxJS v6.
+=== 版本 5 ===
+Angular 5 于2017年11月1日发布。<ref>{{cite web|last1=Fluin|first1=Stephen|url=https://blog.angular.io/version-5-0-0-of-angular-now-available-37e414935ced|title=Version 5.0.0 of Angular Now Available|accessdate=2 November 2017}}</ref> Angular 5 的主要改进包括对[[Progressive web app|渐进式 Web 应用]]的支持、一个构建优化器，以及一些与 Material Design 相关的改进。<ref>{{cite web|url=https://www.infoworld.com/article/3225511/javascript/angular-5-javascript-framework-delayed.html|title=Angular 5 JavaScript framework delayed}}</ref>
 
-===Version 7===
-Angular 7 was released on October 18, 2018. Updates regarding Application Performance, Angular Material & CDK, Virtual Scrolling, Improved Accessibility of Selects, now supports Content Projection using web standard for custom elements, and dependency updates regarding Typescript 3.1, RxJS 6.3, Node 10 (still supporting Node 8).<ref>{{Cite web|url=https://blog.angular.io/version-7-of-angular-cli-prompts-virtual-scroll-drag-and-drop-and-more-c594e22e7b8c|title=Version 7 of Angular — CLI Prompts, Virtual Scroll, Drag and Drop and more|last=Fluin|first=Stephen|date=2018-10-18|website=Angular Blog|access-date=2019-06-07}}</ref>
-===Version 8===
-Angular 8 was released on May 28, 2019. Featuring Differential loading for all application code, Dynamic imports for lazy routes, Web workers, TypeScript 3.4 support, and Angular Ivy as an opt-in preview. Angular Ivy opt-in preview includes:<ref name=":0">{{Cite web|url=https://blog.angular.io/a-plan-for-version-8-0-and-ivy-b3318dfc19f7|title=A plan for version 8.0 and Ivy|last=Fluin|first=Stephen|date=2019-02-08|website=Angular Blog|access-date=2019-06-07}}</ref>
-* Generated code that is easier to read and debug at runtime
-* Faster re-build time
-* Improved payload size
-* Improved template type checking
-* Backwards compatibility
+=== 版本 6===
+Angular 6 于2018年5月4日发布<ref>{{cite web|url=https://blog.angular.io/version-6-of-angular-now-available-cc56b0efa7a4|title=Version 6.0.0 of Angular Now Available|accessdate=4 May 2018}}</ref>。这是一个主版本，其改进重点不在于底层框架，而在于工具链，其目的是让工具链能在将来与 Angular 一起快速发展，改进点主要包括：ng update、ng add、Angular Elements、Angular Material + CDK 组件库、Angular Material 初学者组件、CLI 工作空间、库支持、服务提供商的摇树优化、动画性能改进，以及 RxJS v6。
 
-=== Future Releases ===
-One of the highlights is the expected release of Ivy<ref name=":0" />, a backwards compatible, completely new render engine based on the incremental DOM architecture. Ivy has been engineered with [[tree shaking]] in mind, which means that application bundles will only include the parts of Angular that are actually used by the application.
+===版本 7===
+Angular 7 于2018年10月18日发布。其升级主要集中在 Angular Material & CDK、虚拟滚动、选择框在无障碍方面的改进、支持对符合 Web 标准的自定义元素进行内容投影，以及对 Typescript 3.1、RxJS 6.3、Node 10 (仍然支持 Node 8) 的依赖库更新。<ref>{{Cite web|url=https://blog.angular.io/version-7-of-angular-cli-prompts-virtual-scroll-drag-and-drop-and-more-c594e22e7b8c|title=Version 7 of Angular — CLI Prompts, Virtual Scroll, Drag and Drop and more|last=Fluin|first=Stephen|date=2018-10-18|website=Angular Blog|access-date=2019-06-07}}</ref>
 
-Each version is expected to be backward-compatible with the prior release. Google pledged to do twice-a-year upgrades.
+===版本 8===
+Angular 8 于2019年5月28日发布。特性包括：为所有应用代码进行差异化加载、针对惰性加载路由的动态导入、Web workers、支持 TypeScript 3.4，并且把 Angular Ivy 作为可选的预览特性。Angular Ivy 的可选预览特性包括：<ref name=":0">{{Cite web|url=https://blog.angular.io/a-plan-for-version-8-0-and-ivy-b3318dfc19f7|title=A plan for version 8.0 and Ivy|last=Fluin|first=Stephen|date=2019-02-08|website=Angular Blog|access-date=2019-06-07}}</ref>
+* 生成的代码在运行时更易于阅读和调试
+* 更快的重新构建
+* 改进了有效载荷的大小
+* 改进了模板类型检查
+* 向后兼容
 
-=== Support policy and schedule ===
-All the major releases are supported for 18 months. This consists of 6 months of active support, during which regularly-scheduled updates and patches are released. It is then followed by 12 months of long-term support (LTS), during which only critical fixes and security patches are released.<ref>{{Cite web|url=https://angular.io/guide/releases#support-policy-and-schedule|title=Angular|website=angular.io|access-date=2019-06-07}}</ref>
+=== 未来的版本 ===
+最值得期待的特性之一是 Ivy <ref name=":0" />，它是一个向后兼容的、基于增量式 DOM 架构的全新渲染引擎。Ivy 从设计之初就考虑到了[[tree shaking|摇树优化]]，这意味着应用的发布包中只会包含那些在应用中真正用到的 Angular 部件。
+
+可以预期，每一个版本都会向后兼容前一个版本。Google 承诺每年会进行两次升级。
+
+=== 支持政策与时间表 ===
+所有主版本都提供了 18 个月的支持。其中包括 6 个月的活跃支持，在此期间会定期发布更新和补丁。然后是12个月的长期支持（LTS），在此期间只会发布关键修复程序和安全补丁。<ref>{{Cite web|url=https://angular.io/guide/releases#support-policy-and-schedule|title=Angular|website=angular.io|access-date=2019-06-07}}</ref>
+
 {| class="wikitable"
-|+Supported Angular Versions
-!Version
-!Status
-!Released
-!Active Ends
-!LTS Ends
+|+支持的 Angular 版本
+!版本
+!状态
+!发布
+!活跃期结束
+!LTS 期结束
 |-
 |^8.0.0
-|Active
-|May 28, 2019
-|Nov 28, 2019
-|Nov 28, 2020
+|活跃
+|2019-05-28
+|2019-11-28
+|2020-11-28
 |-
 |^7.0.0
 |LTS
-|Oct 18, 2018
-|April 18, 2019
-|Apr 18, 2020
+|2018-10-18
+|2019-04-18
+|2020-04-18
 |-
 |^6.0.0
 |LTS
-|May 3, 2018
-|Nov 3, 2018
-|Nov 3, 2019
+|2018-05-03
+|2018-11-03
+|2019-11-03
 |}
 
-== Libraries ==
+== 库 ==
 === Angular Material ===
-{{redirect|Angular Material|the library of the same name for AngularJS 1.x|AngularJS#Angular Material}}
+{{redirect|Angular Material|该库有一个同名的 AngularJS 1.x 版本|AngularJS#Angular Material}}
 {{expand section|date=August 2019}}
-Angular Material is a [[User interface|UI]] component library that implements [[Material Design]] in Angular.<ref>{{Cite book|url=https://books.google.co.uk/books?id=WMxPDwAAQBAJ|title=Learning Angular: A no-nonsense guide to building real-world apps with Angular 5|last=Noring|first=Christoffer|last2=Deeleman|first2=Pablo|date=2017-12-08|publisher=Packt Publishing Ltd|year=|isbn=9781787125940|location=|pages=315|language=en}}</ref><ref>{{Cite book|url=https://books.google.co.uk/books?id=xdyZDwAAQBAJ|title=Progressive Web Apps with Angular: Create Responsive, Fast and Reliable PWAs Using Angular|last=Hajian|first=Majid|date=2019-05-22|publisher=Apress|year=|isbn=9781484244487|location=|pages=30|language=en}}</ref><ref>{{Cite book|url=https://books.google.co.uk/books?id=qnc5DwAAQBAJ|title=Building Modern Web Applications Using Angular|last=Kasagoni|first=Shravan Kumar|date=2017-05-29|publisher=Packt Publishing Ltd|year=|isbn=9781785880032|location=|pages=173|language=en}}</ref><ref>{{Cite book|url=https://books.google.co.uk/books?id=IDtNDwAAQBAJ|title=Angular 5 Projects: Learn to Build Single Page Web Applications Using 70+ Projects|last=Clow|first=Mark|date=2018-02-20|publisher=Apress|year=|isbn=9781484232798|pages=245|language=en}}</ref>
+Angular Material 是一个 [[User interface|UI]] 组件库，它在 Angular 中实现了 [[Material Design]]。<ref>{{Cite book|url=https://books.google.co.uk/books?id=WMxPDwAAQBAJ|title=Learning Angular: A no-nonsense guide to building real-world apps with Angular 5|last=Noring|first=Christoffer|last2=Deeleman|first2=Pablo|date=2017-12-08|publisher=Packt Publishing Ltd|year=|isbn=9781787125940|location=|pages=315|language=en}}</ref><ref>{{Cite book|url=https://books.google.co.uk/books?id=xdyZDwAAQBAJ|title=Progressive Web Apps with Angular: Create Responsive, Fast and Reliable PWAs Using Angular|last=Hajian|first=Majid|date=2019-05-22|publisher=Apress|year=|isbn=9781484244487|location=|pages=30|language=en}}</ref><ref>{{Cite book|url=https://books.google.co.uk/books?id=qnc5DwAAQBAJ|title=Building Modern Web Applications Using Angular|last=Kasagoni|first=Shravan Kumar|date=2017-05-29|publisher=Packt Publishing Ltd|year=|isbn=9781785880032|location=|pages=173|language=en}}</ref><ref>{{Cite book|url=https://books.google.co.uk/books?id=IDtNDwAAQBAJ|title=Angular 5 Projects: Learn to Build Single Page Web Applications Using 70+ Projects|last=Clow|first=Mark|date=2018-02-20|publisher=Apress|year=|isbn=9781484232798|pages=245|language=en}}</ref>
 
-==See also==
-{{Portal|Free and open-source software}}
+==另请参阅==
+{{Portal|自由与开源软件}}
 *[[AngularJS]]
-*[[React (JavaScript library)|React.js]]
+*[[React.js|React (JavaScript 库)]]
 *[[Vue.js]]
-*[[Comparison of JavaScript frameworks]]
+*[[Comparison of JavaScript frameworks|JavaScript 框架之间的比较]]
 
-==References==
+==参考资料==
 {{Reflist}}
 
-==External links==
-* [https://angular.io Official website]
-* [https://v2.angular.io Archived website (Angular 2)]
+==外部链接==
+* [https://angular.io 官网]
+* [https://v2.angular.io 已归档网站 (Angular 2)]
 
 {{Rich Internet applications}}
 {{Application frameworks}}
 {{ECMAScript}}
-{{NodeJs}}
 
-[[Category:Google software]]
-[[Category:Rich Internet application frameworks]]
-[[Category:Software using the MIT license]]
-[[Category:Ajax (programming)]]
+[[Category:Google软件]]
+[[Category:富網路應用程式框架]]
+[[Category:使用MIT许可证的软件]]
+[[Category:AJAX]]
