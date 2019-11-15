@@ -120,7 +120,6 @@ Angular Material 是一个 [[User interface|UI]] 组件库，它在 Angular 中�
 *[[AngularJS]]
 *[[React.js|React (JavaScript 库)]]
 *[[Vue.js]]
-*[[Comparison of JavaScript frameworks|JavaScript 框架之间的比较]]
 
 ==参考资料==
 {{Reflist}}
@@ -128,6 +127,7 @@ Angular Material 是一个 [[User interface|UI]] 组件库，它在 Angular 中�
 ==外部链接==
 * [https://angular.io 官网]
 * [https://v2.angular.io 已归档网站 (Angular 2)]
+*[https://en.wikipedia.org/wiki/Comparison_of_JavaScript_frameworks JavaScript 框架之间的比较]
 
 {{Rich Internet applications}}
 {{Application frameworks}}
