@@ -1,23 +1,21 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { LayoutModule } from '@angular/cdk/layout';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
-import {
-  MatButtonModule,
-  MatButtonToggleModule,
-  MatIconModule,
-  MatListModule,
-  MatSidenavModule,
-  MatTabsModule,
-  MatToolbarModule,
-} from '@angular/material';
-import { LayoutNavComponent } from './layout-nav/layout-nav.component';
+import { PartialScrollerDirective } from './directives/partial-scroller.directive';
+import { ToggleDirective } from './directives/toggle.directive';
 import { IconAngularComponent } from './icons/icon-angular/icon-angular.component';
 import { IconGithubComponent } from './icons/icon-github/icon-github.component';
-import { SearchBoxComponent } from './search-box/search-box.component';
-import { ToggleDirective } from './directives/toggle.directive';
+import { LayoutNavComponent } from './layout-nav/layout-nav.component';
 import { MarkdownViewerComponent } from './markdown-viewer/markdown-viewer.component';
-import { PartialScrollerDirective } from './directives/partial-scroller.directive';
+import { SearchBoxComponent } from './search-box/search-box.component';
 
 @NgModule({
   imports: [
