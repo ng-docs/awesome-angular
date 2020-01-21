@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/awesome-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -37,6 +38,12 @@
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -108,8 +115,35 @@
           "builder": "@angular-devkit/build-angular:server",
           "options": {
             "outputPath": "dist/awesome-angular-server",
-            "main": "src/main.server.ts",
+            "main": "server.ts",
             "tsConfig": "src/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "awesome-angular:build",
+            "serverTarget": "awesome-angular:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "awesome-angular:build:production",
+              "serverTarget": "awesome-angular:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "awesome-angular:build:production",
+            "serverTarget": "awesome-angular:server:production",
+            "routes": []
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
@@ -142,5 +176,8 @@
       }
     }
   },
-  "defaultProject": "awesome-angular"
+  "defaultProject": "awesome-angular",
+  "cli": {
+    "analytics": false
+  }
 }
