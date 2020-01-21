@@ -22,5 +22,8 @@
       "es2017",
       "dom"
     ]
-  }
+  },
+  "include": [
+    "server.ts"
+  ]
 }

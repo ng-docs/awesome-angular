@@ -11,7 +11,7 @@ export class SearchBoxComponent implements OnInit {
   private searchDebounce = 300;
   private searchSubject = new Subject<string>();
 
-  @ViewChild('searchBox', { static: false }) searchBox: ElementRef;
+  @ViewChild('searchBox') searchBox: ElementRef;
   @Output() search = this.searchSubject.pipe(distinctUntilChanged(), debounceTime(this.searchDebounce));
   @Output() focus = new EventEmitter<string>();
 
