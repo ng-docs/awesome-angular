@@ -1,14 +1,14 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { MatTreeModule } from '@angular/material/tree';
+import { SharedModule } from '../shared/shared.module';
+import { ArticleHomeComponent } from './article-home/article-home.component';
+import { ArticleLayoutComponent } from './article-layout/article-layout.component';
+import { ArticleListComponent } from './article-list/article-list.component';
 
 import { ArticleRoutingModule } from './article-routing.module';
-import { ArticleLayoutComponent } from './article-layout/article-layout.component';
-import { SharedModule } from '../shared/shared.module';
-import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleShowComponent } from './article-show/article-show.component';
-import { MatTreeModule } from '@angular/material';
 import { NavNodeComponent } from './nav-node/nav-node.component';
-import { ArticleHomeComponent } from './article-home/article-home.component';
 
 @NgModule({
   imports: [

@@ -1,8 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { MatDrawer } from '@angular/material';
 
 @Component({
   selector: 'app-layout-nav',
