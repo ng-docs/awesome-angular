@@ -2,29 +2,9 @@
 
 The 9.0.0 release of Angular is here! This is a major release that spans the entire platform, including the framework, Angular Material, and the CLI. This release switches applications to the [Ivy](https://angular.io/guide/ivy) compiler and runtime by default, and introduces improved ways of testing components.
 
-<figure class="iq ir is it iu iv fb fc paragraph-image">
-
-<div class="iw ix bu iy al">
-
-<div class="fb fc ip">
-
-<div class="jd r bu je">
-
-<div class="jf r">
-
-<div class="bt iz ff t u ja al bm jb jc">![](https://miro.medium.com/max/60/0*4tkqVWVOl0dGjbO9?q=20)</div>
+<figure>
 
 ![](https://miro.medium.com/max/3200/0*4tkqVWVOl0dGjbO9)
-
-<noscript>![](https://miro.medium.com/max/3200/0*4tkqVWVOl0dGjbO9)</noscript>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
 
 </figure>
 
@@ -36,11 +16,11 @@ Visit [update.angular.io](https://update.angular.io) for detailed information an
 
 First, update to the latest version of 8
 
-<pre class="iq ir is it iu kb kc er"><span id="af97" class="kd jl ea ba ke b bs kf kg r kh" data-selectable-paragraph="">ng update @angular/cli@8 @angular/core@8</span></pre>
+<pre><span>ng update @angular/cli@8 @angular/core@8</span></pre>
 
 Then, update to 9
 
-<pre class="iq ir is it iu kb kc er"><span id="a969" class="kd jl ea ba ke b bs kf kg r kh" data-selectable-paragraph="">ng update @angular/cli @angular/core</span></pre>
+<pre><span>ng update @angular/cli @angular/core</span></pre>
 
 To review the key changes with this update, including deprecated APIs, see [Updating to Angular version 9](https://v9.angular.io/guide/updating-to-version-9) in the Angular documentation.
 
@@ -69,31 +49,11 @@ With these improvements, small apps and large apps can see the most dramatic siz
 *   Large apps with many components can benefit most from the reduced factory size.
 *   Medium-sized apps should see bundle sizes that are on par or slightly smaller, since they benefit less from tree-shaking and don’t have enough components to truly leverage smaller factories.
 
-<figure class="iq ir is it iu iv fb fc paragraph-image">
-
-<div class="iw ix bu iy al">
-
-<div class="fb fc ip">
-
-<div class="jd r bu je">
-
-<div class="kq r">
-
-<div class="bt iz ff t u ja al bm jb jc">![](https://miro.medium.com/max/60/0*7dSxEASiMazbMt7N?q=20)</div>
+<figure>
 
 ![](https://miro.medium.com/max/3200/0*7dSxEASiMazbMt7N)
 
-<noscript>![](https://miro.medium.com/max/3200/0*7dSxEASiMazbMt7N)</noscript>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<figcaption class="dy bs kr ks kt fd fb fc ku kv az gt" data-selectable-paragraph="">Small apps could see around a 30% decrease in bundle size, large apps will see a 25–40% decrease, and medium apps decrease minimally.</figcaption>
+<figcaption>Small apps could see around a 30% decrease in bundle size, large apps will see a 25–40% decrease, and medium apps decrease minimally.</figcaption>
 
 </figure>
 
@@ -115,109 +75,33 @@ Ivy provides you with more tools to debug your applications. When running an app
 *   You can manually call methods and update state
 *   When you want to see the results of change detection, you can trigger change detection with `applyChanges`
 
-<figure class="iq ir is it iu iv fb fc paragraph-image">
-
-<div class="fb fc kz">
-
-<div class="jd r bu je">
-
-<div class="la r">
-
-<div class="bt iz ff t u ja al bm jb jc">![](https://miro.medium.com/max/60/0*RB_jqf6GCX-Ewq5V?q=20)</div>
+<figure>
 
 ![](https://miro.medium.com/max/1164/0*RB_jqf6GCX-Ewq5V)
-
-<noscript>![](https://miro.medium.com/max/1164/0*RB_jqf6GCX-Ewq5V)</noscript>
-
-</div>
-
-</div>
-
-</div>
 
 </figure>
 
 Ivy also improves the stack trace for debugging issues such as the `ExpressionChangedAfterItHasBeenCheckedError`. Previously the stack trace could be unhelpful:
 
-<figure class="iq ir is it iu iv fb fc paragraph-image">
-
-<div class="iw ix bu iy al">
-
-<div class="fb fc lb">
-
-<div class="jd r bu je">
-
-<div class="lc r">
-
-<div class="bt iz ff t u ja al bm jb jc">![](https://miro.medium.com/max/60/0*I4qPrPIXJi2yUj99?q=20)</div>
+<figure>
 
 ![](https://miro.medium.com/max/3192/0*I4qPrPIXJi2yUj99)
-
-<noscript>![](https://miro.medium.com/max/3192/0*I4qPrPIXJi2yUj99)</noscript>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
 
 </figure>
 
 With Ivy, you see a more useful stack trace that allows you to jump directly to the template instruction with the expression that has changed.
 
-<figure class="iq ir is it iu iv fb fc paragraph-image">
-
-<div class="iw ix bu iy al">
-
-<div class="fb fc ld">
-
-<div class="jd r bu je">
-
-<div class="le r">
-
-<div class="bt iz ff t u ja al bm jb jc">![](https://miro.medium.com/max/60/0*QPhLwDCufQOOhRVo?q=20)</div>
+<figure>
 
 ![](https://miro.medium.com/max/3036/0*QPhLwDCufQOOhRVo)
-
-<noscript>![](https://miro.medium.com/max/3036/0*QPhLwDCufQOOhRVo)</noscript>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
 
 </figure>
 
 For example, if you click on `AppComponent_Template` in the stack trace above, you can see the specific line in the generated code where the error is being thrown:
 
-<figure class="iq ir is it iu iv fb fc paragraph-image">
-
-<div class="iw ix bu iy al">
-
-<div class="fb fc ip">
-
-<div class="jd r bu je">
-
-<div class="lf r">
-
-<div class="bt iz ff t u ja al bm jb jc">![](https://miro.medium.com/max/60/0*69sx5aAdQyJoGbqv?q=20)</div>
+<figure>
 
 ![](https://miro.medium.com/max/3200/0*69sx5aAdQyJoGbqv)
-
-<noscript>![](https://miro.medium.com/max/3200/0*69sx5aAdQyJoGbqv)</noscript>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
 
 </figure>
 
@@ -229,23 +113,15 @@ The Ivy compiler and runtime provides improvements for handling styles. Previous
 
 Consider the following template and component snippets:
 
-<figure class="iq ir is it iu iv">
+<figure>
 
-<div class="jd r bu">
-
-<div class="ri r"><iframe src="https://blog.angular.io/media/eebd878c8eeb1f4a66e4b5048a2a1a70" allowfullscreen="" frameborder="0" height="80" width="680" title="snippet.html" class="ff t u ja al" scrolling="auto"></iframe></div>
-
-</div>
+<div><iframe src="https://blog.angular.io/media/eebd878c8eeb1f4a66e4b5048a2a1a70" allowfullscreen="" frameborder="0" height="80" width="680" title="snippet.html" scrolling="auto"></iframe></div>
 
 </figure>
 
-<figure class="iq ir is it iu iv">
+<figure>
 
-<div class="jd r bu">
-
-<div class="rc r"><iframe src="https://blog.angular.io/media/5e3da6a82d530d7d665f8d76d6a6452b" allowfullscreen="" frameborder="0" height="351" width="680" title="snippet.ts" class="ff t u ja al" scrolling="auto"></iframe></div>
-
-</div>
+<div><iframe src="https://blog.angular.io/media/5e3da6a82d530d7d665f8d76d6a6452b" allowfullscreen="" frameborder="0" height="351" width="680" title="snippet.ts" scrolling="auto"></iframe></div>
 
 </figure>
 
@@ -259,13 +135,9 @@ You can read more about styling precedence rules in the [Template Syntax guide](
 
 As a side effect of the styling refactoring, you can now also bind to [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) (also known as CSS variables).
 
-<figure class="iq ir is it iu iv">
+<figure>
 
-<div class="jd r bu">
-
-<div class="re r"><iframe src="https://blog.angular.io/media/66b492e125b315183ace725b5de7e2c6" allowfullscreen="" frameborder="0" height="109" width="680" title="custom-properties.html" class="ff t u ja al" scrolling="auto"></iframe></div>
-
-</div>
+<div><iframe src="https://blog.angular.io/media/66b492e125b315183ace725b5de7e2c6" allowfullscreen="" frameborder="0" height="109" width="680" title="custom-properties.html" scrolling="auto"></iframe></div>
 
 </figure>
 
@@ -286,57 +158,17 @@ The new Ivy compiler is not only faster and offers stronger type safety, it also
 
 In version 8 or View Engine, a typical compiler error would look like the following:
 
-<figure class="iq ir is it iu iv fb fc paragraph-image">
-
-<div class="iw ix bu iy al">
-
-<div class="fb fc lh">
-
-<div class="jd r bu je">
-
-<div class="li r">
-
-<div class="bt iz ff t u ja al bm jb jc">![](https://miro.medium.com/max/60/0*9MynS6_WDBlGkYqN?q=20)</div>
+<figure>
 
 ![](https://miro.medium.com/max/2052/0*9MynS6_WDBlGkYqN)
-
-<noscript>![](https://miro.medium.com/max/2052/0*9MynS6_WDBlGkYqN)</noscript>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
 
 </figure>
 
 In version 9 with Ivy, the same error looks like:
 
-<figure class="iq ir is it iu iv fb fc paragraph-image">
-
-<div class="iw ix bu iy al">
-
-<div class="fb fc lj">
-
-<div class="jd r bu je">
-
-<div class="lk r">
-
-<div class="bt iz ff t u ja al bm jb jc">![](https://miro.medium.com/max/60/0*Ag3LaCG6UVxNppq4?q=20)</div>
+<figure>
 
 ![](https://miro.medium.com/max/2056/0*Ag3LaCG6UVxNppq4)
-
-<noscript>![](https://miro.medium.com/max/2056/0*Ag3LaCG6UVxNppq4)</noscript>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
 
 </figure>
 
@@ -387,25 +219,17 @@ Most of Angular Material’s components can now be tested via harnesses, and we 
 
 Here’s an example test before harnesses:
 
-<figure class="iq ir is it iu iv">
+<figure>
 
-<div class="jd r bu">
-
-<div class="rc r"><iframe src="https://blog.angular.io/media/ecba92926e72f27a8848131c34f1f142" allowfullscreen="" frameborder="0" height="351" width="680" title="test-before.ts" class="ff t u ja al" scrolling="auto"></iframe></div>
-
-</div>
+<div><iframe src="https://blog.angular.io/media/ecba92926e72f27a8848131c34f1f142" allowfullscreen="" frameborder="0" height="351" width="680" title="test-before.ts" scrolling="auto"></iframe></div>
 
 </figure>
 
 And the same test with harnesses:
 
-<figure class="iq ir is it iu iv">
+<figure>
 
-<div class="jd r bu">
-
-<div class="rg r"><iframe src="https://blog.angular.io/media/eaaaaa0a220d9ae0e5e7ad4a410030ba" allowfullscreen="" frameborder="0" height="175" width="680" title="test-after.ts" class="ff t u ja al" scrolling="auto"></iframe></div>
-
-</div>
+<div><iframe src="https://blog.angular.io/media/eaaaaa0a220d9ae0e5e7ad4a410030ba" allowfullscreen="" frameborder="0" height="175" width="680" title="test-after.ts" scrolling="auto"></iframe></div>
 
 </figure>
 
@@ -420,27 +244,11 @@ You can now include capabilities from YouTube and Google Maps in your applicatio
 
 # IDE & language service improvements
 
-<figure class="iq ir is it iu iv fb fc paragraph-image">
-
-<div class="fb fc lo">
-
-<div class="jd r bu je">
-
-<div class="lp r">
-
-<div class="bt iz ff t u ja al bm jb jc">![](https://miro.medium.com/freeze/max/60/1*EFcVVFKZKOshNNpJd9ot6g.gif?q=20)</div>
+<figure>
 
 ![](https://miro.medium.com/max/1280/1*EFcVVFKZKOshNNpJd9ot6g.gif)
 
-<noscript>![](https://miro.medium.com/max/1280/1*EFcVVFKZKOshNNpJd9ot6g.gif)</noscript>
-
-</div>
-
-</div>
-
-</div>
-
-<figcaption class="dy bs kr ks kt fd fb fc ku kv az gt" data-selectable-paragraph="">Go to definition and improved Language Service demo</figcaption>
+<figcaption>Go to definition and improved Language Service demo</figcaption>
 
 </figure>
 
@@ -460,7 +268,7 @@ This release is the culmination of over 2 years of work. We’re really excited 
 
 v9 Contributors:
 
-Aaron Frost, Adam J. Penn, Adam Plumer, Adam Vigneaux, Adrien Crivelli, Ajit Singh, Alain Chautard, Alan Agius, Alexander Ivanov, Alexander von Weiss, Alex Eagle, Alex Rickabaugh, alexzuza, Ali Mirlou, Alison Gale, Alyssa Nicoll, Amadou Sall, AMarinov, Amit Dubey, Anders Kjær Damgaard, Andrew Kushnir, Andrew Scott, Andrew Seguin, Andrius, Andrus Diaz, Ankit Prajapati, Aravind, Aristeidis Bampakos, Arne Hoek, Artur Androsovych, arturovt, Atef Ben Ali, Ayaz Hafiz, Ben Elliott, Benjamin Liii, Brian Michalski, CaerusKaru, Carlos Ortiz García, Cédric Exbrayat, Charles Lyding, Christian Liebel, Christopher Dahm, codingnuclei, Colum Ferry, Craig Spence, cran-cg, crisbeto, Cyrille Tuzi, Daniele Morosinotto, Daniel Waxweiler, Danny Skoog, David Sánchez, David Shevitz, Denis Omelkov, Denys Vuika, Diego Juliao, dishanfernando, Dmitri Ischenko, Dominik Pieper, Do Nhu Vy, Doug Parker, Dyma, EddyP23, Edy Segura, Eliran Eliassy, Elvis Begovic, Emmanuel DEMEY, Ephraim, Erik Pintar, Esteban Gehring, Eusen, Evan Martin, FabianGosebrink, FaustmannChr, FDIM, Ferdinand Malcher, FG-33, Filipe Silva, Gabor Szekely, Gabriel Medeiros Coelho, GavinMK, Geoff Bass, George Kalpakas, Gérôme Grignon, ghiscoding, Girma Nigusse, Greg Magolan, Grigoriy Beziuk, hafiz, Harinder Singh, Hayouung, Hoel IRIS, horn, idzark, Igor Minar, Issei Horie, ivanwonder, Jakub Pawlot, James Vickery, Jan Malchert, Jason Bedard, Jeff Held, Jennifer Fell, Jeremy Elbourn, JiaLiPassion, Jithil P Ponnan, jnavb, Joakim Zebic, Joey Perrott, john li, John Ralph Umandal, Jonathan Sharpe, Joost Koehoorn, Jordan Amman, Jordan Nelson, Joshua Colvin, Judy Bogart, J Z, Kai Röder, Kapunahele Wong, Kara Erickson, katryo, Kayla Altepeter, Keen Yee Liau, ketangote, Kirk Larkin, Koala, Kristina Gocheva, kristinavavrova, Kristiyan Kostadinov, Kwinten Pisman, Kyle J. Kemp, Lars Gyrup Brink Nielsen, LASLEDJ, lazarljubenovic, Leonardo Zizzamia, Leon Radley, Luka Petrovic, Mansour Fall, manzonif, Mark Goho, Martina Kraus, Martin Probst, Matias Niemelä, Matthew Harris, Matt Janssen, Mayur Barge, mbehrlich, mertdeg2, Michael Maier, Michael Nahkies, Michael Prentice, Michał Koziara, Mike Brocchi, Mike Casebolt, mikef, Miles Malerba, Minko Gechev, Mirco Widmer, Misko Hevery, Miško Hevery, Mitchell Skaggs, mohax, Muhammad Umair, Muhammad Umair Khan, Nathan Tate, Németh Tamás, Nicolas Villanueva, Nikita Potapenko, Niklas Merz, noeri, Noopur, NothingEverHappens, ODAVING, Olegas Goncarovas, Olivier Combe, Orlando Pozo, owenmecham, Pascal Fivian, paulceli, Paul Gschwendtner, Pawel Kozlowski, Pete Bacon Darwin, Phaneendra, philonor, Pierre-Yves FARE, Piotr Błażejewicz, Potapy4, Rado Kirov, Ralf D. Müller, Raz Luvaton, Reuben Wilson, Richard Lea, Rick Katka, Robert Coie, Robin Dupret, Roy, Rudar Daman Singla, Rustam, Sachin, Sahan Serasinghe, Sam Julien, Santosh Yadav, Sasha Rudan, Sergey Koshechkin, Sergey Nikitin, Shibasish, Sholka Jadav, Showtim3, ShubhrankR, Simon Jespersen, Simon Kurtz, skrikl, Smartin, Sonu Kapoor, Srichandradeep Choudarapu, Sriram Jayarman, Stefanie Fluin, Stephen Cooper, Stephen Fluin, Suguru Inatomi, Suresh918, Syu Kato, thanhpd, thekiba, TheMushr00m, Tiep Phan, Timar, <mark class="qu qv ms">Tim Deschryver</mark>, TinyMan, Tom Kwong, Tom Sullivan, Trevor Karjanis, Troels Lenda, Turtuvshin Byambaa, Vanessa Schmitt, Victor, Vikash Dahiya, Vikram Subramanian, Wagner Maciel, Wataru Kasahara, Wenqi, why520crazy, willbeaufoy, William Lohan, WreckItRalph, Yann Bertrand, Younes Jaaidi, Yulia Tsareva, Zaid Al-Omari, zuckjet, 陈旭.
+Aaron Frost, Adam J. Penn, Adam Plumer, Adam Vigneaux, Adrien Crivelli, Ajit Singh, Alain Chautard, Alan Agius, Alexander Ivanov, Alexander von Weiss, Alex Eagle, Alex Rickabaugh, alexzuza, Ali Mirlou, Alison Gale, Alyssa Nicoll, Amadou Sall, AMarinov, Amit Dubey, Anders Kjær Damgaard, Andrew Kushnir, Andrew Scott, Andrew Seguin, Andrius, Andrus Diaz, Ankit Prajapati, Aravind, Aristeidis Bampakos, Arne Hoek, Artur Androsovych, arturovt, Atef Ben Ali, Ayaz Hafiz, Ben Elliott, Benjamin Liii, Brian Michalski, CaerusKaru, Carlos Ortiz García, Cédric Exbrayat, Charles Lyding, Christian Liebel, Christopher Dahm, codingnuclei, Colum Ferry, Craig Spence, cran-cg, crisbeto, Cyrille Tuzi, Daniele Morosinotto, Daniel Waxweiler, Danny Skoog, David Sánchez, David Shevitz, Denis Omelkov, Denys Vuika, Diego Juliao, dishanfernando, Dmitri Ischenko, Dominik Pieper, Do Nhu Vy, Doug Parker, Dyma, EddyP23, Edy Segura, Eliran Eliassy, Elvis Begovic, Emmanuel DEMEY, Ephraim, Erik Pintar, Esteban Gehring, Eusen, Evan Martin, FabianGosebrink, FaustmannChr, FDIM, Ferdinand Malcher, FG-33, Filipe Silva, Gabor Szekely, Gabriel Medeiros Coelho, GavinMK, Geoff Bass, George Kalpakas, Gérôme Grignon, ghiscoding, Girma Nigusse, Greg Magolan, Grigoriy Beziuk, hafiz, Harinder Singh, Hayouung, Hoel IRIS, horn, idzark, Igor Minar, Issei Horie, ivanwonder, Jakub Pawlot, James Vickery, Jan Malchert, Jason Bedard, Jeff Held, Jennifer Fell, Jeremy Elbourn, JiaLiPassion, Jithil P Ponnan, jnavb, Joakim Zebic, Joey Perrott, john li, John Ralph Umandal, Jonathan Sharpe, Joost Koehoorn, Jordan Amman, Jordan Nelson, Joshua Colvin, Judy Bogart, J Z, Kai Röder, Kapunahele Wong, Kara Erickson, katryo, Kayla Altepeter, Keen Yee Liau, ketangote, Kirk Larkin, Koala, Kristina Gocheva, kristinavavrova, Kristiyan Kostadinov, Kwinten Pisman, Kyle J. Kemp, Lars Gyrup Brink Nielsen, LASLEDJ, lazarljubenovic, Leonardo Zizzamia, Leon Radley, Luka Petrovic, Mansour Fall, manzonif, Mark Goho, Martina Kraus, Martin Probst, Matias Niemelä, Matthew Harris, Matt Janssen, Mayur Barge, mbehrlich, mertdeg2, Michael Maier, Michael Nahkies, Michael Prentice, Michał Koziara, Mike Brocchi, Mike Casebolt, mikef, Miles Malerba, Minko Gechev, Mirco Widmer, Misko Hevery, Miško Hevery, Mitchell Skaggs, mohax, Muhammad Umair, Muhammad Umair Khan, Nathan Tate, Németh Tamás, Nicolas Villanueva, Nikita Potapenko, Niklas Merz, noeri, Noopur, NothingEverHappens, ODAVING, Olegas Goncarovas, Olivier Combe, Orlando Pozo, owenmecham, Pascal Fivian, paulceli, Paul Gschwendtner, Pawel Kozlowski, Pete Bacon Darwin, Phaneendra, philonor, Pierre-Yves FARE, Piotr Błażejewicz, Potapy4, Rado Kirov, Ralf D. Müller, Raz Luvaton, Reuben Wilson, Richard Lea, Rick Katka, Robert Coie, Robin Dupret, Roy, Rudar Daman Singla, Rustam, Sachin, Sahan Serasinghe, Sam Julien, Santosh Yadav, Sasha Rudan, Sergey Koshechkin, Sergey Nikitin, Shibasish, Sholka Jadav, Showtim3, ShubhrankR, Simon Jespersen, Simon Kurtz, skrikl, Smartin, Sonu Kapoor, Srichandradeep Choudarapu, Sriram Jayarman, Stefanie Fluin, Stephen Cooper, Stephen Fluin, Suguru Inatomi, Suresh918, Syu Kato, thanhpd, thekiba, TheMushr00m, Tiep Phan, Timar, <mark>Tim Deschryver</mark>, TinyMan, Tom Kwong, Tom Sullivan, Trevor Karjanis, Troels Lenda, Turtuvshin Byambaa, Vanessa Schmitt, Victor, Vikash Dahiya, Vikram Subramanian, Wagner Maciel, Wataru Kasahara, Wenqi, why520crazy, willbeaufoy, William Lohan, WreckItRalph, Yann Bertrand, Younes Jaaidi, Yulia Tsareva, Zaid Al-Omari, zuckjet, 陈旭.
 
 We would also like to thank our GDEs and the community at large. The feedback, issue reports, and reproductions we receive are essential to holding our work to the highest quality standards. There are already over 4000 public Angular apps using version 9.
 
