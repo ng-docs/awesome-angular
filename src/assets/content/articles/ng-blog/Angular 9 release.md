@@ -459,7 +459,7 @@ You can now include capabilities from YouTube and Google Maps in your applicatio
 
 Significant improvements have been made to the Angular language service [extension](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template) on the Visual Studio Marketplace. Along with major architectural overhaul to address performance and stability issues, many long-standing bugs have also been fixed. Besides that, some new features include:
 
-Visual Studio Marketplace 上的 Angular 语言服务[扩展](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template)已做了重大改进。随着对性能和稳定性问题的重大架构变革，许多长期存在的漏洞也得到了修复。一些新特性还包括：
+Visual Studio Marketplace 上的 Angular 语言服务[扩展](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template)已做了重大改进。随着对性能和稳定性问题的重大架构变革，许多长期存在的漏洞也得到了修复。还包括一些新特性：
 
 * TextMate grammar for Angular Template Syntax, which now enables syntax highlighting in both inline and external templates
 
