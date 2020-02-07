@@ -497,7 +497,7 @@ Aaron Frost, Adam J. Penn, Adam Plumer, Adam Vigneaux, Adrien Crivelli, Ajit Sin
 
 We would also like to thank our GDEs and the community at large. The feedback, issue reports, and reproductions we receive are essential to holding our work to the highest quality standards. There are already over 4000 public Angular apps using version 9.
 
-我们还要感谢我们的 GDE 和整个社区。我们收到的反馈、问题报告和问题重现工程对于让我们的工作达到最高质量标准至关重要。使用版本 9 的公开 Angular 应用已经超过了 4000 个。
+我们还要感谢我们的 GDE 和整个社区。我们收到的反馈、问题报告和问题重现项目（Reproductions）对于让我们的工作达到最高质量标准至关重要。使用版本 9 的公开 Angular 应用已经超过了 4000 个。
 
 Special thanks to our long term enterprise collaborator [Pawel Kozlowski](https://github.com/pkozlowski-opensource) and his sponsor [Amadeus](https://amadeus.com/). Pawel made a huge quantity of contributions with exceptional quality over the 2 years of the Ivy project that have been a critical part of the project’s success.
 
