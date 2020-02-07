@@ -355,9 +355,9 @@ We’ve made some changes to how `ng update` works to make it more reliable and 
 
   **更容易对更新进行调试**。 默认情况下，`ng update` 运行所有迁移，并在磁盘上留下最终结果更改供你检查。版本 9 的更新还引入了新的 **`--create-commits`** 标志。当你运行 `ng update --create-commits` 时，该工具会在每个迁移动作后提交代码库的状态，这样你就可以逐步理解或调试我们对代码所做的更改。
 
-# New options for '`_providedIn'_`
+# New options for _`providedIn`
 
-# `_providedIn'_` 的新选项
+# _`providedIn`_ 的新选项
 
 When you create an `@Injectable` service in Angular, you must choose where it should be added to the injector. In addition to the previous `root` and module options, you have two additional options.
 
@@ -487,7 +487,7 @@ Angular 已经更新，可以用 TypeScript 3.6 和 3.7 了，也包括 TypeScri
 
 This release is the culmination of over 2 years of work. We’re really excited about the future and possibilities that this work opens up. This wouldn’t be possible without the work of hundreds of people in the community.
 
-这个版本是两年多来工作的结晶。我们对这项工作的未来和可能性感到非常兴奋。如果没有社区数百人的努力，这是不可能实现的。
+这个版本是两年多来工作的结晶。我们对这项工作的未来及其无限可能感到非常兴奋。如果没有社区数百人的努力，这是不可能实现的。
 
 v9 Contributors:
 
