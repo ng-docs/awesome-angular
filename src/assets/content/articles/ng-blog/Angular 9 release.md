@@ -10,7 +10,7 @@ Angular 的 9.0.0 版本发布了！这是一个跨平台的主版本，包括�
 
 This is one of the biggest updates to Angular we’ve made in the past 3 years, and we’re excited for all of the ways it empowers developers to build better applications and contribute to the Angular ecosystem.
 
-这是 Angular 在过去 3 年中所做的最重大的更新之一，我们很高兴能通过各种方式帮助开发人员构建出更好的应用并为 Angular 生态系统做出贡献。
+这是 Angular 在过去 3 年中所做的最重大更新之一，我们很高兴能通过各种方式帮助开发人员构建出更好的应用并为 Angular 生态系统做出贡献。
 
 # How to update to version 9
 
@@ -116,9 +116,9 @@ With these improvements, small apps and large apps can see the most dramatic siz
 
 # 测试速度更快
 
-We have also revamped the implementation of `[TestBed](https://angular.io/api/core/testing/TestBed)` in Ivy to make it more efficient.
+We have also revamped the implementation of [`TestBed`](https://angular.io/api/core/testing/TestBed) in Ivy to make it more efficient.
 
-我们还改进了 Ivy 中 `[TestBed](https://angular.cn/api/core/testing/TestBed)` 的实现，以提高效率。
+我们还改进了 Ivy 中 [`TestBed`](https://angular.cn/api/core/testing/TestBed) 的实现，以提高效率。
 
 Previously, `TestBed` would recompile all components between the running of each test, regardless of whether there were any changes made to components (for example, through overrides).
 
