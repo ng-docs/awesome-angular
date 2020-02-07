@@ -501,7 +501,7 @@ We would also like to thank our GDEs and the community at large. The feedback, i
 
 Special thanks to our long term enterprise collaborator [Pawel Kozlowski](https://github.com/pkozlowski-opensource) and his sponsor [Amadeus](https://amadeus.com/). Pawel made a huge quantity of contributions with exceptional quality over the 2 years of the Ivy project that have been a critical part of the project’s success.
 
-特别要感谢我们的长期企业合作伙伴 [Pawel Kozlowski](https://github.com/pkozlowski-opensource) 和他的赞助商 [Amadeus](https://amadeus.com/)。在 Ivy 项目的两年时间里，帕维尔以极高的品质做出了巨大的贡献，这是该项目成功的关键部分。
+特别要感谢我们的长期企业合作伙伴 [Pawel Kozlowski](https://github.com/pkozlowski-opensource) 和他的赞助商 [Amadeus](https://amadeus.com/)。在 Ivy 项目的两年时间里，Pawel 以极高的品质做出了巨大的贡献，这是该项目成功的关键部分。
 
 If you have feedback on this release, please [file an issue](https://github.com/angular/angular/issues/new/choose), or [let us know](https://twitter.com/angular)!
 
