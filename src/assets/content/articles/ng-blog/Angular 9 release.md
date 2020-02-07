@@ -6,11 +6,7 @@ The 9.0.0 release of Angular is here! This is a major release that spans the ent
 
 Angular 的 9.0.0 版本发布了！这是一个跨平台的主版本，包括框架、Angular Material 和 CLI。这个版本默认会把应用程序切换到 [Ivy](https://angular.cn/guide/ivy) 编译器和运行时，并改进了组件测试方法。
 
-<figure>
-
-![](https://miro.medium.com/max/3200/0*4tkqVWVOl0dGjbO9)
-
-</figure>
+![Ivy](./.Angular-9-release_images/ivy.jpg)
 
 This is one of the biggest updates to Angular we’ve made in the past 3 years, and we’re excited for all of the ways it empowers developers to build better applications and contribute to the Angular ecosystem.
 
@@ -28,13 +24,13 @@ First, update to the latest version of 8
 
 首先，更新到 8 的最新版本
 
-<pre><span>ng update @angular/cli@8 @angular/core@8</span></pre>
+`ng update @angular/cli@8 @angular/core@8`
 
 Then, update to 9
 
 然后，升级到 9
 
-<pre><span>ng update @angular/cli @angular/core</span></pre>
+`ng update @angular/cli @angular/core`
 
 To review the key changes with this update, including deprecated APIs, see [Updating to Angular version 9](https://v9.angular.io/guide/updating-to-version-9) in the Angular documentation.
 
@@ -110,9 +106,7 @@ With these improvements, small apps and large apps can see the most dramatic siz
 
 <figure>
 
-![](https://miro.medium.com/max/3200/0*7dSxEASiMazbMt7N)
-
-<figcaption>Small apps could see around a 30% decrease in bundle size, large apps will see a 25–40% decrease, and medium apps decrease minimally.</figcaption>
+![打包尺寸](./.Angular-9-release_images/bundle-size.jpg)
 
 <figcaption>小型应用程序的发布包体积可减少约 30％，大型应用程序的发布包体积可减少 25–40％，而中型应用程序的发布包受益最少。</figcaption>
 
@@ -160,7 +154,7 @@ Ivy 为你提供了更多调试应用的工具。当我使用 Ivy 运行时在�
 
 <figure>
 
-![](https://miro.medium.com/max/1164/0*RB_jqf6GCX-Ewq5V)
+![applyChanges](./.Angular-9-release_images/applyChanges.jpg)
 
 </figure>
 
@@ -170,7 +164,7 @@ Ivy 还改进了用于调试问题的调用栈跟踪，比如 `ExpressionChanged
 
 <figure>
 
-![](https://miro.medium.com/max/3192/0*I4qPrPIXJi2yUj99)
+![ExpressionChangedAfterItHasBeenCheckedError](./.Angular-9-release_images/ExpressionChangedAfterItHasBeenCheckedError.jpg)
 
 </figure>
 
@@ -180,7 +174,7 @@ With Ivy, you see a more useful stack trace that allows you to jump directly to 
 
 <figure>
 
-![](https://miro.medium.com/max/3036/0*QPhLwDCufQOOhRVo)
+![Stack Trace](./.Angular-9-release_images/stack-trace.jpg)
 
 </figure>
 
@@ -190,7 +184,7 @@ For example, if you click on `AppComponent_Template` in the stack trace above, y
 
 <figure>
 
-![](https://miro.medium.com/max/3200/0*69sx5aAdQyJoGbqv)
+![AppComponent Template](./.Angular-9-release_images/AppComponent_Template.jpg)
 
 </figure>
 
@@ -210,17 +204,26 @@ Consider the following template and component snippets:
 
 考虑下面的模板和组件片段：
 
-<figure>
+```html
+<my-component style="color:red;" [style.color]="myColor" [style]="{color: myOtherColor}" myDirective></div>
+```
 
-<div><iframe src="https://blog.angular.io/media/eebd878c8eeb1f4a66e4b5048a2a1a70" allowfullscreen="" frameborder="0" height="80" width="680" title="snippet.html" scrolling="auto"></iframe></div>
+```typescript
+@Component({
+  host: {
+    style: "color:blue"
+  },...
+})
+...
 
-</figure>
-
-<figure>
-
-<div><iframe src="https://blog.angular.io/media/5e3da6a82d530d7d665f8d76d6a6452b" allowfullscreen="" frameborder="0" height="351" width="680" title="snippet.ts" scrolling="auto"></iframe></div>
-
-</figure>
+@Directive({
+  host: {
+    style: "color:black",
+    "[style.color]": "property"
+  },...
+})
+...
+```
 
 Previously, whichever binding was evaluated last would win, and this could depend on the timing of changes to these expressions. If `myColor` and `myOtherColor` both were undefined, the static ‘red’ style would be ignored.
 
@@ -242,11 +245,11 @@ As a side effect of the styling refactoring, you can now also bind to [CSS custo
 
 作为样式重构的一个额外收获，你现在也可以绑定 [CSS 自定义属性](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)（也叫 CSS 变量）了。
 
-<figure>
-
-<div><iframe src="https://blog.angular.io/media/66b492e125b315183ace725b5de7e2c6" allowfullscreen="" frameborder="0" height="109" width="680" title="custom-properties.html" scrolling="auto"></iframe></div>
-
-</figure>
+```html
+<div [style. -- main-border-color]=" '#CCC' ">
+<p style="border: 1px solid var(--main-border-color)">hi</p>
+</div>
+```
 
 # Improved type checking
 
@@ -284,21 +287,13 @@ In version 8 or View Engine, a typical compiler error would look like the follow
 
 在版本 8 或 View Engine 中，典型的编译器错误如下所示：
 
-<figure>
-
-![](https://miro.medium.com/max/2052/0*9MynS6_WDBlGkYqN)
-
-</figure>
+![View Engine](./.Angular-9-release_images/ViewEngine.jpg)
 
 In version 9 with Ivy, the same error looks like:
 
 在使用 Ivy 的 9 版本中，同样的错误如下：
 
-<figure>
-
-![](https://miro.medium.com/max/2056/0*Ag3LaCG6UVxNppq4)
-
-</figure>
+![Ivy](./.Angular-9-release_images/IvyEngine.jpg)
 
 # Improved build times, enabling Ahead-of-Time compiler on by default
 
@@ -400,21 +395,35 @@ Here’s an example test before harnesses:
 
 这是一个在使用组件挽具之前的一个测试范例：
 
-<figure>
-
-<div><iframe src="https://blog.angular.io/media/ecba92926e72f27a8848131c34f1f142" allowfullscreen="" frameborder="0" height="351" width="680" title="test-before.ts" scrolling="auto"></iframe></div>
-
-</figure>
+```typescript
+it("should switch to bug report template", async () => {
+  expect(fixture.debugElement.query("bug-report-form")).toBeNull();
+  const selectTrigger = fixture.debugElement.query(
+    By.css(".mat-select-trigger")
+  );
+  selectTrigger.triggerEventHandler("click", {});
+  fixture.detectChanges();
+  await fixture.whenStable();
+  const options = document.querySelectorAll(".mat-select-panel mat-option");
+  options[1].click(); // Click the second option, "Bug".
+  fixture.detectChanges();
+  await fixture.whenStable();
+  expect(fixture.debugElement.query("bug-report-form")).not.toBeNull();
+});
+```
 
 And the same test with harnesses:
 
 而用组件挽具做同样的测试如下：
 
-<figure>
-
-<div><iframe src="https://blog.angular.io/media/eaaaaa0a220d9ae0e5e7ad4a410030ba" allowfullscreen="" frameborder="0" height="175" width="680" title="test-after.ts" scrolling="auto"></iframe></div>
-
-</figure>
+```typescript
+it("should switch to bug report template", async () => {
+  expect(fixture.debugElement.query("bug-report-form")).toBeNull();
+  const select = await loader.getHarness(MatSelect);
+  await select.clickOptions({ text: "Bug" });
+  expect(fixture.debugElement.query("bug-report-form")).not.toBeNull();
+});
+```
 
 Learn more about [Material’s component harnesses](https://v9.material.angular.io/guide/using-component-harnesses) or [building your own](https://v9.material.angular.io/cdk/testing/overview) with the CDK.
 
@@ -442,7 +451,7 @@ You can now include capabilities from YouTube and Google Maps in your applicatio
 
 <figure>
 
-![](https://miro.medium.com/max/1280/1*EFcVVFKZKOshNNpJd9ot6g.gif)
+![Language Service](./.Angular-9-release_images/language-service.jpg)
 
 <figcaption>转到定义（Go to definition）和改进的语言服务演示</figcaption>
 
