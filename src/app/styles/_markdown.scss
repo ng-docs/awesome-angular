@@ -134,29 +134,31 @@ app-markdown-viewer {
   }
 
   h1, h2, h3, h4, h5, h6 {
-    margin: 0 0 1em;
+    margin: 0 0 1rem;
     padding: 0;
-    font-weight: bold;
+    font-weight: normal;
+
   }
 
   h1 {
-    color: #DD0031;
-    border-bottom: 1px solid #DD0031;
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: lighter;
+  }
+
+  h4 {
     font-size: 18px;
   }
 
-  h2, h3, h4, h5, h6 {
-    font-size: 15px;
-    color: #DD0031;
-  }
-
-  h3, h4, h5, h6 {
-    color: #4885ed;
-  }
-
-  h4, h5, h6 {
-    color: #3cba54;
-    font-weight: normal;
+  h5, h6 {
+    font-size: 16px;
   }
 
   table {

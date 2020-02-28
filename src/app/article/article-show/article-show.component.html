@@ -1,14 +1,14 @@
 <div class="doc-info">
-  <dl *ngIf="article.originAuthor">
-    <dt>作者：</dt>
-    <dd>
-      <a [routerLink]="['/authors', article.originAuthor]">{{article.originAuthor}}</a>
-    </dd>
-  </dl>
   <dl *ngIf="article.originUrl">
     <dt>原文：</dt>
     <dd>
       <a [href]="article.originUrl" target="_blank">点此查看</a>
+    </dd>
+  </dl>
+  <dl *ngIf="article.originAuthor">
+    <dt>作者：</dt>
+    <dd>
+      <a [routerLink]="['/authors', article.originAuthor]">{{article.originAuthor}}</a>
     </dd>
   </dl>
   <dl>
@@ -31,7 +31,6 @@
     <dt>修改：</dt>
     <dd>{{article.lastUpdated | date}}</dd>
   </dl>
-  <br/>
   <dl *ngIf="article.group.level > 0">
     <dt>收录：</dt>
     <dd>
