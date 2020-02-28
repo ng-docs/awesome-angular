@@ -9,3 +9,7 @@ mat-list-item, [mat-list-item] {
     color: $active !important;
   }
 }
+
+:any-link {
+  color: $active;
+}
