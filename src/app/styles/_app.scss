@@ -13,3 +13,26 @@ mat-list-item, [mat-list-item] {
 :any-link {
   color: $active;
 }
+
+.d-sticky {
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+  overflow: auto;
+}
+
+.mat-drawer-container {
+  overflow: visible !important;
+
+  mat-sidenav {
+    overflow: visible !important;
+
+    .mat-drawer-inner-container {
+      overflow: visible !important;
+    }
+  }
+
+  mat-sidenav-content {
+    overflow: visible !important;
+  }
+}

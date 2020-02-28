@@ -1,0 +1,7 @@
+<ul class="nav">
+  <li class="nav-item" *ngFor="let item of items; trackBy: trackByElement" [class.active]="isActive(item)">
+    <a class="nav-link  {{item.element|outlineCss}}" [appShowWhenActive]="isActive(item)"
+       [class.active]="isActive(item)" href="javascript:void(0)"
+       (click)="jumpTo(item.anchor)" [title]="item.title">{{item.title}}</a>
+  </li>
+</ul>

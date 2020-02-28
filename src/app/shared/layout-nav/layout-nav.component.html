@@ -26,7 +26,7 @@
     </a>
   </ng-container>
 </mat-toolbar>
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container" appOutlineHost>
   <mat-sidenav
     #drawer
     class="sidenav"
@@ -35,7 +35,10 @@
     [opened]="!isHandset" (click)="tryToClose(drawer)">
     <ng-content></ng-content>
   </mat-sidenav>
-  <mat-sidenav-content appPartialScroller>
-    <router-outlet></router-outlet>
+  <mat-sidenav-content>
+    <main appOutlineArea>
+      <router-outlet></router-outlet>
+    </main>
+    <app-outline class="d-sticky"></app-outline>
   </mat-sidenav-content>
 </mat-sidenav-container>

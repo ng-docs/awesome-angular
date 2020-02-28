@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
-import * as marked from 'marked';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { highlightAuto } from 'highlight.js';
+import * as marked from 'marked';
 import { html } from './translator/html';
 import addIdForHeaders = html.addIdForHeaders;
 import markAndSwapAll = html.markAndSwapAll;
@@ -11,16 +12,28 @@ import markAndSwapAll = html.markAndSwapAll;
   styleUrls: ['./markdown-viewer.component.scss'],
 })
 export class MarkdownViewerComponent implements OnInit {
-  constructor(private elementRef: ElementRef<HTMLElement>) {
+  constructor(private elementRef: ElementRef<HTMLElement>, private sanitizer: DomSanitizer) {
   }
+
+  html: SafeHtml;
 
   get element(): HTMLElement {
     return this.elementRef.nativeElement;
   }
 
-  html: string;
-
   private _data: string;
+
+  get data(): string {
+    return this._data;
+  }
+
+  @Input()
+  set data(value: string) {
+    if (this._data !== value) {
+      this._data = value;
+      this.update();
+    }
+  }
 
   private _baseUrl = '';
 
@@ -47,18 +60,6 @@ export class MarkdownViewerComponent implements OnInit {
     }
   }
 
-  get data(): string {
-    return this._data;
-  }
-
-  @Input()
-  set data(value: string) {
-    if (this._data !== value) {
-      this._data = value;
-      this.update();
-    }
-  }
-
   ngOnInit() {
   }
 
@@ -67,13 +68,17 @@ export class MarkdownViewerComponent implements OnInit {
       return;
     }
     marked.setOptions({
+      smartLists: true,
+      smartypants: false,
+      xhtml: true,
       baseUrl: this._baseUrl.replace(/\/?$/, '/'),
       highlight: function (code) {
         return highlightAuto(code).value;
       },
     });
     const escapedRegex = escapeRegex(this.baseUrl + '//');
-    this.html = marked(this.data).replace(new RegExp(escapedRegex, 'gi'), '/');
+    const content = marked(this.data).replace(new RegExp(escapedRegex, 'gi'), '/');
+    this.html = this.sanitizer.bypassSecurityTrustHtml(content);
     if (this.isTranslation) {
       setTimeout(() => {
         mark(this.element);
