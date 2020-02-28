@@ -1,4 +1,5 @@
 import { LayoutModule } from '@angular/cdk/layout';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,6 +16,11 @@ import { IconAngularComponent } from './icons/icon-angular/icon-angular.componen
 import { IconGithubComponent } from './icons/icon-github/icon-github.component';
 import { LayoutNavComponent } from './layout-nav/layout-nav.component';
 import { MarkdownViewerComponent } from './markdown-viewer/markdown-viewer.component';
+import { OutlineAreaDirective } from './outline/outline-area.directive';
+import { OutlineCssPipe } from './outline/outline-css.pipe';
+import { OutlineHostDirective } from './outline/outline-host.directive';
+import { OutlineComponent } from './outline/outline.component';
+import { ShowWhenActiveDirective } from './outline/show-when-active.directive';
 import { SearchBoxComponent } from './search-box/search-box.component';
 
 @NgModule({
@@ -29,6 +35,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
     MatIconModule,
     MatListModule,
     MatTabsModule,
+    ScrollingModule,
   ],
   declarations: [
     LayoutNavComponent,
@@ -38,6 +45,11 @@ import { SearchBoxComponent } from './search-box/search-box.component';
     ToggleDirective,
     MarkdownViewerComponent,
     PartialScrollerDirective,
+    OutlineAreaDirective,
+    OutlineHostDirective,
+    OutlineComponent,
+    OutlineCssPipe,
+    ShowWhenActiveDirective,
   ],
   exports: [
     MatToolbarModule,
@@ -51,6 +63,9 @@ import { SearchBoxComponent } from './search-box/search-box.component';
     SearchBoxComponent,
     ToggleDirective,
     MarkdownViewerComponent,
+    OutlineAreaDirective,
+    OutlineHostDirective,
+    OutlineComponent,
   ],
 })
 export class SharedModule {

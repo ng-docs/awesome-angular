@@ -1,15 +1,5 @@
 @import "../../styles/common";
 
-:host {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.sidenav-container {
-  flex: auto;
-}
-
 .sidenav {
   width: 300px;
 }
@@ -39,14 +29,19 @@ img {
 }
 
 mat-sidenav-content {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow-y: auto;
   padding-left: 1rem;
-  padding-right: 1rem;
+  display: flex;
+
+  > main {
+    flex: auto;
+    min-height: 100vh;
+    padding: 0 1em;
+  }
+
+  > app-outline {
+    flex: none;
+    width: 200px;
+  }
 }
 
 a.site-title {
