@@ -1,5 +1,6 @@
 <app-layout-nav>
-  <mat-nav-list class="d-sticky">
+  <app-search-box (search)="search($event)"></app-search-box>
+  <mat-nav-list>
     <app-nav-node [data]="articles"></app-nav-node>
   </mat-nav-list>
 </app-layout-nav>

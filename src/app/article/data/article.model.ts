@@ -1,9 +1,9 @@
-import { ArticleHistoryModel } from './article.history.model';
 import { ArticleGroupModel } from './article-group.model';
+import { ArticleHistoryModel } from './article.history.model';
 
 export class ArticleModel {
   id: string;
-  type = 'article';
+  type: 'article' = 'article';
   originUrl: string;
   title: string;
   originTitle: string;
