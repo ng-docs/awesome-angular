@@ -64,9 +64,9 @@ Here are the questions and problems:
 
    如何让我的代码容易被同事们维护？
 
-#### Folder structure
+### Folder structure
 
-#### 文件夹结构
+### 文件夹结构
 
 Since Angular CLI stepped in most of the Angular projects are scaffold with it. Hence we often have a well known poject structure.
 
@@ -134,9 +134,9 @@ Right: in `framework` folder because it's a generaly used functionality.
 
 那么，我们应该把应用外壳放到什么位置？说对了！就放到 `framework` 文件夹中，因为它是一种通用的功能。
 
-#### Cut your code into modules
+### Cut your code into modules
 
-#### 把代码切分成模块
+### 把代码切分成模块
 
 Next let's talk about the `features`.
 To get the idea of the features of an app it's always a good strategy to look at the menu/navigation.
@@ -186,9 +186,9 @@ in fact that means:
 
   <h3>不要用一个指令管理一切。no adme <small>(a directive managing everything)</small></h3>
 
-#### FAQ
+### FAQ
 
-#### 常见问题
+### 常见问题
 
 > <i>Q: But if I split everything into modules it is possible to have too many modules?</i>
 >
@@ -199,9 +199,9 @@ A: No! The maintainability grows by the number of modules. Split your app into m
 
 A：不会！增加模块数量会增加可维护性。把你的应用拆分成模块，再把你的模块拆分成子模块。
 
-#### Type of components
+### Type of components
 
-#### 组件的类型
+### 组件的类型
 
 So what about Components? Components represent the UI stuff of our app. We can break them up into two categories:
 
@@ -245,9 +245,9 @@ Those small parts can be presentational components
 
 ![展现组件](images/dump_component.png)
 
-#### Reuse code
+### Reuse code
 
-#### 复用代码
+### 复用代码
 
 Components can be reused but logic can be reused, too. We can relocate logic into services.
 
@@ -278,9 +278,9 @@ Almost all logic in am app should fit to one of the following categories:
 > 不要乱用依赖树。只在最需要的地方提供逻辑。它可能是一个组件或一个模块，甚至是另一个服务。
 >
 
-#### Stay maintainable
+### Stay maintainable
 
-#### 保持可维护性
+### 保持可维护性
 
 Maybe your structure is very deep.
 And this means you have looooong imports.
@@ -321,9 +321,9 @@ which can maybe change your developer live
 import { MyService } from "@my-logic/my-service/my.service";
 ```
 
-#### Follow the style guide
+### Follow the style guide
 
-#### 遵循风格指南
+### 遵循风格指南
 
 that’s the structure of our companies feature
 
@@ -361,17 +361,17 @@ You'll find the styleguide <a href="https://angular.io/guide/styleguide" target=
 
 你可以在[这里](https://angular.io/guide/styleguide)找到风格指南
 
-#### Conclusion
+### Conclusion
 
-#### 结论
+### 结论
 
 Huge apps are easy to maintain, if you follow some rules and use the awesome features of Angular CLI and Typescript. Don't be scrared, it's just Angular ;)
 
 如果遵循一些规则并发挥 Angular CLI 和 TypeScript 的强大功能，那些庞大的应用就很容易维护。不要害怕，它只是 Angular;）
 
-#### Special Thanks
+### Special Thanks
 
-#### 特别感谢
+### 特别感谢
 
 I would like to give special thanks to the awesome people that reviewed this post and gave me pointers:
 
