@@ -3,7 +3,6 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { highlightAuto } from 'highlight.js';
 import * as marked from 'marked';
 import { html } from './translator/html';
-import addIdForHeaders = html.addIdForHeaders;
 import markAndSwapAll = html.markAndSwapAll;
 
 @Component({
@@ -79,8 +78,8 @@ export class MarkdownViewerComponent implements OnInit {
     const escapedRegex = escapeRegex(this.baseUrl + '//');
     const content = marked(this.data).replace(new RegExp(escapedRegex, 'gi'), '/');
     this.html = this.sanitizer.bypassSecurityTrustHtml(content);
-    if (this.isTranslation) {
-      setTimeout(() => {
+    setTimeout(() => {
+      if (this.isTranslation) {
         mark(this.element);
         const anchors = this.element.querySelectorAll<HTMLAnchorElement>('a[href]');
         anchors.forEach((a) => {
@@ -99,8 +98,21 @@ export class MarkdownViewerComponent implements OnInit {
             event.preventDefault();
           });
         });
+      }
+
+      const headings = this.element.querySelectorAll<HTMLHeadingElement>('h1,h2,h3,h4,h5,h6');
+      headings.forEach(it => {
+        if (it.id && !it.querySelector('a')) {
+          const anchor = document.createElement('a');
+          anchor.href = `#${it.id}`;
+          anchor.innerHTML = `<i class="material-icons">link</i>`;
+          anchor.title = '点击链接到此标题';
+          anchor.className = 'header-link';
+          anchor.setAttribute('aria-hidden', 'true');
+          it.appendChild(anchor);
+        }
       });
-    }
+    });
   }
 }
 
@@ -109,6 +121,5 @@ function escapeRegex(s: string): string {
 }
 
 function mark(root: HTMLElement): void {
-  addIdForHeaders(root);
   markAndSwapAll(root);
 }

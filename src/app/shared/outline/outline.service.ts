@@ -136,7 +136,7 @@ const emptyItem = { title: '', anchor: '' };
 const defaultSelector = 'a[name],h1[id],h2[id],h3[id],h4[id],h5[id],h6[id],[uiOutlineAnchor]';
 
 function getTitle(element: HTMLElement) {
-  return element.textContent || element.title || element.getAttribute('aria-label');
+  return element.textContent.replace(/link$/, '') || element.title || element.getAttribute('aria-label');
 }
 
 function toOutlineItem(element: HTMLElement): OutlineItem {

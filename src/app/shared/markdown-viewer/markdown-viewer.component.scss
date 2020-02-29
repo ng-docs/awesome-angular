@@ -1,3 +1,25 @@
+@import "common";
+
 :host {
   display: block;
+
+  ::ng-deep {
+    h1, h2, h3, h4, h5, h6 {
+      .header-link {
+        color: $dark-secondary-text;
+        margin: 0 4px;
+        text-decoration: none;
+        user-select: none;
+        visibility: hidden;
+        display: inline-block;
+        vertical-align: text-top;
+      }
+
+      &:hover {
+        .header-link {
+          visibility: visible;
+        }
+      }
+    }
+  }
 }
