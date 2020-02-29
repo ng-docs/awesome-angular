@@ -11,12 +11,11 @@ import { map } from 'rxjs/operators';
 })
 export class LayoutNavComponent implements OnInit, OnDestroy {
 
-  isHandset: boolean;
-
-  sub: Subscription;
-
   constructor(private breakpointObserver: BreakpointObserver) {
   }
+
+  isHandset: boolean;
+  sub: Subscription;
 
   ngOnInit(): void {
     this.sub = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
