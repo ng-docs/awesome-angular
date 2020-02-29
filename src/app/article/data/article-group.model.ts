@@ -2,7 +2,7 @@ import { ArticleModel } from './article.model';
 
 export class ArticleGroupModel {
   id: string;
-  type = 'group';
+  type: 'group' = 'group';
   summary?: string;
   title: string;
   originTitle: string;

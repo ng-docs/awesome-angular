@@ -28,7 +28,9 @@
     [attr.role]="isHandset ? 'dialog' : 'navigation'"
     [mode]="isHandset ? 'over' : 'side'"
     [opened]="!isHandset" (click)="tryToClose(drawer)">
-    <ng-content></ng-content>
+    <div class="d-sticky">
+      <ng-content></ng-content>
+    </div>
   </mat-sidenav>
   <mat-sidenav-content>
     <main appOutlineArea>

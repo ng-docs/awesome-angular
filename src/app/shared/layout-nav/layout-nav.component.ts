@@ -32,9 +32,4 @@ export class LayoutNavComponent implements OnInit, OnDestroy {
       drawer.close();
     }
   }
-
-  search(keyword: string): void {
-    // TODO: implement search with lunr.js
-  }
-
 }
