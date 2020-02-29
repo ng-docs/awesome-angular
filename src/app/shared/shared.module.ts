@@ -10,6 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
+import { CommentListComponent } from './comment-list/comment-list.component';
 import { PartialScrollerDirective } from './directives/partial-scroller.directive';
 import { ToggleDirective } from './directives/toggle.directive';
 import { IconAngularComponent } from './icons/icon-angular/icon-angular.component';
@@ -50,6 +51,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
     OutlineComponent,
     OutlineCssPipe,
     ShowWhenActiveDirective,
+    CommentListComponent,
   ],
   exports: [
     MatToolbarModule,
@@ -66,6 +68,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
     OutlineAreaDirective,
     OutlineHostDirective,
     OutlineComponent,
+    CommentListComponent,
   ],
 })
 export class SharedModule {

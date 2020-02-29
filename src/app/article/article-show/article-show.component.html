@@ -40,3 +40,4 @@
 </div>
 <app-markdown-viewer [data]="article.content" [isTranslation]="isTranslation(article)"
                      baseUrl="/assets/content/articles{{article.path}}"></app-markdown-viewer>
+<app-comment-list [id]="article.id"></app-comment-list>
