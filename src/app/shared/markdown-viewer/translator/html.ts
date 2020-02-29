@@ -60,9 +60,9 @@ export namespace html {
   export function markAndSwap(root: Element, selector: string): void {
     const elements = root.querySelectorAll<HTMLElement>(selector);
     elements.forEach(element => {
-      if (containsChinese(element.innerHTML)) {
+      if (element.textContent && containsChinese(element.textContent)) {
         const prev = element.previousElementSibling;
-        if (isPaired(prev, element) && !containsChinese(prev.innerHTML)) {
+        if (prev.textContent && isPaired(prev, element) && !containsChinese(prev.textContent)) {
           element.setAttribute('translation-result', 'on');
           prev.setAttribute('translation-origin', 'off');
           element.parentElement.insertBefore(element, prev);
@@ -118,7 +118,7 @@ export namespace html {
       for (let i = 0; i < rows.length - 1; ++i) {
         const thisRow = rows.item(i) as HTMLTableRowElement;
         const nextRow = rows.item(i + 1) as HTMLTableRowElement;
-        if (shouldMergeRow(nextRow) && containsChinese(nextRow.innerHTML) && !containsChinese(thisRow.innerHTML)) {
+        if (shouldMergeRow(nextRow) && containsChinese(nextRow.textContent) && !containsChinese(thisRow.textContent)) {
           translationRows.push(nextRow);
           mergeRows(thisRow, nextRow);
         }
