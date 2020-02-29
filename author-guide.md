@@ -67,3 +67,7 @@ URL: https://medium.com/@shairez/angular-routing-a-better-pattern-for-large-scal
 参见 <https://support.google.com/analytics/answer/1008080>
 
 把内容添加到 `src/index.html` 中的 `</body>` 前面即可。
+
+## 如何关联论坛
+
+参见 <https://github.com/gitalk/gitalk/blob/master/readme-cn.md> 中的设置，并将参数更新到 `src/app/shared/comment-list/comment-list.component.ts` 文件中。
