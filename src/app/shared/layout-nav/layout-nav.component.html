@@ -36,6 +36,6 @@
     <main appOutlineArea>
       <router-outlet></router-outlet>
     </main>
-    <app-outline class="d-sticky"></app-outline>
+    <app-outline *ngIf="!isHandset" class="d-sticky"></app-outline>
   </mat-sidenav-content>
 </mat-sidenav-container>
