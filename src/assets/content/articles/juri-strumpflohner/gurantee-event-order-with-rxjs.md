@@ -222,9 +222,9 @@ When we receive a checked event, then we execute the async call, otherwise we tr
 > 一旦 Observable “完事”了就会 `complete`。这里的 `complete` 就像是 `Promise` 的 `resolve(..)`。
 >
 
-#### A short note on wrapping `setTimeout` as Observable
+### A short note on wrapping `setTimeout` as Observable
 
-#### 对于把 `setTimeout` 包装成 Observable 的简短说明
+### 对于把 `setTimeout` 包装成 Observable 的简短说明
 
 
 You remember we use `setTimeout` to simulate an async call. Well, we need to wrap it into an Observable. There are two ways of doing it.
