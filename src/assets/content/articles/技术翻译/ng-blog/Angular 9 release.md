@@ -6,7 +6,7 @@ The 9.0.0 release of Angular is here! This is a major release that spans the ent
 
 Angular 的 9.0.0 版本发布了！这是一个跨平台的主版本，包括框架、Angular Material 和 CLI。这个版本默认会把应用程序切换到 [Ivy](https://angular.cn/guide/ivy) 编译器和运行时，并改进了组件测试方法。
 
-![Ivy](./.Angular-9-release_images/ivy.jpg)
+![Ivy](.Angular-9-release_images/ivy.jpg)
 
 This is one of the biggest updates to Angular we’ve made in the past 3 years, and we’re excited for all of the ways it empowers developers to build better applications and contribute to the Angular ecosystem.
 
@@ -106,7 +106,7 @@ With these improvements, small apps and large apps can see the most dramatic siz
 
 <figure>
 
-![打包尺寸](./.Angular-9-release_images/bundle-size.jpg)
+![打包尺寸](.Angular-9-release_images/bundle-size.jpg)
 
 <figcaption>小型应用程序的发布包体积可减少约 30％，大型应用程序的发布包体积可减少 25–40％，而中型应用程序的发布包受益最少。</figcaption>
 
@@ -154,7 +154,7 @@ Ivy 为你提供了更多调试应用的工具。当我使用 Ivy 运行时在�
 
 <figure>
 
-![applyChanges](./.Angular-9-release_images/applyChanges.jpg)
+![applyChanges](.Angular-9-release_images/applyChanges.jpg)
 
 </figure>
 
@@ -164,7 +164,7 @@ Ivy 还改进了用于调试问题的调用栈跟踪，比如 `ExpressionChanged
 
 <figure>
 
-![ExpressionChangedAfterItHasBeenCheckedError](./.Angular-9-release_images/ExpressionChangedAfterItHasBeenCheckedError.jpg)
+![ExpressionChangedAfterItHasBeenCheckedError](.Angular-9-release_images/ExpressionChangedAfterItHasBeenCheckedError.jpg)
 
 </figure>
 
@@ -174,7 +174,7 @@ With Ivy, you see a more useful stack trace that allows you to jump directly to 
 
 <figure>
 
-![Stack Trace](./.Angular-9-release_images/stack-trace.jpg)
+![Stack Trace](.Angular-9-release_images/stack-trace.jpg)
 
 </figure>
 
@@ -184,7 +184,7 @@ For example, if you click on `AppComponent_Template` in the stack trace above, y
 
 <figure>
 
-![AppComponent Template](./.Angular-9-release_images/AppComponent_Template.jpg)
+![AppComponent Template](.Angular-9-release_images/AppComponent_Template.jpg)
 
 </figure>
 
@@ -287,13 +287,13 @@ In version 8 or View Engine, a typical compiler error would look like the follow
 
 在版本 8 或 View Engine 中，典型的编译器错误如下所示：
 
-![View Engine](./.Angular-9-release_images/ViewEngine.jpg)
+![View Engine](.Angular-9-release_images/ViewEngine.jpg)
 
 In version 9 with Ivy, the same error looks like:
 
 在使用 Ivy 的 9 版本中，同样的错误如下：
 
-![Ivy](./.Angular-9-release_images/IvyEngine.jpg)
+![Ivy](.Angular-9-release_images/IvyEngine.jpg)
 
 # Improved build times, enabling Ahead-of-Time compiler on by default
 
@@ -451,7 +451,7 @@ You can now include capabilities from YouTube and Google Maps in your applicatio
 
 <figure>
 
-![Language Service](./.Angular-9-release_images/language-service.jpg)
+![Language Service](.Angular-9-release_images/language-service.jpg)
 
 <figcaption>转到定义（Go to definition）和改进的语言服务演示</figcaption>
 

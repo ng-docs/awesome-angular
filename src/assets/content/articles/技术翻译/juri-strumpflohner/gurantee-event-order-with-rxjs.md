@@ -67,7 +67,7 @@ We basically have the following user interface:
 我们大致会有如下用户界面：
 
 
-![](./gurantee-event-order-with-rxjs_images/rxjs-order-guarantee.png)
+![](gurantee-event-order-with-rxjs_images/rxjs-order-guarantee.png)
 
 
 When the user **checks** some option, an http request is made to retrieve some value and once the request returns, the response is added to a list visualized below.
