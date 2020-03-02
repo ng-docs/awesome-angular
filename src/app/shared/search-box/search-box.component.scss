@@ -8,13 +8,13 @@
 input {
   box-sizing: border-box;
   width: 100%;
-  padding-left: 2em;
-  margin-top: 1em;
+  font-size: 1rem;
+  padding: 0.3rem 0 0.3rem 1.5rem;
+  margin-top: 1rem;
   border: none;
   border-radius: 0;
   border-bottom: 1px solid $dark-dividers;
-  line-height: 22px;
-  background: url(./_images/search.svg) no-repeat 4px center;
+  background: url(./_images/search.svg) no-repeat 0.3rem center;
 
   &:focus {
     outline: none;
