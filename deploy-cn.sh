@@ -19,7 +19,7 @@ kill `lsof -t -i :4000` || true
 
 rm -fr /tmp/awesome.angular.live
 
-git clone https://asnowwolf:${GITHUB_ACCESS_TOKEN}@github.com/ng-docs/awesome-angular-prebuilt.git /tmp/awesome.angular.live
+git clone https://asnowwolf:${GITHUB_ACCESS_TOKEN}@github.com/asnowwolf/blog.git /tmp/awesome.angular.live
 
 cp -r ./dist/awesome-angular/* /tmp/awesome.angular.live/
 
