@@ -26,6 +26,8 @@
             "assets": [
               "src/.nojekyll",
               "src/favicon.ico",
+              "src/browserconfig.xml",
+              "src/site.webmanifest",
               "src/assets"
             ],
             "styles": [
