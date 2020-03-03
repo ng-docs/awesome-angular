@@ -13,8 +13,13 @@
   }
 }
 
-app-icon-angular {
+.logo {
+  display: inline-flex;
   margin-right: 0.5em;
+
+  > * {
+    display: inline-flex;
+  }
 }
 
 [mat-button] {

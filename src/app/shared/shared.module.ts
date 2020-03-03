@@ -13,8 +13,8 @@ import { RouterModule } from '@angular/router';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { PartialScrollerDirective } from './directives/partial-scroller.directive';
 import { ToggleDirective } from './directives/toggle.directive';
-import { IconAngularComponent } from './icons/icon-angular/icon-angular.component';
 import { IconGithubComponent } from './icons/icon-github/icon-github.component';
+import { IconWangkeComponent } from './icons/icon-wangke/icon-wangke.component';
 import { LayoutNavComponent } from './layout-nav/layout-nav.component';
 import { MarkdownViewerComponent } from './markdown-viewer/markdown-viewer.component';
 import { OutlineAreaDirective } from './outline/outline-area.directive';
@@ -40,7 +40,6 @@ import { SearchBoxComponent } from './search-box/search-box.component';
   ],
   declarations: [
     LayoutNavComponent,
-    IconAngularComponent,
     IconGithubComponent,
     SearchBoxComponent,
     ToggleDirective,
@@ -52,6 +51,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
     OutlineCssPipe,
     ShowWhenActiveDirective,
     CommentListComponent,
+    IconWangkeComponent,
   ],
   exports: [
     MatToolbarModule,
