@@ -29,6 +29,8 @@ cp -r /tmp/awesome-angular-prerender/localhost:4000/* /tmp/awesome.angular.live/
 
 cd /tmp/awesome.angular.live/
 
+touch .nojekyll
+
 git add .
 git commit -am "${commitMessage}"
 
