@@ -104,7 +104,9 @@ export class MarkdownViewerComponent implements OnInit {
       headings.forEach(it => {
         if (it.id && !it.querySelector('a')) {
           const anchor = document.createElement('a');
-          anchor.href = `#${it.id}`;
+          const url = new URL(location.href);
+          url.hash = it.id;
+          anchor.href = url.href;
           anchor.innerHTML = `<i class="material-icons">link</i>`;
           anchor.title = '点击链接到此标题';
           anchor.className = 'header-link';
