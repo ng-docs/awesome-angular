@@ -18,6 +18,10 @@ export class ArticleShowComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       this.article = findArticleById(params.get('id'));
+
+      // 让文章重新滚动至标题处
+      // 72 为导航栏高度（64）与下边距（8）的和
+      document.documentElement.scrollTop = 72;
     });
   }
 

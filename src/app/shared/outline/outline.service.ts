@@ -99,16 +99,26 @@ export class OutlineService implements OnDestroy {
   }
 
   private findActiveItem(): OutlineItem {
-    const insideItems = this.items.filter(it => {
+
+    // 找到在页面之外的下一个标题序号
+    const nextInsideItemIndex = this.items.findIndex(it => {
       const box = it.element.getBoundingClientRect();
       return box.top >= 0;
     });
-    if (!insideItems.length) {
-      return this.items[this.items.length - 1];
+
+    switch (nextInsideItemIndex) {
+      // 页面在头部
+      case 0:
+        return this.items[0];
+
+      // 页面在尾部，已经掠过了所有的标题
+      case -1:
+        return this.items[this.items.length - 1];
+
+      // 其他正常情况
+      default:
+        return this.items[nextInsideItemIndex - 1];
     }
-    const sortedItems = insideItems
-      .sort((v1, v2) => v1.element.scrollTop - v2.element.scrollTop);
-    return sortedItems[0];
   }
 }
 
