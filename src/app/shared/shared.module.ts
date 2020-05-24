@@ -10,7 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
-import { CommentListComponent } from './comment-list/comment-list.component';
+import { CommentListComponent } from '../comment/comment-list/comment-list.component';
 import { PartialScrollerDirective } from './directives/partial-scroller.directive';
 import { ToggleDirective } from './directives/toggle.directive';
 import { IconGithubComponent } from './icons/icon-github/icon-github.component';
