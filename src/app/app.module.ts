@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { PartialScroller } from './core/services/partial-scroller.service';
+import { GraphQLModule } from './graphql.module';
 
 registerLocaleData(localeZh);
 
@@ -22,6 +23,7 @@ registerLocaleData(localeZh);
     HttpClientModule,
     BrowserAnimationsModule,
     CoreModule,
+    GraphQLModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'zh' },

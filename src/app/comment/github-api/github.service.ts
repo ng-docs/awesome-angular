@@ -2,12 +2,25 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
+import { GetIssuesGQL, GetIssuesQuery } from '../../../types';
 import { Query } from './query';
 import { UserModel } from './user.model';
 
-const client_id = '368f9cfbcc6b3fcb6c30';
-const client_secret = '98e1ef218845db7565b455b81edb5261415a9992';
+const client_id = environment.clientId;
+const client_secret = environment.clientSecret;
 const KEY_ACCESS_TOKEN = 'accessToken';
+
+function escapeKeyword(label: string): string {
+  if (!label) {
+    return '';
+  }
+  return '#' + label.replace(/#/g, '\\x23') + '#';
+}
+
+function unescapeKeyword(label: string): string {
+  return label.replace(/^#(.*)#$/, '$1').replace(/\\x23/g, '#');
+}
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +34,7 @@ export class GithubService {
     localStorage.setItem(KEY_ACCESS_TOKEN, value);
   }
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private issuesQuery: GetIssuesGQL) {
   }
 
   get loginUrl(): string {
@@ -29,8 +42,8 @@ export class GithubService {
     const oauthParams = {
       scope: 'public_repo',
       redirect_uri: 'http://localhost:4202/comments/landing',
-      client_id: client_id,
-      client_secret: client_secret,
+      client_id,
+      client_secret,
     };
 
     return `${oauthUri}${Query.stringify(oauthParams)}`;
@@ -57,5 +70,18 @@ export class GithubService {
   getCurrentUser(): Observable<UserModel> {
     return this.http.get<UserModel>(`https://api.github.com/user`, { headers: { Authorization: `token ${this.accessToken}` } });
   }
+
+  queryIssues(owner: string, repo: string, label: string): Observable<GetIssuesQuery> {
+    return this.issuesQuery.fetch({
+      filter: `repo:${owner}/${repo} is:open ${escapeKeyword(label)}`,
+    }, {
+      context: {
+        headers: {
+          authorization: this.accessToken ? `Bearer ${this.accessToken}` : '',
+        },
+      },
+    }).pipe(map(resp => resp.data));
+  }
 }
+
 

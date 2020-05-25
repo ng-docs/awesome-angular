@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatTreeModule } from '@angular/material/tree';
+import { CommentModule } from '../comment/comment.module';
 import { SharedModule } from '../shared/shared.module';
 import { ArticleHomeComponent } from './article-home/article-home.component';
 import { ArticleLayoutComponent } from './article-layout/article-layout.component';
@@ -16,6 +17,7 @@ import { NavNodeComponent } from './nav-node/nav-node.component';
     ArticleRoutingModule,
     MatTreeModule,
     SharedModule,
+    CommentModule,
   ],
   declarations: [
     ArticleLayoutComponent,

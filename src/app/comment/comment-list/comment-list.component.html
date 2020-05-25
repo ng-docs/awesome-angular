@@ -1,1 +1,6 @@
-<a [href]="github.loginUrl">登录</a>
+<div>{{items.length}} 条评论</div>
+<ul>
+  <li *ngFor="let item of items">
+    <div [innerHTML]="item.title"></div>
+  </li>
+</ul>
