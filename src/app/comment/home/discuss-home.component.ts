@@ -23,16 +23,27 @@ export class DiscussHomeComponent implements OnInit {
 
   issues: GetIssuesQuery;
 
+  owner = 'site-wangke';
+  repo = 'blog';
+
   ngOnInit(): void {
     const init$ = new Subject<string>();
     const navigated$ = this.router.events.pipe(
       filter(it => it instanceof NavigationEnd),
     );
     merge(init$, navigated$).pipe(
-      switchMap(() => this.github.queryIssues('site-wangke', 'blog', getKeyword())),
+      switchMap(() => this.github.queryIssues(this.owner, this.repo, getKeyword())),
     ).subscribe(data => this.issues = data);
     init$.next();
 
-    this.github.getCurrentUser().subscribe(data => this.me = data);
+    this.github.getMe().subscribe(data => this.me = data);
+  }
+
+  create(content: string): void {
+    if (!this.issues.search.issueCount) {
+      this.github.createIssue(this.owner, this.repo, content);
+    } else {
+      this.github.createComment();
+    }
   }
 }
