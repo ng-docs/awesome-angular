@@ -1,4 +1,4 @@
-query getIssues($filter: String!) {
+query queryIssues($filter: String!) {
   search(query: $filter, type: ISSUE, last: 100) {
     issueCount
     nodes {

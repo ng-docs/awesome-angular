@@ -20130,12 +20130,60 @@ export type ViewerHovercardContext = HovercardContext & {
 };
 
 
-export type GetIssuesQueryVariables = {
+export type AddCommentMutationVariables = {
+  subjectId: Scalars['ID'];
+  body: Scalars['String'];
+};
+
+
+export type AddCommentMutation = (
+  { __typename?: 'Mutation' }
+  & {
+  addComment?: Maybe<(
+    { __typename?: 'AddCommentPayload' }
+    & {
+    commentEdge?: Maybe<(
+      { __typename?: 'IssueCommentEdge' }
+      & {
+      node?: Maybe<(
+        { __typename?: 'IssueComment' }
+        & Pick<IssueComment, 'id'>
+        )>
+    }
+      )>
+  }
+    )>
+}
+  );
+
+export type CreateIssueMutationVariables = {
+  repositoryId: Scalars['ID'];
+  title: Scalars['String'];
+  body: Scalars['String'];
+};
+
+
+export type CreateIssueMutation = (
+  { __typename?: 'Mutation' }
+  & {
+  createIssue?: Maybe<(
+    { __typename?: 'CreateIssuePayload' }
+    & {
+    issue?: Maybe<(
+      { __typename?: 'Issue' }
+      & Pick<Issue, 'id'>
+      )>
+  }
+    )>
+}
+  );
+
+export type QueryIssuesQueryVariables = {
   filter: Scalars['String'];
 };
 
 
-export type GetIssuesQuery = (
+export type QueryIssuesQuery = (
   { __typename?: 'Query' }
   & {
   search: (
@@ -20193,8 +20241,64 @@ export type GetIssuesQuery = (
 }
   );
 
-export const GetIssuesDocument = gql`
-  query getIssues($filter: String!) {
+export type QueryRepositoryQueryVariables = {
+  owner: Scalars['String'];
+  name: Scalars['String'];
+};
+
+
+export type QueryRepositoryQuery = (
+  { __typename?: 'Query' }
+  & {
+  repository?: Maybe<(
+    { __typename?: 'Repository' }
+    & Pick<Repository, 'id' | 'hasIssuesEnabled'>
+    )>
+}
+  );
+
+export const AddCommentDocument = gql`
+  mutation addComment($subjectId: ID!, $body: String!) {
+    addComment(input: {subjectId: $subjectId, body: $body}) {
+      commentEdge {
+        node {
+          ... on IssueComment {
+            id
+          }
+        }
+      }
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AddCommentGQL extends Apollo.Mutation<AddCommentMutation, AddCommentMutationVariables> {
+  document = AddCommentDocument;
+
+}
+
+export const CreateIssueDocument = gql`
+  mutation createIssue($repositoryId: ID!, $title: String!, $body: String!) {
+    createIssue(input: {repositoryId: $repositoryId, title: $title, body: $body}) {
+      issue {
+        id
+      }
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class CreateIssueGQL extends Apollo.Mutation<CreateIssueMutation, CreateIssueMutationVariables> {
+  document = CreateIssueDocument;
+
+}
+
+export const QueryIssuesDocument = gql`
+  query queryIssues($filter: String!) {
     search(query: $filter, type: ISSUE, last: 100) {
       issueCount
       nodes {
@@ -20261,7 +20365,24 @@ export const GetIssuesDocument = gql`
 @Injectable({
   providedIn: 'root',
 })
-export class GetIssuesGQL extends Apollo.Query<GetIssuesQuery, GetIssuesQueryVariables> {
-  document = GetIssuesDocument;
+export class QueryIssuesGQL extends Apollo.Query<QueryIssuesQuery, QueryIssuesQueryVariables> {
+  document = QueryIssuesDocument;
+
+}
+
+export const QueryRepositoryDocument = gql`
+  query queryRepository($owner: String!, $name: String!) {
+    repository(owner: $owner, name: $name) {
+      id
+      hasIssuesEnabled
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class QueryRepositoryGQL extends Apollo.Query<QueryRepositoryQuery, QueryRepositoryQueryVariables> {
+  document = QueryRepositoryDocument;
 
 }

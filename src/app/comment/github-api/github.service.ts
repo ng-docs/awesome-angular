@@ -3,7 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { GetIssuesGQL, GetIssuesQuery } from '../../../types';
+import {
+  AddCommentGQL,
+  AddCommentMutation,
+  CreateIssueGQL,
+  CreateIssueMutation,
+  QueryIssuesGQL,
+  QueryIssuesQuery,
+  QueryRepositoryGQL,
+  QueryRepositoryQuery,
+} from '../../../types';
 import { Query } from './query';
 import { UserModel } from './user.model';
 
@@ -26,15 +35,20 @@ function unescapeKeyword(label: string): string {
   providedIn: 'root',
 })
 export class GithubService {
+  constructor(private http: HttpClient,
+              private gqlQueryIssue: QueryIssuesGQL,
+              private gqlQueryRepository: QueryRepositoryGQL,
+              private qglCreateIssue: CreateIssueGQL,
+              private gqlAddComment: AddCommentGQL,
+  ) {
+  }
+
   get accessToken(): string {
     return localStorage.getItem(KEY_ACCESS_TOKEN);
   }
 
   set accessToken(value: string) {
     localStorage.setItem(KEY_ACCESS_TOKEN, value);
-  }
-
-  constructor(private http: HttpClient, private issuesQuery: GetIssuesGQL) {
   }
 
   get loginUrl(): string {
@@ -67,20 +81,46 @@ export class GithubService {
     );
   }
 
-  getCurrentUser(): Observable<UserModel> {
+  getMe(): Observable<UserModel> {
     return this.http.get<UserModel>(`https://api.github.com/user`, { headers: { Authorization: `token ${this.accessToken}` } });
   }
 
-  queryIssues(owner: string, repo: string, label: string): Observable<GetIssuesQuery> {
-    return this.issuesQuery.fetch({
+  queryRepository(owner: string, name: string): Observable<QueryRepositoryQuery> {
+    return this.gqlQueryRepository.fetch({
+      owner,
+      name,
+    }, this.options).pipe(map(resp => resp.data));
+  }
+
+  queryIssues(owner: string, repo: string, label: string): Observable<QueryIssuesQuery> {
+    return this.gqlQueryIssue.fetch({
       filter: `repo:${owner}/${repo} is:open ${escapeKeyword(label)}`,
-    }, {
+    }, this.options).pipe(map(resp => resp.data));
+  }
+
+  createIssue(repositoryId: string, title: string, body: string): Observable<CreateIssueMutation> {
+    return this.qglCreateIssue.mutate({
+      repositoryId,
+      title,
+      body,
+    }, this.options).pipe(map(resp => resp.data));
+  }
+
+  addComment(issueId: string, body: string): Observable<AddCommentMutation> {
+    return this.gqlAddComment.mutate({
+      subjectId: issueId,
+      body,
+    }, this.options).pipe(map(resp => resp.data));
+  }
+
+  private get options() {
+    return {
       context: {
         headers: {
           authorization: this.accessToken ? `Bearer ${this.accessToken}` : '',
         },
       },
-    }).pipe(map(resp => resp.data));
+    };
   }
 }
 

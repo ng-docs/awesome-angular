@@ -1,0 +1,6 @@
+query queryRepository($owner: String!, $name: String!) {
+  repository(owner: $owner, name: $name) {
+    id
+    hasIssuesEnabled
+  }
+}
