@@ -95,7 +95,7 @@ export class GithubService {
   queryIssues(owner: string, repo: string, label: string): Observable<QueryIssuesQuery> {
     return this.gqlQueryIssue.fetch({
       filter: `repo:${owner}/${repo} is:open ${escapeKeyword(label)}`,
-    }, this.options).pipe(map(resp => resp.data));
+    }, { fetchPolicy: 'no-cache', ...this.options }).pipe(map(resp => resp.data));
   }
 
   createIssue(repositoryId: string, title: string, body: string): Observable<CreateIssueMutation> {

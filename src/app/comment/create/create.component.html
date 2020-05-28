@@ -1,2 +1,5 @@
-<textarea [(ngModel)]="body"></textarea>
-<button mat-button (click)="create.next(body)">提交</button>
+<mat-form-field>
+  <mat-label>请输入评论 (支持 Markdown)</mat-label>
+  <textarea cdkTextareaAutosize matInput [cdkAutosizeMinRows]="2" [(ngModel)]="body"></textarea>
+</mat-form-field>
+<button mat-button color="primary" (click)="submit()">提交</button>

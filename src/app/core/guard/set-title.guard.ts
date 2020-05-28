@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRouteSnapshot, CanActivateChild, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { findArticleById } from '../../article/data/articles';
-import { Title } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +19,7 @@ export class SetTitleGuard implements CanActivateChild {
       if (article.group) {
         titles.push(article.group.title);
       }
-      titles.push('Angular 资源集锦');
+      titles.push('汪·课');
       this.title.setTitle(titles.filter(title => !!title.trim()).join(' - '));
     }
     return true;

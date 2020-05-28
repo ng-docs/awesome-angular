@@ -17,6 +17,22 @@ query queryIssues($filter: String!) {
         createdAt
         updatedAt
         authorAssociation
+        reactions(first: 20) {
+          totalCount
+          viewerHasReacted
+          pageInfo {
+            hasNextPage
+          }
+          nodes {
+            id
+            content
+            user {
+              name
+              avatarUrl
+              url
+            }
+          }
+        }
         comments(first: 100) {
           totalCount
           nodes {

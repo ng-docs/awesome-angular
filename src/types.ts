@@ -20197,7 +20197,25 @@ export type QueryIssuesQuery = (
       author?: Maybe<{ __typename?: 'Bot' } | { __typename?: 'EnterpriseUserAccount' } | { __typename?: 'Mannequin' } | { __typename?: 'Organization' } | (
         { __typename?: 'User' }
         & Pick<User, 'name' | 'avatarUrl' | 'url'>
-        )>, comments: (
+        )>, reactions: (
+        { __typename?: 'ReactionConnection' }
+        & Pick<ReactionConnection, 'totalCount' | 'viewerHasReacted'>
+        & {
+        pageInfo: (
+          { __typename?: 'PageInfo' }
+          & Pick<PageInfo, 'hasNextPage'>
+          ), nodes?: Maybe<Array<Maybe<(
+          { __typename?: 'Reaction' }
+          & Pick<Reaction, 'id' | 'content'>
+          & {
+          user?: Maybe<(
+            { __typename?: 'User' }
+            & Pick<User, 'name' | 'avatarUrl' | 'url'>
+            )>
+        }
+          )>>>
+      }
+        ), comments: (
         { __typename?: 'IssueCommentConnection' }
         & Pick<IssueCommentConnection, 'totalCount'>
         & {
@@ -20317,6 +20335,22 @@ export const QueryIssuesDocument = gql`
           createdAt
           updatedAt
           authorAssociation
+          reactions(first: 20) {
+            totalCount
+            viewerHasReacted
+            pageInfo {
+              hasNextPage
+            }
+            nodes {
+              id
+              content
+              user {
+                name
+                avatarUrl
+                url
+              }
+            }
+          }
           comments(first: 100) {
             totalCount
             nodes {

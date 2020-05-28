@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { GetIssuesQuery } from '../../../types';
+import { QueryIssuesQuery } from '../../../types';
 
 @Component({
   selector: 'app-comment-list',
@@ -7,5 +7,5 @@ import { GetIssuesQuery } from '../../../types';
   styleUrls: ['./comment-list.component.scss'],
 })
 export class CommentListComponent {
-  @Input() items: GetIssuesQuery['search']['nodes'];
+  @Input() items: QueryIssuesQuery['search']['nodes'];
 }

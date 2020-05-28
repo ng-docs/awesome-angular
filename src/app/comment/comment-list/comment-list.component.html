@@ -1,6 +1,11 @@
-<div>{{items.length}} 条评论</div>
+<div>{{items | commentCount}} 条评论</div>
 <ul>
   <li *ngFor="let item of items">
-    <div [innerHTML]="item.title"></div>
+    <div [innerHTML]="item.body"></div>
+    <ul>
+      <li *ngFor="let comment of item.comments.nodes">
+        <div [innerHTML]="comment.body"></div>
+      </li>
+    </ul>
   </li>
 </ul>
