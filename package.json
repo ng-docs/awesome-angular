@@ -25,17 +25,17 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^9.0.0",
-    "@angular/cdk": "^9.0.0-rc.8",
-    "@angular/common": "^9.0.0",
-    "@angular/compiler": "^9.0.0",
-    "@angular/core": "^9.0.0",
-    "@angular/forms": "^9.0.0",
-    "@angular/material": "^9.0.0-rc.8",
-    "@angular/platform-browser": "^9.0.0",
-    "@angular/platform-browser-dynamic": "^9.0.0",
-    "@angular/router": "^9.0.0",
-    "@angular/service-worker": "^9.0.0",
+    "@angular/animations": "^9.1.9",
+    "@angular/cdk": "^9.2.4",
+    "@angular/common": "^9.1.9",
+    "@angular/compiler": "^9.1.9",
+    "@angular/core": "^9.1.9",
+    "@angular/forms": "^9.1.9",
+    "@angular/material": "^9.2.4",
+    "@angular/platform-browser": "^9.1.9",
+    "@angular/platform-browser-dynamic": "^9.1.9",
+    "@angular/router": "^9.1.9",
+    "@angular/service-worker": "^9.1.9",
     "@nguniversal/express-engine": "^9.0.0-rc.0",
     "apollo-angular": "^1.9.1",
     "core-js": "^2.6.5",
@@ -55,11 +55,11 @@
     "graphql-tag": "^2.10.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.900.1",
-    "@angular/cli": "~9.0.1",
-    "@angular/compiler-cli": "^9.0.0",
-    "@angular/language-service": "^9.0.0",
-    "@angular/platform-server": "^9.0.0",
+    "@angular-devkit/build-angular": "~0.901.7",
+    "@angular/cli": "~9.1.7",
+    "@angular/compiler-cli": "^9.1.9",
+    "@angular/language-service": "^9.1.9",
+    "@angular/platform-server": "^9.1.9",
     "@awesome-fe/prerender": "0.0.5",
     "@graphql-codegen/cli": "^1.14.0",
     "@graphql-codegen/typescript-apollo-angular": "^1.14.0",
@@ -97,6 +97,6 @@
     "tslint": "~5.13.1",
     "typescript": "~3.7.5",
     "webpack-cli": "^3.2.3",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.3"
   }
 }
