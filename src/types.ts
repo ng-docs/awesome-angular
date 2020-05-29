@@ -20192,7 +20192,7 @@ export type QueryIssuesQuery = (
     & {
     nodes?: Maybe<Array<Maybe<{ __typename?: 'App' } | (
       { __typename?: 'Issue' }
-      & Pick<Issue, 'id' | 'title' | 'url' | 'body' | 'createdAt' | 'updatedAt' | 'authorAssociation'>
+      & Pick<Issue, 'id' | 'title' | 'url' | 'body' | 'bodyHTML' | 'createdAt' | 'lastEditedAt' | 'authorAssociation'>
       & {
       author?: Maybe<{ __typename?: 'Bot' } | { __typename?: 'EnterpriseUserAccount' } | { __typename?: 'Mannequin' } | { __typename?: 'Organization' } | (
         { __typename?: 'User' }
@@ -20221,7 +20221,7 @@ export type QueryIssuesQuery = (
         & {
         nodes?: Maybe<Array<Maybe<(
           { __typename?: 'IssueComment' }
-          & Pick<IssueComment, 'id' | 'body' | 'createdAt' | 'updatedAt' | 'authorAssociation'>
+          & Pick<IssueComment, 'id' | 'body' | 'bodyHTML' | 'createdAt' | 'lastEditedAt' | 'authorAssociation' | 'viewerDidAuthor'>
           & {
           author?: Maybe<{ __typename?: 'Bot' } | { __typename?: 'EnterpriseUserAccount' } | { __typename?: 'Mannequin' } | { __typename?: 'Organization' } | (
             { __typename?: 'User' }
@@ -20332,8 +20332,9 @@ export const QueryIssuesDocument = gql`
           title
           url
           body
+          bodyHTML
           createdAt
-          updatedAt
+          lastEditedAt
           authorAssociation
           reactions(first: 20) {
             totalCount
@@ -20363,9 +20364,11 @@ export const QueryIssuesDocument = gql`
                 }
               }
               body
+              bodyHTML
               createdAt
-              updatedAt
+              lastEditedAt
               authorAssociation
+              viewerDidAuthor
               reactions(first: 20) {
                 totalCount
                 viewerHasReacted

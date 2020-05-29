@@ -1,0 +1,101 @@
+@import "common";
+
+:host {
+  display: flex;
+}
+
+
+.avatar {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+  margin-right: $size-md;
+}
+
+.comment {
+  flex: auto;
+  border: 1px solid #c0d3eb;
+}
+
+.header, .footer {
+  display: flex;
+  padding: $size-sm $size-md;
+  color: #586069;
+  background: #f1f8ff;
+
+  strong {
+    color: $dark-primary-text;
+  }
+
+  > * {
+    &:not(:first-child) {
+      margin-left: $size-sm;
+    }
+  }
+}
+
+.header {
+  border-bottom: 1px solid #d1d5da;
+  position: relative;
+
+  .arrow {
+    $arrow-size: 20px;
+    position: absolute;
+    display: block;
+    width: $arrow-size;
+    height: $arrow-size;
+    left: -$arrow-size/2;
+
+    &::before,
+    &::after {
+      position: absolute;
+      display: block;
+      content: "";
+      border-color: transparent;
+      border-style: solid;
+    }
+
+    &::before {
+      left: 0;
+      border-width: $arrow-size/2 $arrow-size/2 $arrow-size/2 0;
+      border-right-color: #c0d3eb;
+    }
+
+    &::after {
+      left: 1px;
+      border-width: $arrow-size/2 $arrow-size/2 $arrow-size/2 0;
+      border-right-color: #f1f8ff;
+    }
+  }
+}
+
+.footer {
+  border-top: 1px solid #d1d5da;
+}
+
+.body {
+  padding: $size-md;
+}
+
+.chip {
+  border: 1px solid #c0d3eb;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+a {
+  color: inherit;
+
+  &:hover {
+    color: $active;
+  }
+}
+
+.icon {
+  ::ng-deep {
+    svg {
+      vertical-align: middle;
+    }
+  }
+}

@@ -63,7 +63,7 @@ export class MarkdownViewerComponent implements OnInit {
   }
 
   private update(): void {
-    if (!this.baseUrl || !this._data) {
+    if (!this._data) {
       return;
     }
     marked.setOptions({

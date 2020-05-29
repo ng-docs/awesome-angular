@@ -1,3 +1,9 @@
+@import "common";
+
 :host {
   display: block;
+}
+
+app-comment-item {
+  margin-bottom: $size-md;
 }

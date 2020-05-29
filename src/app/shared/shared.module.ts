@@ -21,6 +21,8 @@ import { OutlineCssPipe } from './outline/outline-css.pipe';
 import { OutlineHostDirective } from './outline/outline-host.directive';
 import { OutlineComponent } from './outline/outline.component';
 import { ShowWhenActiveDirective } from './outline/show-when-active.directive';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { SafeResourceUrlPipe } from './pipes/safe-resource-url.pipe';
 import { SearchBoxComponent } from './search-box/search-box.component';
 
 @NgModule({
@@ -50,6 +52,8 @@ import { SearchBoxComponent } from './search-box/search-box.component';
     OutlineCssPipe,
     ShowWhenActiveDirective,
     IconWangkeComponent,
+    SafeResourceUrlPipe,
+    SafeHtmlPipe,
   ],
   exports: [
     MatToolbarModule,
@@ -66,6 +70,8 @@ import { SearchBoxComponent } from './search-box/search-box.component';
     OutlineAreaDirective,
     OutlineHostDirective,
     OutlineComponent,
+    SafeResourceUrlPipe,
+    SafeHtmlPipe,
   ],
 })
 export class SharedModule {

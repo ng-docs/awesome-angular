@@ -7,3 +7,10 @@ $blue: #4885ed;
 $red: #DD0031;
 $yellow: #f4c20d;
 $green: #3cba54;
+
+$size-unit: 4px;
+
+$size-xs: $size-unit;
+$size-sm: $size-unit * 2;
+$size-md: $size-unit * 4;
+$size-lg: $size-unit * 8;

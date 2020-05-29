@@ -14,8 +14,9 @@ query queryIssues($filter: String!) {
         title
         url
         body
+        bodyHTML
         createdAt
-        updatedAt
+        lastEditedAt
         authorAssociation
         reactions(first: 20) {
           totalCount
@@ -45,9 +46,11 @@ query queryIssues($filter: String!) {
               }
             }
             body
+            bodyHTML
             createdAt
-            updatedAt
+            lastEditedAt
             authorAssociation
+            viewerDidAuthor
             reactions(first: 20) {
               totalCount
               viewerHasReacted

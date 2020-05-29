@@ -1,11 +1,4 @@
-<div>{{items | commentCount}} 条评论</div>
-<ul>
-  <li *ngFor="let item of items">
-    <div [innerHTML]="item.body"></div>
-    <ul>
-      <li *ngFor="let comment of item.comments.nodes">
-        <div [innerHTML]="comment.body"></div>
-      </li>
-    </ul>
-  </li>
-</ul>
+<div *ngFor="let item of items">
+  <app-comment-item [comment]="$any(item)"></app-comment-item>
+  <app-comment-item *ngFor="let comment of item.comments.nodes" [comment]="$any(comment)"></app-comment-item>
+</div>

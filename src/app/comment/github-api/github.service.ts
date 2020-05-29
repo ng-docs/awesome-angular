@@ -117,7 +117,7 @@ export class GithubService {
     return {
       context: {
         headers: {
-          authorization: this.accessToken ? `Bearer ${this.accessToken}` : '',
+          Authorization: this.accessToken ? `Bearer ${this.accessToken}` : '',
         },
       },
     };
