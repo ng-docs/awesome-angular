@@ -62,7 +62,7 @@ export class GithubService {
     const oauthUri = 'https://github.com/login/oauth/authorize';
     const oauthParams = {
       scope: 'public_repo',
-      redirect_uri: `${document.baseURI}comments/landing`,
+      redirect_uri: environment.redirectUri,
       client_id,
       client_secret,
     };
