@@ -1,12 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ArticleLayoutComponent } from '../article/article-layout/article-layout.component';
 import { LandingComponent } from './landing/landing.component';
 
 
 const routes: Routes = [
   {
-    path: 'landing',
-    component: LandingComponent,
+    path: '',
+    component: ArticleLayoutComponent,
+    children: [
+      {
+        path: 'landing',
+        component: LandingComponent,
+      },
+    ],
   },
 ];
 
