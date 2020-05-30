@@ -48,6 +48,8 @@ export class GithubService {
     return this._me;
   }
 
+  loading = true;
+
   get accessToken(): string {
     return localStorage.getItem(KEY_ACCESS_TOKEN);
   }
@@ -89,6 +91,7 @@ export class GithubService {
   getCurrentUser(): Observable<UserModel> {
     return this.http.get<UserModel>(`https://api.github.com/user`, { headers: { Authorization: `token ${this.accessToken}` } }).pipe(
       tap(user => this._me = user),
+      tap(() => this.loading = false, () => this.loading = false),
     );
   }
 

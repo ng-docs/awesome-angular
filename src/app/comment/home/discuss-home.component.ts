@@ -28,6 +28,12 @@ export class DiscussHomeComponent implements OnInit {
   update$ = new Subject<string>();
 
   ngOnInit(): void {
+    if (this.github.accessToken) {
+      this.github.getCurrentUser().subscribe();
+    } else {
+      this.github.loading = false;
+    }
+
     const navigated$ = this.router.events.pipe(
       filter(it => it instanceof NavigationEnd),
     );
@@ -37,10 +43,6 @@ export class DiscussHomeComponent implements OnInit {
       this.issues = data;
     });
     this.update$.next();
-
-    if (this.github.accessToken) {
-      this.github.getCurrentUser().subscribe();
-    }
   }
 
   create(body: string): void {
