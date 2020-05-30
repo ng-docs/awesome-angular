@@ -1,7 +1,7 @@
 <div class="d-flex">
   <div *ngIf="issues">{{issues.search.nodes | commentCount}} 条评论</div>
   <div class="flex-spacer"></div>
-  <app-user-status [user]="me"></app-user-status>
+  <app-user-status [user]="this.github.me"></app-user-status>
 </div>
 <app-comment-list *ngIf="issues" [items]="issues.search.nodes"></app-comment-list>
 <app-create (create)="create($event)"></app-create>

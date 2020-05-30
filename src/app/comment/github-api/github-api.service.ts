@@ -43,6 +43,11 @@ export class GithubService {
   ) {
   }
 
+  private _me: UserModel;
+  get me(): Readonly<UserModel> {
+    return this._me;
+  }
+
   get accessToken(): string {
     return localStorage.getItem(KEY_ACCESS_TOKEN);
   }
@@ -81,8 +86,10 @@ export class GithubService {
     );
   }
 
-  getMe(): Observable<UserModel> {
-    return this.http.get<UserModel>(`https://api.github.com/user`, { headers: { Authorization: `token ${this.accessToken}` } });
+  getCurrentUser(): Observable<UserModel> {
+    return this.http.get<UserModel>(`https://api.github.com/user`, { headers: { Authorization: `token ${this.accessToken}` } }).pipe(
+      tap(user => this._me = user),
+    );
   }
 
   queryRepository(owner: string, name: string): Observable<QueryRepositoryQuery> {
@@ -121,6 +128,15 @@ export class GithubService {
         },
       },
     };
+  }
+
+  logout(): void {
+    this.removeAccessToken();
+    this._me = undefined;
+  }
+
+  private removeAccessToken() {
+    localStorage.removeItem(KEY_ACCESS_TOKEN);
   }
 }
 

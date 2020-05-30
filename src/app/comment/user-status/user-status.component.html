@@ -1,5 +1,8 @@
 <ng-container *ngIf="user">
   <a [href]="user.html_url" target="_blank">{{user.name}}</a>
   &nbsp;
-  <a href="javascript:void(0)" (click)="logout()">注销</a>
+  <a href="javascript:void(0)" (click)="github.logout()">注销</a>
+</ng-container>
+<ng-container *ngIf="!user">
+  <a [href]="github.loginUrl">点此登录后可留言</a>
 </ng-container>

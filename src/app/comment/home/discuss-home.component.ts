@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { Apollo } from 'apollo-angular';
 import { merge, Subject } from 'rxjs';
 import { filter, switchMap, tap } from 'rxjs/operators';
 import { Issue, QueryIssuesQuery } from '../../../types';
-import { GithubService } from '../github-api/github.service';
-import { UserModel } from '../github-api/user.model';
+import { GithubService } from '../github-api/github-api.service';
 
 function getKeyword(): string {
   return decodeURIComponent(location.pathname.split('/').pop());
@@ -21,10 +19,9 @@ function getTitle(): string {
   styleUrls: ['./discuss-home.component.scss'],
 })
 export class DiscussHomeComponent implements OnInit {
-  constructor(public github: GithubService, private router: Router, private apollo: Apollo) {
+  constructor(public github: GithubService, private router: Router) {
   }
 
-  me: UserModel;
   issues: QueryIssuesQuery;
   owner = 'site-wangke';
   repo = 'blog';
@@ -41,7 +38,9 @@ export class DiscussHomeComponent implements OnInit {
     });
     this.update$.next();
 
-    this.github.getMe().subscribe(data => this.me = data);
+    if (this.github.accessToken) {
+      this.github.getCurrentUser().subscribe();
+    }
   }
 
   create(body: string): void {
