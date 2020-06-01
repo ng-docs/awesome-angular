@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { QueryIssuesQuery } from '../../../types';
+import { Component } from '@angular/core';
+import { DiscussService } from '../services/discuss.service';
 
 @Component({
   selector: 'app-comment-list',
@@ -7,5 +7,6 @@ import { QueryIssuesQuery } from '../../../types';
   styleUrls: ['./comment-list.component.scss'],
 })
 export class CommentListComponent {
-  @Input() items: QueryIssuesQuery['search']['nodes'];
+  constructor(public discuss: DiscussService) {
+  }
 }

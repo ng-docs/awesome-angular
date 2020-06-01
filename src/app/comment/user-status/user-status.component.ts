@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { GithubService } from '../github-api/github-api.service';
-import { UserModel } from '../github-api/user.model';
+import { Component, OnInit } from '@angular/core';
+import { DiscussService } from '../services/discuss.service';
+import { UserModel } from '../services/github-api/user.model';
 
 @Component({
   selector: 'app-user-status',
@@ -9,12 +9,12 @@ import { UserModel } from '../github-api/user.model';
 })
 export class UserStatusComponent implements OnInit {
 
-  constructor(public github: GithubService) {
+  constructor(public discuss: DiscussService) {
   }
 
-
-  @Input()
-  user: UserModel;
+  get user(): UserModel {
+    return this.discuss.me;
+  }
 
   ngOnInit(): void {
   }

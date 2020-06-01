@@ -9,10 +9,10 @@ import { CommentItemComponent } from './comment-item/comment-item.component';
 import { FriendlyTimePipe } from './comment-item/friendly-time.pipe';
 import { CommentCountPipe } from './comment-list/comment-count.pipe';
 import { CommentListComponent } from './comment-list/comment-list.component';
-
-import { CommentRoutingModule } from './comment-routing.module';
 import { CreateComponent } from './create/create.component';
-import { DiscussHomeComponent } from './home/discuss-home.component';
+
+import { DiscussRoutingModule } from './discuss-routing.module';
+import { DiscussComponent } from './discuss/discuss.component';
 import { LandingComponent } from './landing/landing.component';
 import { UserStatusComponent } from './user-status/user-status.component';
 
@@ -20,7 +20,7 @@ import { UserStatusComponent } from './user-status/user-status.component';
 @NgModule({
   declarations: [
     LandingComponent,
-    DiscussHomeComponent,
+    DiscussComponent,
     CommentListComponent,
     UserStatusComponent,
     CreateComponent,
@@ -31,7 +31,7 @@ import { UserStatusComponent } from './user-status/user-status.component';
 
   imports: [
     CommonModule,
-    CommentRoutingModule,
+    DiscussRoutingModule,
     FormsModule,
     MatButtonModule,
     TextFieldModule,
@@ -39,8 +39,8 @@ import { UserStatusComponent } from './user-status/user-status.component';
     SharedModule,
   ],
   exports: [
-    DiscussHomeComponent,
+    DiscussComponent,
   ],
 })
-export class CommentModule {
+export class DiscussModule {
 }

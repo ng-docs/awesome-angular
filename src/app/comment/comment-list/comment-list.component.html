@@ -1,4 +1,4 @@
-<div *ngFor="let item of items">
+<div *ngFor="let item of discuss.issues">
   <app-comment-item [comment]="$any(item)"></app-comment-item>
-  <app-comment-item *ngFor="let comment of item.comments.nodes" [comment]="$any(comment)"></app-comment-item>
+  <app-comment-item *ngFor="let comment of discuss.getCommentsOf(item.id)" [comment]="comment"></app-comment-item>
 </div>

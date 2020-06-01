@@ -7,7 +7,7 @@
     <span class="flex-spacer"></span>
     <span class="chip"
           *ngIf="comment.authorAssociation !== 'NONE'">{{comment.authorAssociation|titlecase}}</span>
-    <span class="chip" *ngIf="comment.viewerDidAuthor">作者</span>
+    <span class="chip" *ngIf="discuss.isCommentByIssueAuthor(comment)">作者</span>
   </div>
   <div class="body">
     <div [innerHTML]="comment.bodyHTML | safeHtml"></div>

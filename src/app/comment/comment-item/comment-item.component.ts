@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Issue, IssueComment, User } from '../../../types';
+import { DiscussService } from '../services/discuss.service';
 
 @Component({
   selector: 'app-comment-item',
@@ -8,7 +9,7 @@ import { Issue, IssueComment, User } from '../../../types';
 })
 export class CommentItemComponent implements OnInit {
 
-  constructor() {
+  constructor(public discuss: DiscussService) {
   }
 
   @Input()

@@ -20192,30 +20192,33 @@ export type QueryIssuesQuery = (
     & {
     nodes?: Maybe<Array<Maybe<{ __typename?: 'App' } | (
       { __typename?: 'Issue' }
-      & Pick<Issue, 'id' | 'title' | 'url' | 'body' | 'bodyHTML' | 'createdAt' | 'lastEditedAt' | 'authorAssociation'>
+      & Pick<Issue, 'id' | 'title' | 'url' | 'body' | 'bodyHTML' | 'createdAt' | 'lastEditedAt' | 'authorAssociation' | 'viewerDidAuthor'>
       & {
-      author?: Maybe<{ __typename?: 'Bot' } | { __typename?: 'EnterpriseUserAccount' } | { __typename?: 'Mannequin' } | { __typename?: 'Organization' } | (
+      author?: Maybe<(
+        { __typename?: 'Bot' }
+        & Pick<Bot, 'login'>
+        ) | (
+        { __typename?: 'EnterpriseUserAccount' }
+        & Pick<EnterpriseUserAccount, 'login'>
+        ) | (
+        { __typename?: 'Mannequin' }
+        & Pick<Mannequin, 'login'>
+        ) | (
+        { __typename?: 'Organization' }
+        & Pick<Organization, 'login'>
+        ) | (
         { __typename?: 'User' }
-        & Pick<User, 'name' | 'avatarUrl' | 'url'>
-        )>, reactions: (
-        { __typename?: 'ReactionConnection' }
-        & Pick<ReactionConnection, 'totalCount' | 'viewerHasReacted'>
+        & Pick<User, 'name' | 'avatarUrl' | 'url' | 'login'>
+        )>, reactionGroups?: Maybe<Array<(
+        { __typename?: 'ReactionGroup' }
+        & Pick<ReactionGroup, 'content'>
         & {
-        pageInfo: (
-          { __typename?: 'PageInfo' }
-          & Pick<PageInfo, 'hasNextPage'>
-          ), nodes?: Maybe<Array<Maybe<(
-          { __typename?: 'Reaction' }
-          & Pick<Reaction, 'id' | 'content'>
-          & {
-          user?: Maybe<(
-            { __typename?: 'User' }
-            & Pick<User, 'name' | 'avatarUrl' | 'url'>
-            )>
-        }
-          )>>>
+        users: (
+          { __typename?: 'ReactingUserConnection' }
+          & Pick<ReactingUserConnection, 'totalCount'>
+          )
       }
-        ), comments: (
+        )>>, comments: (
         { __typename?: 'IssueCommentConnection' }
         & Pick<IssueCommentConnection, 'totalCount'>
         & {
@@ -20223,28 +20226,31 @@ export type QueryIssuesQuery = (
           { __typename?: 'IssueComment' }
           & Pick<IssueComment, 'id' | 'body' | 'bodyHTML' | 'createdAt' | 'lastEditedAt' | 'authorAssociation' | 'viewerDidAuthor'>
           & {
-          author?: Maybe<{ __typename?: 'Bot' } | { __typename?: 'EnterpriseUserAccount' } | { __typename?: 'Mannequin' } | { __typename?: 'Organization' } | (
+          author?: Maybe<(
+            { __typename?: 'Bot' }
+            & Pick<Bot, 'login'>
+            ) | (
+            { __typename?: 'EnterpriseUserAccount' }
+            & Pick<EnterpriseUserAccount, 'login'>
+            ) | (
+            { __typename?: 'Mannequin' }
+            & Pick<Mannequin, 'login'>
+            ) | (
+            { __typename?: 'Organization' }
+            & Pick<Organization, 'login'>
+            ) | (
             { __typename?: 'User' }
-            & Pick<User, 'name' | 'avatarUrl' | 'url'>
-            )>, reactions: (
-            { __typename?: 'ReactionConnection' }
-            & Pick<ReactionConnection, 'totalCount' | 'viewerHasReacted'>
+            & Pick<User, 'id' | 'name' | 'avatarUrl' | 'url' | 'login'>
+            )>, reactionGroups?: Maybe<Array<(
+            { __typename?: 'ReactionGroup' }
+            & Pick<ReactionGroup, 'content'>
             & {
-            pageInfo: (
-              { __typename?: 'PageInfo' }
-              & Pick<PageInfo, 'hasNextPage'>
-              ), nodes?: Maybe<Array<Maybe<(
-              { __typename?: 'Reaction' }
-              & Pick<Reaction, 'id' | 'content'>
-              & {
-              user?: Maybe<(
-                { __typename?: 'User' }
-                & Pick<User, 'name' | 'avatarUrl' | 'url'>
-                )>
-            }
-              )>>>
+            users: (
+              { __typename?: 'ReactingUserConnection' }
+              & Pick<ReactingUserConnection, 'totalCount'>
+              )
           }
-            )
+            )>>
         }
           )>>>
       }
@@ -20323,6 +20329,7 @@ export const QueryIssuesDocument = gql`
         ... on Issue {
           id
           author {
+            login
             ... on User {
               name
               avatarUrl
@@ -20336,20 +20343,11 @@ export const QueryIssuesDocument = gql`
           createdAt
           lastEditedAt
           authorAssociation
-          reactions(first: 20) {
-            totalCount
-            viewerHasReacted
-            pageInfo {
-              hasNextPage
-            }
-            nodes {
-              id
-              content
-              user {
-                name
-                avatarUrl
-                url
-              }
+          viewerDidAuthor
+          reactionGroups {
+            content
+            users {
+              totalCount
             }
           }
           comments(first: 100) {
@@ -20357,7 +20355,9 @@ export const QueryIssuesDocument = gql`
             nodes {
               id
               author {
+                login
                 ... on User {
+                  id
                   name
                   avatarUrl
                   url
@@ -20369,20 +20369,10 @@ export const QueryIssuesDocument = gql`
               lastEditedAt
               authorAssociation
               viewerDidAuthor
-              reactions(first: 20) {
-                totalCount
-                viewerHasReacted
-                pageInfo {
-                  hasNextPage
-                }
-                nodes {
-                  id
-                  content
-                  user {
-                    name
-                    avatarUrl
-                    url
-                  }
+              reactionGroups {
+                content
+                users {
+                  totalCount
                 }
               }
             }

@@ -1,0 +1,7 @@
+<div class="d-flex">
+  <div *ngIf="!discuss.noIssue">{{discuss.commentCount}} 条评论</div>
+  <div class="flex-spacer"></div>
+  <app-user-status></app-user-status>
+</div>
+<app-comment-list *ngIf="!discuss.noIssue"></app-comment-list>
+<app-create (create)="create($event)"></app-create>

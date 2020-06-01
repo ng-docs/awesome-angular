@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap, tap } from 'rxjs/operators';
-import { GithubService } from '../github-api/github-api.service';
+import { tap } from 'rxjs/operators';
+import { DiscussService } from '../services/discuss.service';
 
 @Component({
   selector: 'app-landing',
@@ -10,13 +10,12 @@ import { GithubService } from '../github-api/github-api.service';
 })
 export class LandingComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private github: GithubService, private router: Router) {
+  constructor(private route: ActivatedRoute, private discuss: DiscussService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe(it => {
-      this.github.login(it.get('code')).pipe(
-        switchMap(() => this.github.getCurrentUser()),
+      this.discuss.login(it.get('code')).pipe(
         tap(() => this.router.navigateByUrl('/')),
       ).subscribe();
     });

@@ -22,7 +22,7 @@ const routes: Routes = [
       },
       {
         path: 'comments',
-        loadChildren: () => import('./comment/comment.module').then(m => m.CommentModule),
+        loadChildren: () => import('./comment/discuss.module').then(m => m.DiscussModule),
       },
     ],
   },

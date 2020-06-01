@@ -1,4 +1,4 @@
-schema: ./src/app/comment/github-api/github.graphql
+schema: ./src/app/comment/services/github-api/github.graphql
 documents: ./src/**/*.graphql
 generates:
   ./src/types.ts:
