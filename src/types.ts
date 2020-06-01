@@ -20156,6 +20156,27 @@ export type AddCommentMutation = (
 }
   );
 
+export type AddReactionMutationVariables = {
+  subjectId: Scalars['ID'];
+  content: ReactionContent;
+};
+
+
+export type AddReactionMutation = (
+  { __typename?: 'Mutation' }
+  & {
+  addReaction?: Maybe<(
+    { __typename?: 'AddReactionPayload' }
+    & {
+    reaction?: Maybe<(
+      { __typename?: 'Reaction' }
+      & Pick<Reaction, 'id'>
+      )>
+  }
+    )>
+}
+  );
+
 export type CreateIssueMutationVariables = {
   repositoryId: Scalars['ID'];
   title: Scalars['String'];
@@ -20211,7 +20232,7 @@ export type QueryIssuesQuery = (
         & Pick<User, 'name' | 'avatarUrl' | 'url' | 'login'>
         )>, reactionGroups?: Maybe<Array<(
         { __typename?: 'ReactionGroup' }
-        & Pick<ReactionGroup, 'content'>
+        & Pick<ReactionGroup, 'content' | 'viewerHasReacted'>
         & {
         users: (
           { __typename?: 'ReactingUserConnection' }
@@ -20243,7 +20264,7 @@ export type QueryIssuesQuery = (
             & Pick<User, 'id' | 'name' | 'avatarUrl' | 'url' | 'login'>
             )>, reactionGroups?: Maybe<Array<(
             { __typename?: 'ReactionGroup' }
-            & Pick<ReactionGroup, 'content'>
+            & Pick<ReactionGroup, 'content' | 'viewerHasReacted'>
             & {
             users: (
               { __typename?: 'ReactingUserConnection' }
@@ -20281,6 +20302,81 @@ export type QueryRepositoryQuery = (
 }
   );
 
+export type RemoveReactionMutationVariables = {
+  subjectId: Scalars['ID'];
+  content: ReactionContent;
+};
+
+
+export type RemoveReactionMutation = (
+  { __typename?: 'Mutation' }
+  & {
+  removeReaction?: Maybe<(
+    { __typename?: 'RemoveReactionPayload' }
+    & {
+    reaction?: Maybe<(
+      { __typename?: 'Reaction' }
+      & Pick<Reaction, 'id'>
+      )>
+  }
+    )>
+}
+  );
+
+export type UpdateIssueCommentMutationVariables = {
+  id: Scalars['ID'];
+  body: Scalars['String'];
+};
+
+
+export type UpdateIssueCommentMutation = (
+  { __typename?: 'Mutation' }
+  & {
+  updateIssueComment?: Maybe<(
+    { __typename?: 'UpdateIssueCommentPayload' }
+    & {
+    issueComment?: Maybe<(
+      { __typename?: 'IssueComment' }
+      & Pick<IssueComment, 'id'>
+      )>
+  }
+    )>
+}
+  );
+
+export type UpdateIssueMutationVariables = {
+  id: Scalars['ID'];
+  body: Scalars['String'];
+};
+
+
+export type UpdateIssueMutation = (
+  { __typename?: 'Mutation' }
+  & {
+  updateIssue?: Maybe<(
+    { __typename?: 'UpdateIssuePayload' }
+    & {
+    actor?: Maybe<(
+      { __typename?: 'Bot' }
+      & Pick<Bot, 'login'>
+      ) | (
+      { __typename?: 'EnterpriseUserAccount' }
+      & Pick<EnterpriseUserAccount, 'login'>
+      ) | (
+      { __typename?: 'Mannequin' }
+      & Pick<Mannequin, 'login'>
+      ) | (
+      { __typename?: 'Organization' }
+      & Pick<Organization, 'login'>
+      ) | (
+      { __typename?: 'User' }
+      & Pick<User, 'login'>
+      )>
+  }
+    )>
+}
+  );
+
 export const AddCommentDocument = gql`
   mutation addComment($subjectId: ID!, $body: String!) {
     addComment(input: {subjectId: $subjectId, body: $body}) {
@@ -20300,6 +20396,24 @@ export const AddCommentDocument = gql`
 })
 export class AddCommentGQL extends Apollo.Mutation<AddCommentMutation, AddCommentMutationVariables> {
   document = AddCommentDocument;
+
+}
+
+export const AddReactionDocument = gql`
+  mutation addReaction($subjectId: ID!, $content: ReactionContent!) {
+    addReaction(input: {subjectId: $subjectId, content: $content}) {
+      reaction {
+        id
+      }
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AddReactionGQL extends Apollo.Mutation<AddReactionMutation, AddReactionMutationVariables> {
+  document = AddReactionDocument;
 
 }
 
@@ -20346,6 +20460,7 @@ export const QueryIssuesDocument = gql`
           viewerDidAuthor
           reactionGroups {
             content
+            viewerHasReacted
             users {
               totalCount
             }
@@ -20371,6 +20486,7 @@ export const QueryIssuesDocument = gql`
               viewerDidAuthor
               reactionGroups {
                 content
+                viewerHasReacted
                 users {
                   totalCount
                 }
@@ -20411,5 +20527,59 @@ export const QueryRepositoryDocument = gql`
 })
 export class QueryRepositoryGQL extends Apollo.Query<QueryRepositoryQuery, QueryRepositoryQueryVariables> {
   document = QueryRepositoryDocument;
+
+}
+
+export const RemoveReactionDocument = gql`
+  mutation removeReaction($subjectId: ID!, $content: ReactionContent!) {
+    removeReaction(input: {subjectId: $subjectId, content: $content}) {
+      reaction {
+        id
+      }
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class RemoveReactionGQL extends Apollo.Mutation<RemoveReactionMutation, RemoveReactionMutationVariables> {
+  document = RemoveReactionDocument;
+
+}
+
+export const UpdateIssueCommentDocument = gql`
+  mutation updateIssueComment($id: ID!, $body: String!) {
+    updateIssueComment(input: {id: $id, body: $body}) {
+      issueComment {
+        id
+      }
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class UpdateIssueCommentGQL extends Apollo.Mutation<UpdateIssueCommentMutation, UpdateIssueCommentMutationVariables> {
+  document = UpdateIssueCommentDocument;
+
+}
+
+export const UpdateIssueDocument = gql`
+  mutation updateIssue($id: ID!, $body: String!) {
+    updateIssue(input: {id: $id, body: $body}) {
+      actor {
+        login
+      }
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class UpdateIssueGQL extends Apollo.Mutation<UpdateIssueMutation, UpdateIssueMutationVariables> {
+  document = UpdateIssueDocument;
 
 }

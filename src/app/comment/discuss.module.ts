@@ -6,7 +6,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { SharedModule } from '../shared/shared.module';
 import { CommentItemComponent } from './comment-item/comment-item.component';
+import { EditComponent } from './comment-item/edit/edit.component';
 import { FriendlyTimePipe } from './comment-item/friendly-time.pipe';
+import { IconEditComponent } from './comment-item/icons/icon-edit/icon-edit.component';
+import { IconEmojiComponent } from './comment-item/icons/icon-emoji/icon-emoji.component';
+import { IconQuoteComponent } from './comment-item/icons/icon-quote/icon-quote.component';
+import { ReactionListComponent } from './comment-item/reaction-list/reaction-list.component';
 import { CommentCountPipe } from './comment-list/comment-count.pipe';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { CreateComponent } from './create/create.component';
@@ -27,6 +32,11 @@ import { UserStatusComponent } from './user-status/user-status.component';
     CommentCountPipe,
     CommentItemComponent,
     FriendlyTimePipe,
+    ReactionListComponent,
+    IconEmojiComponent,
+    IconQuoteComponent,
+    IconEditComponent,
+    EditComponent,
   ],
 
   imports: [

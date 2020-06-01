@@ -8,8 +8,17 @@
     <span class="chip"
           *ngIf="comment.authorAssociation !== 'NONE'">{{comment.authorAssociation|titlecase}}</span>
     <span class="chip" *ngIf="discuss.isCommentByIssueAuthor(comment)">作者</span>
+    <a href="javascript:void(0)" (click)="discuss.quote(comment.body)">
+      <app-icon-quote></app-icon-quote>
+    </a>
   </div>
   <div class="body">
     <div [innerHTML]="comment.bodyHTML | safeHtml"></div>
+  </div>
+  <div class="footer">
+    <app-reaction-list [items]="comment.reactionGroups"
+                       (add)="discuss.addReaction(comment.id, $event).subscribe()"
+                       (remove)="discuss.removeReaction(comment.id, $event).subscribe()"
+    ></app-reaction-list>
   </div>
 </div>

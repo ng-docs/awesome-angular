@@ -18,7 +18,7 @@
   border: 1px solid #c0d3eb;
 }
 
-.header, .footer {
+.header {
   display: flex;
   padding: $size-sm $size-md;
   color: #586069;
@@ -29,13 +29,11 @@
   }
 
   > * {
-    &:not(:first-child) {
-      margin-left: $size-sm;
+    &:not(:last-child) {
+      margin-right: $size-sm;
     }
   }
-}
 
-.header {
   border-bottom: 1px solid #d1d5da;
   position: relative;
 
@@ -71,6 +69,7 @@
 }
 
 .footer {
+  border-right: 1px solid #e1e4e8;
   border-top: 1px solid #d1d5da;
 }
 
@@ -82,6 +81,7 @@
   border: 1px solid #c0d3eb;
   padding: 1px 4px;
   border-radius: 3px;
+  line-height: 1;
 }
 
 a {

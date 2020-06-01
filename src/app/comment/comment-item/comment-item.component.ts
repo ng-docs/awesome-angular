@@ -14,6 +14,8 @@ export class CommentItemComponent implements OnInit {
 
   @Input()
   comment: Issue | IssueComment;
+  @Input()
+  isIssue: boolean;
 
   get user(): User {
     return this.comment.author as User;

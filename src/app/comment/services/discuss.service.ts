@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { EMPTY, Observable, Subject } from 'rxjs';
 import { map, publishReplay, refCount, switchMap, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { Issue, IssueComment, QueryIssuesQuery } from '../../../types';
+import { Issue, IssueComment, QueryIssuesQuery, ReactionContent } from '../../../types';
 import { GithubService } from './github-api/github.service';
 import { Query } from './github-api/query';
 import { UserModel } from './github-api/user.model';
@@ -39,6 +39,7 @@ export class DiscussService {
   private repo: string;
   private url: string;
   changes$ = new Subject<void>();
+  editingText = '';
 
   get issues() {
     return this.query?.search.nodes.map(it => {
@@ -138,6 +139,13 @@ export class DiscussService {
     );
   }
 
+  updateIssue(id: string, body: string): Observable<QueryIssuesQuery> {
+    return this.getRepositoryId().pipe(
+      switchMap((it) => this.github.updateIssue(id, body, this.accessToken)),
+      switchMap(() => this.reload()),
+    );
+  }
+
   private getRepositoryId(): Observable<string> {
     return this.github.queryRepository(this.owner, this.repo, this.accessToken).pipe(
       map(resp => resp.repository.id),
@@ -152,6 +160,24 @@ export class DiscussService {
     );
   }
 
+  updateComment(id: string, body: string): Observable<QueryIssuesQuery> {
+    return this.github.updateComment(id, body, this.accessToken).pipe(
+      switchMap(() => this.reload()),
+    );
+  }
+
+  addReaction(subjectId: string, content: ReactionContent): Observable<QueryIssuesQuery> {
+    return this.github.addReaction(subjectId, content, this.accessToken).pipe(
+      switchMap(() => this.reload()),
+    );
+  }
+
+  removeReaction(subjectId: string, content: ReactionContent): Observable<QueryIssuesQuery> {
+    return this.github.removeReaction(subjectId, content, this.accessToken).pipe(
+      switchMap(() => this.reload()),
+    );
+  }
+
   login(code: string): Observable<UserModel> {
     return this.github.getAccessToken(code, client_id, client_secret).pipe(
       tap(accessToken => this.accessToken = accessToken),
@@ -161,5 +187,17 @@ export class DiscussService {
 
   isCommentByIssueAuthor(comment: Issue | IssueComment): boolean {
     return comment.id !== this.firstIssue.id && this.firstIssue.author.login === comment.author.login;
+  }
+
+  addIssueOrComment(): Observable<QueryIssuesQuery> {
+    if (this.noIssue) {
+      return this.createIssue(this.editingText).pipe(tap(() => this.editingText = ''));
+    } else {
+      return this.addComment(this.editingText).pipe(tap(() => this.editingText = ''));
+    }
+  }
+
+  quote(body: string): void {
+    this.editingText = body.replace(/^/mg, '> ') + '\n';
   }
 }

@@ -5,12 +5,21 @@ import { map } from 'rxjs/operators';
 import {
   AddCommentGQL,
   AddCommentMutation,
+  AddReactionGQL,
+  AddReactionMutation,
   CreateIssueGQL,
   CreateIssueMutation,
   QueryIssuesGQL,
   QueryIssuesQuery,
   QueryRepositoryGQL,
   QueryRepositoryQuery,
+  ReactionContent,
+  RemoveReactionGQL,
+  RemoveReactionMutation,
+  UpdateIssueCommentGQL,
+  UpdateIssueCommentMutation,
+  UpdateIssueGQL,
+  UpdateIssueMutation,
 } from '../../../../types';
 import { Query } from './query';
 import { UserModel } from './user.model';
@@ -37,7 +46,11 @@ export class GithubService {
               private gqlQueryIssue: QueryIssuesGQL,
               private gqlQueryRepository: QueryRepositoryGQL,
               private qglCreateIssue: CreateIssueGQL,
+              private qglUpdateIssue: UpdateIssueGQL,
               private gqlAddComment: AddCommentGQL,
+              private gqlUpdateComment: UpdateIssueCommentGQL,
+              private gqlAddReaction: AddReactionGQL,
+              private gqlRemoveReaction: RemoveReactionGQL,
   ) {
   }
 
@@ -83,10 +96,38 @@ export class GithubService {
     }, optionsWith(accessToken)).pipe(map(resp => resp.data));
   }
 
+  updateIssue(issueId: string, body: string, accessToken: string): Observable<UpdateIssueMutation> {
+    return this.qglUpdateIssue.mutate({
+      id: issueId,
+      body,
+    }, optionsWith(accessToken)).pipe(map(resp => resp.data));
+  }
+
+  updateComment(commentId: string, body: string, accessToken: string): Observable<UpdateIssueCommentMutation> {
+    return this.gqlUpdateComment.mutate({
+      id: commentId,
+      body,
+    }, optionsWith(accessToken)).pipe(map(resp => resp.data));
+  }
+
   addComment(issueId: string, body: string, accessToken: string): Observable<AddCommentMutation> {
     return this.gqlAddComment.mutate({
       subjectId: issueId,
       body,
+    }, optionsWith(accessToken)).pipe(map(resp => resp.data));
+  }
+
+  addReaction(subjectId: string, content: ReactionContent, accessToken: string): Observable<AddReactionMutation> {
+    return this.gqlAddReaction.mutate({
+      subjectId,
+      content,
+    }, optionsWith(accessToken)).pipe(map(resp => resp.data));
+  }
+
+  removeReaction(subjectId: string, content: ReactionContent, accessToken: string): Observable<RemoveReactionMutation> {
+    return this.gqlRemoveReaction.mutate({
+      subjectId,
+      content,
     }, optionsWith(accessToken)).pipe(map(resp => resp.data));
   }
 }

@@ -1,4 +1,5 @@
 <div *ngFor="let item of discuss.issues">
-  <app-comment-item [comment]="$any(item)"></app-comment-item>
-  <app-comment-item *ngFor="let comment of discuss.getCommentsOf(item.id)" [comment]="comment"></app-comment-item>
+  <app-comment-item [comment]="$any(item)" [isIssue]="true"></app-comment-item>
+  <app-comment-item *ngFor="let comment of discuss.getCommentsOf(item.id)" [comment]="comment"
+                    [isIssue]="false"></app-comment-item>
 </div>

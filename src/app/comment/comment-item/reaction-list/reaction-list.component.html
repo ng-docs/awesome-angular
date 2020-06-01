@@ -1,0 +1,11 @@
+<a href="javascript:void(0)" class="new-reaction" [class.active]="!fold" (click)="fold = !fold">
+  <app-icon-emoji></app-icon-emoji>
+</a>
+<ng-container *ngFor="let item of items">
+  <a href="javascript:void(0)" [attr.emoji]="item.content" [class.hidden]="fold && !item.users.totalCount"
+     [class.active]="item.viewerHasReacted"
+     (click)="toggleReaction(item)"
+  >
+    {{item.users.totalCount}}
+  </a>
+</ng-container>

@@ -1,0 +1,58 @@
+:host {
+  display: block;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-right: 1px solid #e1e4e8;
+
+  &:not(:hover) {
+    color: inherit;
+  }
+
+  &.active {
+    background: #f1f8ff;
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.new-reaction {
+  font-size: 19px;
+}
+
+[emoji=THUMBS_UP]::before {
+  content: '👍';
+}
+
+[emoji=THUMBS_DOWN]::before {
+  content: '👎';
+}
+
+[emoji=LAUGH]::before {
+  content: '😄';
+}
+
+[emoji=HOORAY]::before {
+  content: '🎉';
+}
+
+[emoji=CONFUSED]::before {
+  content: '😕';
+}
+
+[emoji=HEART]::before {
+  content: '❤️';
+}
+
+[emoji=ROCKET]::before {
+  content: '🚀';
+}
+
+[emoji=EYES]::before {
+  content: '👀';
+}

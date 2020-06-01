@@ -30,12 +30,4 @@ export class DiscussComponent implements OnInit {
     ).subscribe();
     this.update$.next();
   }
-
-  create(body: string): void {
-    if (this.discuss.noIssue) {
-      this.discuss.createIssue(body).subscribe();
-    } else {
-      this.discuss.addComment(body).subscribe();
-    }
-  }
 }

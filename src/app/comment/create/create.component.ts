@@ -1,5 +1,5 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { DiscussService } from '../services/discuss.service';
 
 @Component({
   selector: 'app-create',
@@ -7,18 +7,9 @@ import { Subject } from 'rxjs';
   styleUrls: ['./create.component.scss'],
 })
 export class CreateComponent implements OnInit {
-  constructor() {
+  constructor(public discuss: DiscussService) {
   }
-
-  @Output()
-  create = new Subject<string>();
-  body = '';
 
   ngOnInit(): void {
-  }
-
-  submit(): void {
-    this.create.next(this.body);
-    this.body = '';
   }
 }
