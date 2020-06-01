@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { NavigationEnd, Router } from '@angular/router';
 import { merge, Subject } from 'rxjs';
 import { filter, switchMap, tap } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 import { DiscussService } from '../services/discuss.service';
 
 @Component({
@@ -14,8 +15,8 @@ export class DiscussComponent implements OnInit {
   constructor(public discuss: DiscussService, private router: Router, private cdr: ChangeDetectorRef) {
   }
 
-  owner = 'site-wangke';
-  repo = 'blog';
+  owner = environment.owner;
+  repo = environment.repo;
   update$ = new Subject<string>();
 
   ngOnInit(): void {
