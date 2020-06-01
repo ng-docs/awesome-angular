@@ -11,9 +11,13 @@
     <a href="javascript:void(0)" (click)="discuss.quote(comment.body)">
       <app-icon-quote></app-icon-quote>
     </a>
+    <a href="javascript:void(0)" *ngIf="comment.viewerDidAuthor" (click)="discuss.startEdit(comment)">
+      <app-icon-edit></app-icon-edit>
+    </a>
   </div>
   <div class="body">
-    <div [innerHTML]="comment.bodyHTML | safeHtml"></div>
+    <div *ngIf="!discuss.isEditing(comment)" class="comment-body" [innerHTML]="comment.bodyHTML | safeHtml"></div>
+    <app-edit *ngIf="discuss.isEditing(comment)"></app-edit>
   </div>
   <div class="footer">
     <app-reaction-list [items]="comment.reactionGroups"

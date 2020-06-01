@@ -34,11 +34,13 @@ export class DiscussService {
   constructor(private github: GithubService) {
   }
 
+  private editingSubject: Issue | IssueComment;
   private query: QueryIssuesQuery;
   private owner: string;
   private repo: string;
   private url: string;
   changes$ = new Subject<void>();
+  creatingText = '';
   editingText = '';
 
   get issues() {
@@ -191,13 +193,37 @@ export class DiscussService {
 
   addIssueOrComment(): Observable<QueryIssuesQuery> {
     if (this.noIssue) {
-      return this.createIssue(this.editingText).pipe(tap(() => this.editingText = ''));
+      return this.createIssue(this.creatingText).pipe(tap(() => this.creatingText = ''));
     } else {
-      return this.addComment(this.editingText).pipe(tap(() => this.editingText = ''));
+      return this.addComment(this.creatingText).pipe(tap(() => this.creatingText = ''));
     }
   }
 
   quote(body: string): void {
-    this.editingText = body.replace(/^/mg, '> ') + '\n';
+    this.creatingText = body.replace(/^/mg, '> ') + '\n';
+  }
+
+  startEdit(subject: Issue | IssueComment): void {
+    this.editingText = subject.body;
+    this.editingSubject = subject;
+  }
+
+  isEditing(subject: Issue | IssueComment): boolean {
+    return this.editingSubject?.id === subject?.id;
+  }
+
+  submitEdit(): void {
+    const subject = this.editingSubject;
+    const task$ = (subject?.__typename === 'Issue') ?
+      this.updateIssue(subject?.id, this.editingText) :
+      this.updateComment(subject?.id, this.editingText);
+    task$.pipe(
+      tap(() => this.editingText = ''),
+      tap(() => this.stopEdit()),
+    ).subscribe();
+  }
+
+  stopEdit(): void {
+    this.editingSubject = undefined;
   }
 }

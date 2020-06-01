@@ -1,5 +1,6 @@
 <mat-form-field>
   <mat-label>请输入评论 (支持 Markdown)</mat-label>
-  <textarea cdkTextareaAutosize matInput [cdkAutosizeMinRows]="2" [(ngModel)]="discuss.editingText"></textarea>
+  <textarea cdkTextareaAutosize matInput [cdkAutosizeMinRows]="2" [(ngModel)]="discuss.creatingText"></textarea>
 </mat-form-field>
 <button mat-button color="primary" (click)="discuss.addIssueOrComment().subscribe()">提交</button>
+<button mat-button (click)="discuss.creatingText = ''">重置</button>

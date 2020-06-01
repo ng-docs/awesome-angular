@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DiscussService } from '../../services/discuss.service';
 
 @Component({
@@ -10,9 +10,6 @@ export class EditComponent implements OnInit {
 
   constructor(public discuss: DiscussService) {
   }
-
-  @Input()
-  subjectId: string;
 
   ngOnInit(): void {
   }
