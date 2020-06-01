@@ -4,15 +4,6 @@
   display: flex;
 }
 
-
-.avatar {
-  flex: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 3px;
-  margin-right: $size-md;
-}
-
 .comment {
   flex: auto;
   border: 1px solid #c0d3eb;

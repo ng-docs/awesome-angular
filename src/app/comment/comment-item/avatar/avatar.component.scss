@@ -1,0 +1,13 @@
+@import "common";
+
+:host {
+  display: block;
+  flex: none;
+}
+
+img {
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+  margin-right: $size-md;
+}

@@ -9,6 +9,7 @@ import {
   AddReactionMutation,
   CreateIssueGQL,
   CreateIssueMutation,
+  GetViewerGQL,
   QueryIssuesGQL,
   QueryIssuesQuery,
   QueryRepositoryGQL,
@@ -21,8 +22,8 @@ import {
   UpdateIssueGQL,
   UpdateIssueMutation,
 } from '../../../../types';
+import { QViewer } from './q-types';
 import { Query } from './query';
-import { UserModel } from './user.model';
 
 function optionsWith(accessToken: string) {
   if (!accessToken) {
@@ -43,6 +44,7 @@ function optionsWith(accessToken: string) {
 })
 export class GithubService {
   constructor(private http: HttpClient,
+              private gqlGetViewer: GetViewerGQL,
               private gqlQueryIssue: QueryIssuesGQL,
               private gqlQueryRepository: QueryRepositoryGQL,
               private qglCreateIssue: CreateIssueGQL,
@@ -71,8 +73,8 @@ export class GithubService {
     );
   }
 
-  getCurrentUser(accessToken: string): Observable<UserModel> {
-    return this.http.get<UserModel>(`https://api.github.com/user`, { headers: { Authorization: `token ${accessToken}` } });
+  getViewer(accessToken: string): Observable<QViewer> {
+    return this.gqlGetViewer.fetch({}, optionsWith(accessToken)).pipe(map(resp => resp.data.viewer));
   }
 
   queryRepository(owner: string, name: string, accessToken: string): Observable<QueryRepositoryQuery> {

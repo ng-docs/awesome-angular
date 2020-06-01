@@ -4,8 +4,8 @@ import { map, publishReplay, refCount, switchMap, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { Issue, IssueComment, QueryIssuesQuery, ReactionContent } from '../../../types';
 import { GithubService } from './github-api/github.service';
+import { QIssue, QViewer } from './github-api/q-types';
 import { Query } from './github-api/query';
-import { UserModel } from './github-api/user.model';
 
 const client_id = environment.clientId;
 const client_secret = environment.clientSecret;
@@ -22,7 +22,7 @@ function getTitle(): string {
   return document.title.replace(/^(.*) - .*/, '$1').trim();
 }
 
-function getCommentsOf(issue: DiscussService['issues'][0]) {
+function getCommentsOf(issue: QIssue) {
   return issue.comments.nodes.map(it => it.__typename === 'IssueComment' ? it : undefined);
 }
 
@@ -57,7 +57,7 @@ export class DiscussService {
       .reduce((prev, length) => prev + length, 0);
   }
 
-  private get firstIssue(): this['issues'][0] {
+  private get firstIssue(): QIssue {
     return this.issues?.[0];
   }
 
@@ -65,10 +65,10 @@ export class DiscussService {
     return !this.issues?.length;
   }
 
-  private _me: UserModel;
+  private _viewer: QViewer;
 
-  get me(): Readonly<UserModel> {
-    return this._me;
+  get viewer(): QViewer {
+    return this._viewer;
   }
 
   loading = true;
@@ -98,7 +98,7 @@ export class DiscussService {
     return getCommentsOf(issue);
   }
 
-  startup(): Observable<UserModel> {
+  startup(): Observable<QViewer> {
     if (this.accessToken) {
       return this.getCurrentUser();
     } else {
@@ -109,8 +109,8 @@ export class DiscussService {
 
   getCurrentUser() {
     this.loading = true;
-    return this.github.getCurrentUser(this.accessToken).pipe(
-      tap(user => this._me = user),
+    return this.github.getViewer(this.accessToken).pipe(
+      tap(viewer => this._viewer = viewer),
       tap(() => this.changes$.next()),
       tap(() => this.loading = false, () => this.loading = false),
     );
@@ -118,7 +118,7 @@ export class DiscussService {
 
   logout(): void {
     localStorage.removeItem(KEY_ACCESS_TOKEN);
-    this._me = undefined;
+    this._viewer = undefined;
   }
 
   enter(owner: string, repo: string, url: string): void {
@@ -180,10 +180,10 @@ export class DiscussService {
     );
   }
 
-  login(code: string): Observable<UserModel> {
+  login(code: string): Observable<QViewer> {
     return this.github.getAccessToken(code, client_id, client_secret).pipe(
       tap(accessToken => this.accessToken = accessToken),
-      switchMap(accessToken => this.github.getCurrentUser(accessToken)),
+      switchMap(accessToken => this.github.getViewer(accessToken)),
     );
   }
 

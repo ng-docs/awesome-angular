@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { SharedModule } from '../shared/shared.module';
+import { AvatarComponent } from './comment-item/avatar/avatar.component';
 import { CommentItemComponent } from './comment-item/comment-item.component';
 import { EditComponent } from './comment-item/edit/edit.component';
 import { FriendlyTimePipe } from './comment-item/friendly-time.pipe';
@@ -37,6 +38,7 @@ import { UserStatusComponent } from './user-status/user-status.component';
     IconQuoteComponent,
     IconEditComponent,
     EditComponent,
+    AvatarComponent,
   ],
 
   imports: [

@@ -5,6 +5,6 @@
 </div>
 <app-comment-list *ngIf="!discuss.noIssue"></app-comment-list>
 <div class="d-flex">
-  <img class="avatar" [alt]="discuss.me.name" [src]="discuss.me.avatar_url|safeResourceUrl">
+  <app-avatar [user]="discuss.viewer"></app-avatar>
   <app-create class="flex-spacer"></app-create>
 </div>

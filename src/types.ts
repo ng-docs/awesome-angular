@@ -20199,6 +20199,19 @@ export type CreateIssueMutation = (
 }
   );
 
+export type GetViewerQueryVariables = {};
+
+
+export type GetViewerQuery = (
+  { __typename?: 'Query' }
+  & {
+  viewer: (
+    { __typename?: 'User' }
+    & Pick<User, 'id' | 'login' | 'avatarUrl' | 'name'>
+    )
+}
+  );
+
 export type QueryIssuesQueryVariables = {
   filter: Scalars['String'];
 };
@@ -20432,6 +20445,25 @@ export const CreateIssueDocument = gql`
 })
 export class CreateIssueGQL extends Apollo.Mutation<CreateIssueMutation, CreateIssueMutationVariables> {
   document = CreateIssueDocument;
+
+}
+
+export const GetViewerDocument = gql`
+  query getViewer {
+    viewer {
+      id
+      login
+      avatarUrl
+      name
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class GetViewerGQL extends Apollo.Query<GetViewerQuery, GetViewerQueryVariables> {
+  document = GetViewerDocument;
 
 }
 
