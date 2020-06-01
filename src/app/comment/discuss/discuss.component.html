@@ -4,4 +4,7 @@
   <app-user-status></app-user-status>
 </div>
 <app-comment-list *ngIf="!discuss.noIssue"></app-comment-list>
-<app-create></app-create>
+<div class="d-flex">
+  <img class="avatar" [alt]="discuss.me.name" [src]="discuss.me.avatar_url|safeResourceUrl">
+  <app-create class="flex-spacer"></app-create>
+</div>
