@@ -70,4 +70,4 @@ URL: https://medium.com/@shairez/angular-routing-a-better-pattern-for-large-scal
 
 ## 如何关联论坛
 
-参见 <https://github.com/gitalk/gitalk/blob/master/readme-cn.md> 中的设置，并将参数更新到 `src/app/shared/comment-list/comment-list.component.ts` 文件中。
+编辑 `src/environments/environment.prod.ts`，并且换上你的参数即可。其中 redirectUri 只要把域名部分替换成你的域名即可，其它参数的配置方式参见 Github 的文档。
