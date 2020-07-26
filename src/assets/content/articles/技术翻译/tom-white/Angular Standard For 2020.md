@@ -8,7 +8,7 @@ Here’s my first public airing of a recently reworked document for coding stand
 
 Hope you find it useful for your team.
 
-希望你能发现它对你的团队有用。
+希望它对你的团队有用。
 
 ## Project
 
