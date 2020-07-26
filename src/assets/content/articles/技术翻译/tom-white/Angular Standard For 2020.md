@@ -1,3 +1,7 @@
+# Angular Standard For 2020
+
+# Angular 2020 编码标准
+
 Here’s my first public airing of a recently reworked document for coding standards that I revise every year and share with all the teams I work with. It’s not just my views, I take all suggestions and criticisms. I’d welcome feedback so I can continue to improve this document.
 
 这是我第一次公开刚重写过的关于编码标准的文档，我每年都会修改这些文档，并与我合作过的所有团队分享。这不仅是我自己的观点，还包括我收到的各种建议和批评。我非常欢迎反馈意见，以便继续改进此文档。
@@ -6,9 +10,9 @@ Hope you find it useful for your team.
 
 希望你能发现它对你的团队有用。
 
-# Project
+## Project
 
-# 项目
+## 项目
 
 Use the [Angular CLI](https://cli.angular.io/).
 
@@ -62,7 +66,7 @@ Write unit tests as you develop (or before; TDD) - they’ll always be better qu
 
 在开发过程中（或之前，如果你用的是 TDD）来编写单元测试 - 它们的质量始终比以后再编写它们更好。
 
-# Typescript
+## Typescript
 
 Make use of Typescript’s advanced features when possible. ES6 and ES7 commands means less code, and clearer intent.
 
@@ -72,7 +76,7 @@ Never use type **any** or infer it by not defining the type for an unassigned va
 
 永远不要使用类型 **any** 或对未赋值过的变量定义使用类型推断 - 除非在一个非常罕见的例外中，你被迫如此。在这种情况下，你应该注释其原因。这是因为 **any** 会造成巨大的 bug 机会。你可以使用 lint 规则来强制执行此操作。
 
-# Angular
+## Angular
 
 Utilize Component Architecture and Feature Modules.
 
@@ -82,9 +86,9 @@ Lazy load resources whenever possible
 
 尽可能延迟加载资源
 
-## About Component Architecture:
+### About Component Architecture:
 
-## 关于组件架构：
+### 关于组件架构：
 
 *   Smart / Container Components: Communicate with Services and render child components
 
@@ -138,7 +142,7 @@ Gotcha: In version 10, classes that use Angular features and do not have an Angu
 
 注意坑：在版本 10 中，不再支持那些使用了 Angular 特性却不带 Angular 装饰器的类。
 
-# RxJS
+## RxJS
 
 Use **Async** **Pipe** as much as possible — it reduces boilerplate. But if you can’t, remember to unsubscribe any observables that may still be running in **ngOnDestroy,** so use [@ngneat/until-destroy](https://www.npmjs.com/package/@ngneat/until-destroy).
 
@@ -152,9 +156,9 @@ Gotcha: remember multiple Async pipes for the same API request (or any Cold Obse
 
 坑：记住发起同一个 API 请求（或任何 Cold Observable）的多个 Async 管道会在每个管道上都重新触发这个可观察对象。所以它会调用 API 很多次。
 
-# State Management
+## State Management
 
-# 状态管理
+## 状态管理
 
 Use NgRx — now that it’s the recommended state management tool for Angular
 
@@ -176,9 +180,9 @@ In some cases, [@ngrx/data](https://ngrx.io/guide/data) can be used to replace [
 
 在某些情况下，[@ngrx/data](https://ngrx.io/guide/data) 可以用来代替 [@ngrx/entity](https://ngrx.io/guide/entity)，以进一步减少样板代码。
 
-# Code Management
+## Code Management
 
-# 代码管理
+## 代码管理
 
 Use **git rebase [trunk]** on your feature branch regularly to avoid nasty merge conflicts.
 
