@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Issue, IssueComment, User } from '../../../types';
 import { DiscussService } from '../services/discuss.service';
-import { QViewer } from '../services/github-api/q-types';
 
 @Component({
   selector: 'app-comment-item',
@@ -16,7 +15,7 @@ export class CommentItemComponent implements OnInit {
   @Input()
   comment: Issue | IssueComment;
 
-  get user(): QViewer {
+  get user(): User {
     return this.comment.author as User;
   }
 
