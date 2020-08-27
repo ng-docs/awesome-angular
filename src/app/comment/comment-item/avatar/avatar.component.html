@@ -1,1 +1,3 @@
-<img *ngIf="user" [alt]="user.name" [src]="user.avatarUrl|safeResourceUrl">
+<a [href]="user.url" target="_blank" rel="noopener noreferrer">
+  <img *ngIf="user" [alt]="user.name" [src]="user.avatarUrl|safeResourceUrl">
+</a>

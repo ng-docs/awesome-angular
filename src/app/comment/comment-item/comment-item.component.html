@@ -2,7 +2,7 @@
 <div class="comment">
   <div class="header">
     <div class="arrow"></div>
-    <span><strong>{{user.name}}</strong> 创建于 {{comment.createdAt|friendlyTime}}</span>
+    <span><strong [title]="user.name">{{user.login}}</strong> 创建于 {{comment.createdAt|friendlyTime}}</span>
     <span *ngIf="comment.lastEditedAt">, 编辑于 {{comment.lastEditedAt|friendlyTime}}</span>
     <span class="flex-spacer"></span>
     <span class="chip"

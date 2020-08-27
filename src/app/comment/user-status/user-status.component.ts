@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../../types';
 import { DiscussService } from '../services/discuss.service';
-import { QViewer } from '../services/github-api/q-types';
 
 @Component({
   selector: 'app-user-status',
@@ -12,8 +12,8 @@ export class UserStatusComponent implements OnInit {
   constructor(public discuss: DiscussService) {
   }
 
-  get user(): QViewer {
-    return this.discuss.viewer;
+  get user(): User {
+    return this.discuss.viewer as User;
   }
 
   ngOnInit(): void {

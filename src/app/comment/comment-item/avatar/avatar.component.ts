@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { QViewer } from '../../services/github-api/q-types';
+import { User } from '../../../../types';
 
 @Component({
   selector: 'app-avatar',
@@ -12,7 +12,7 @@ export class AvatarComponent implements OnInit {
   }
 
   @Input()
-  user: QViewer;
+  user: User;
 
   ngOnInit(): void {
   }

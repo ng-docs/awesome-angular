@@ -3,7 +3,7 @@
 </ng-container>
 <ng-container *ngIf="!discuss.loading">
   <ng-container *ngIf="user">
-    <a [href]="user.html_url" target="_blank">{{user.name}}</a>
+    <a [href]="user.url" target="_blank">{{user.name}}</a>
     &nbsp;
     <a href="javascript:void(0)" (click)="discuss.logout()">注销</a>
   </ng-container>
