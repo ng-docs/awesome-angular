@@ -12,4 +12,4 @@ git:
 before_install:
   - sudo locale-gen zh_CN.GB18030
 script:
-  - "./deploy-cn.sh"
+  - "./build.sh"
