@@ -1,10 +1,13 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { formatDate } from '@angular/common';
+import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
 import { differenceInDays, differenceInHours, differenceInMinutes, differenceInMonths, parseISO } from 'date-fns';
 
 @Pipe({
   name: 'friendlyTime',
 })
 export class FriendlyTimePipe implements PipeTransform {
+  constructor(@Inject(LOCALE_ID) private localeId) {
+  }
 
   transform(timeString: string): string {
     const now = new Date();
@@ -22,7 +25,7 @@ export class FriendlyTimePipe implements PipeTransform {
     } else if (months < 1) {
       return `${days} 天前`;
     } else {
-      return time.toDateString();
+      return formatDate(time, 'longDate', this.localeId);
     }
   }
 
