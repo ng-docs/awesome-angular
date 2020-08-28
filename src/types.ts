@@ -20207,7 +20207,7 @@ export type GetViewerQuery = (
   & {
   viewer: (
     { __typename?: 'User' }
-    & Pick<User, 'id' | 'login' | 'avatarUrl' | 'name'>
+    & Pick<User, 'id' | 'url' | 'login' | 'avatarUrl' | 'name'>
     )
 }
   );
@@ -20452,6 +20452,7 @@ export const GetViewerDocument = gql`
   query getViewer {
     viewer {
       id
+      url
       login
       avatarUrl
       name
