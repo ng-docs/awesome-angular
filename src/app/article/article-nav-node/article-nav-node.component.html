@@ -1,6 +1,6 @@
 <ng-container *ngFor="let item of data.children; index as index">
   <a *ngIf="item.type === 'article'" mat-list-item routerLinkActive="active"
-     [routerLink]="['/articles', item.id]">
+     [routerLink]="['/articles', item.id]" appScrollIntoView>
     <div class="title" [title]="item.title">
       <span *ngIf="item.level > 1">{{index}}.&nbsp;</span>
       {{item.title}}

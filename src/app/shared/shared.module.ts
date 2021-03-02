@@ -11,6 +11,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { PartialScrollerDirective } from './directives/partial-scroller.directive';
+import { ScrollIntoViewDirective } from './directives/scroll-into-view.directive';
 import { ToggleDirective } from './directives/toggle.directive';
 import { IconGithubComponent } from './icons/icon-github/icon-github.component';
 import { IconWangkeComponent } from './icons/icon-wangke/icon-wangke.component';
@@ -54,6 +55,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
     IconWangkeComponent,
     SafeResourceUrlPipe,
     SafeHtmlPipe,
+    ScrollIntoViewDirective,
   ],
   exports: [
     MatToolbarModule,
@@ -72,6 +74,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
     OutlineComponent,
     SafeResourceUrlPipe,
     SafeHtmlPipe,
+    ScrollIntoViewDirective,
   ],
 })
 export class SharedModule {
