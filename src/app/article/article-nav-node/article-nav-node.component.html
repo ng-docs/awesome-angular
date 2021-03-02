@@ -14,7 +14,7 @@
     </mat-list-item>
     <!--use hidden instead of ngIf to make SSR prerender happy-->
     <div [hidden]="!toggle.isOn">
-      <app-nav-node [data]="item"></app-nav-node>
+      <app-article-nav-node [data]="item"></app-article-nav-node>
     </div>
   </div>
 </ng-container>

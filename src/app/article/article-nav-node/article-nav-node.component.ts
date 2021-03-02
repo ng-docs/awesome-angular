@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ArticleGroupModel } from '../data/article-group.model';
 import { ArticleModel } from '../data/article.model';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-nav-node',
-  templateUrl: './nav-node.component.html',
-  styleUrls: ['./nav-node.component.scss'],
+  selector: 'app-article-nav-node',
+  templateUrl: './article-nav-node.component.html',
+  styleUrls: ['./article-nav-node.component.scss'],
 })
-export class NavNodeComponent implements OnInit {
+export class ArticleNavNodeComponent implements OnInit {
 
   @Input()
   data: ArticleGroupModel;

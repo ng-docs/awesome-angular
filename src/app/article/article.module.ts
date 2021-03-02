@@ -6,10 +6,10 @@ import { SharedModule } from '../shared/shared.module';
 import { ArticleHomeComponent } from './article-home/article-home.component';
 import { ArticleLayoutComponent } from './article-layout/article-layout.component';
 import { ArticleListComponent } from './article-list/article-list.component';
+import { ArticleNavNodeComponent } from './article-nav-node/article-nav-node.component';
 
 import { ArticleRoutingModule } from './article-routing.module';
 import { ArticleShowComponent } from './article-show/article-show.component';
-import { NavNodeComponent } from './nav-node/nav-node.component';
 
 @NgModule({
   imports: [
@@ -23,7 +23,7 @@ import { NavNodeComponent } from './nav-node/nav-node.component';
     ArticleLayoutComponent,
     ArticleListComponent,
     ArticleShowComponent,
-    NavNodeComponent,
+    ArticleNavNodeComponent,
     ArticleHomeComponent,
   ],
 })
