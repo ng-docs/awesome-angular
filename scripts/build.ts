@@ -1,5 +1,5 @@
-import * as glob from 'glob';
 import * as fs from 'fs';
+import * as glob from 'glob';
 import { buildArticles, buildArticleTree, buildAuthors } from './utils/builder';
 
 function buildAll(): void {

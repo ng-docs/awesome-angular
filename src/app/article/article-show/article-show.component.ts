@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { findArticleById } from '../data/articles';
 import { articleIsTranslation, ArticleModel } from '../data/article.model';
+import { findArticleById } from '../data/articles';
 
 @Component({
   selector: 'app-article-show',

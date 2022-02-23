@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AuthorModel } from '../data/author.model';
-import { findAuthorByName } from '../data/authors';
 import { ArticleModel } from '../../article/data/article.model';
 import { flattenArticles } from '../../article/data/articles';
+import { AuthorModel } from '../data/author.model';
+import { findAuthorByName } from '../data/authors';
 
 @Component({
   selector: 'app-author-show',

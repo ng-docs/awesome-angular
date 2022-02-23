@@ -2,9 +2,7 @@
 
 # 使用 @ngx-translate/core 翻译（i18n）你的 Angular 应用
 
-Our apps are used by different people, with differnet languages and different gender. So, to provide them the best experience, we want to provide them the content of the app in their language, or we want to address our customers according to their gender.
-This is only possibile with some translating tools. Angular has one on board, (@angular/i18n) wich is not very handy, in my opinion.
-I would like to introduce you to a nice alternative here
+Our apps are used by different people, with differnet languages and different gender. So, to provide them the best experience, we want to provide them the content of the app in their language, or we want to address our customers according to their gender. This is only possibile with some translating tools. Angular has one on board, (@angular/i18n) wich is not very handy, in my opinion. I would like to introduce you to a nice alternative here
 
 我们的应用会由不同的用户使用，他们有着不同的语言、不同的性别。因此，为了让他们得到最好的体验，我们希望以他们的语言为其提供应用内容，或者根据其性别称呼客户。要实现这些，需要一些翻译工具。Angular 有一个（@angular/i18n），但在我看来它不是很方便。我想向您介绍一个不错的替代方案。
 
@@ -64,8 +62,7 @@ Define the translations
 
 接下来，定义翻译结果
 
-Put your translation files in a json file which will be imported by the TranslateHttpLoader
-The following translations should be stored in en.json
+Put your translation files in a json file which will be imported by the TranslateHttpLoader The following translations should be stored in en.json
 
 把你的这些翻译结果放到一个 json 文件中，该文件将由 TranslateHttpLoader 导入。下面的翻译结果应该保存到 en.json 中。
 
@@ -75,8 +72,7 @@ The following translations should be stored in en.json
 }
 ```
 
-Use the Service, Pipe or the Directive
-   TranslateService
+Use the Service, Pipe or the Directive TranslateService
 
 最后，使用 TranslateService 服务、管道或指令
 
@@ -110,8 +106,7 @@ TranslateDirective
 
 ## 使用 ngx-translate-messageformat-compiler 进行复数化和性别化
 
-Compiler for ngx-translate that uses messageformat.js to compile translations.
-It uses ICU syntax for handling pluralization and gender
+Compiler for ngx-translate that uses messageformat.js to compile translations. It uses ICU syntax for handling pluralization and gender
 
 这是一个供 ngx-translate 使用的编译器，它使用 messageformat.js 来编译翻译结果。它使用 ICU 语法来处理复数化和性别化问题
 
@@ -167,9 +162,7 @@ Please note that while you can still use nesting in your translations (`{ login:
 
 ## 加载翻译文件
 
-To load the files we have to define a loader.
-By default, there is no loader available. You can add translations manually using setTranslation but it is better to use a loader. You can write your own loader, or import an existing one. For example you can use the TranslateHttpLoader that will load translations from files using HttpClient.
-To use it, you need to install the http-loader package from @ngx-translate:
+To load the files we have to define a loader. By default, there is no loader available. You can add translations manually using setTranslation but it is better to use a loader. You can write your own loader, or import an existing one. For example you can use the TranslateHttpLoader that will load translations from files using HttpClient. To use it, you need to install the http-loader package from @ngx-translate:
 
 要加载这些文件，我们就得定义一个 loader。默认情况下，没有可用的加载器。你可以使用setTranslation手动添加翻译，但最好是使用loader。你可以编写自己的loader，也可以导入一个已有的loader。例如，你可以使用TranslateHttpLoader，它会使用HttpClient加载来自文件的翻译。要使用它，你需要从@ ngx-translate安装http-loader包：
 
@@ -177,8 +170,7 @@ To use it, you need to install the http-loader package from @ngx-translate:
 npm install @ngx-translate/http-loader --save
 ```
 
-There are two types of translation files out there. .json and .po
-There is a loader for po files aswell but it uses the deprecated Http service so we have to go with our own (because of HttpClient):
+There are two types of translation files out there. .json and .po There is a loader for po files aswell but it uses the deprecated Http service so we have to go with our own (because of HttpClient):
 
 翻译文件有两种类型：.json 和 .po。还有一个用于 po 文件的加载器，但它使用了已废弃的 Http 服务，所以我们必须使用自己的（因为有 HttpClient 了）：
 
@@ -283,8 +275,7 @@ export class AppModule {
 
 ## 翻译结果文件
 
-Files look like this
-en.po
+Files look like this en.po
 
 这些文件就像下面的 en.po 一样
 

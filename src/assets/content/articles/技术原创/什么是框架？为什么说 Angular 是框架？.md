@@ -2,26 +2,26 @@
 
 先摘录并翻译一段 wiki：
 
-> In [computer programming](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Computer_programming), a **software framework** is an [abstraction](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Abstraction_%28computer_science%29) in which [software](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Software) providing generic functionality can be selectively changed by additional user-written code, thus providing application-specific software. A software framework provides a standard way to build and deploy applications. A software framework is a universal, reusable [software environment](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Software_environment_%28disambiguation%29) that provides particular functionality as part of a larger [software platform](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Software_platform) to facilitate development of [software applications](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Software_application), products and solutions. Software frameworks may include support programs, compilers, code libraries, tool sets, and [application programming interfaces (APIs)](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Application_programming_interface) that bring together all the different [components](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Software_component) to enable development of a [project](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Software_project) or [system](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Software_system).  
->   
+> In [computer programming](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Computer_programming), a **software framework** is an [abstraction](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Abstraction_%28computer_science%29) in which [software](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Software) providing generic functionality can be selectively changed by additional user-written code, thus providing application-specific software. A software framework provides a standard way to build and deploy applications. A software framework is a universal, reusable [software environment](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Software_environment_%28disambiguation%29) that provides particular functionality as part of a larger [software platform](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Software_platform) to facilitate development of [software applications](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Software_application), products and solutions. Software frameworks may include support programs, compilers, code libraries, tool sets, and [application programming interfaces (APIs)](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Application_programming_interface) that bring together all the different [components](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Software_component) to enable development of a [project](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Software_project) or [system](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Software_system).
+>
 > 在编程领域，软件框架是指一种抽象形式，它提供了一个具有通用功能的软件，这些功能可以由使用者编写代码来有选择的进行更改，从而提供服务于特定应用的软件。软件框架提供了一种标准的方式来构建并部署应用。  
-> 软件框架是一种通用的、可复用的软件环境，它提供特定的功能，作为一个更大的软件平台的一部分，用以促进软件应用、产品和解决方案的开发工作。软件框架可能会包含支撑程序、编译器、代码、库、工具集以及 API，它把所有这些部件汇集在一起，以支持项目或系统的开发。  
->   
-> Frameworks have key distinguishing features that separate them from normal [libraries](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Library_%28computing%29):  
->   
-> 框架和普通的库在特性上具有一些关键性的区别：  
->   
-> 1. [inversion of control](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Inversion_of_control)_: In a framework, unlike in libraries or in standard user applications, the overall program's [flow of control](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Control_flow) is not dictated by the caller, but by the framework.[[1]](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Software_framework%23cite_note-1)  
+> 软件框架是一种通用的、可复用的软件环境，它提供特定的功能，作为一个更大的软件平台的一部分，用以促进软件应用、产品和解决方案的开发工作。软件框架可能会包含支撑程序、编译器、代码、库、工具集以及 API，它把所有这些部件汇集在一起，以支持项目或系统的开发。
 >
->    控制反转：与库或普通的应用不同，在框架中，应用的宏观控制流程不是由调用者决定的，而是由框架本身。  
->   
-> 2. [extensibility](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Extensibility)_: A user can extend the framework - usually by selective overriding; or programmers can add specialized user code to provide specific functionality.  
+> Frameworks have key distinguishing features that separate them from normal [libraries](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Library_%28computing%29):
 >
->    可扩展性：用户可以扩展该框架 —— 通常是有选择的进行改写（Override）或者由程序员添加专门的用户代码来提供特定的功能。  
->   
-> 3. [non-modifiable framework code](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Open/closed_principle)_: The framework code, in general, is not supposed to be modified, while accepting user-implemented extensions. In other words, users can extend the framework, but should not modify its code.  
+> 框架和普通的库在特性上具有一些关键性的区别：
 >
->    不可修改框架代码：通常，框架代码都不打算让你修改，而是接受由用户自己实现的某些扩展。换句话说，用户可以扩展该框架，但是不应该修改它的代码。
+> 1. [inversion of control](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Inversion_of_control)_: In a framework, unlike in libraries or in standard user applications, the overall program's [flow of control](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Control_flow) is not dictated by the caller, but by the framework.[[1]](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Software_framework%23cite_note-1)
+     >
+     >    控制反转：与库或普通的应用不同，在框架中，应用的宏观控制流程不是由调用者决定的，而是由框架本身。
+>
+> 2. [extensibility](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Extensibility)_: A user can extend the framework - usually by selective overriding; or programmers can add specialized user code to provide specific functionality.
+     >
+     >    可扩展性：用户可以扩展该框架 —— 通常是有选择的进行改写（Override）或者由程序员添加专门的用户代码来提供特定的功能。
+>
+> 3. [non-modifiable framework code](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Open/closed_principle)_: The framework code, in general, is not supposed to be modified, while accepting user-implemented extensions. In other words, users can extend the framework, but should not modify its code.
+     >
+     >    不可修改框架代码：通常，框架代码都不打算让你修改，而是接受由用户自己实现的某些扩展。换句话说，用户可以扩展该框架，但是不应该修改它的代码。
 
 形象点比喻（但不够严谨），框架就是条生产线，这条生产线上有很多工人（代码）在工作。生产线的管理者（程序员）负责管理这条生产线，比如说有的工序是空的，那么你就可以安排自己的工人进去，让他去达成你的目标。有些工序上的工人干的工作和你预期的不同，你也可以安排自己的工人把他替换掉。
 

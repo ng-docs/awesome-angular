@@ -11,21 +11,17 @@
 
 ## 太长不读版：它对应于 Egghead 上的课程
 
-
 [View on Egghead.io](https://egghead.io/lessons/angular-execute-code-when-the-rxjs-observable-terminates-with-the-finalize-operator)
 
 [在 Egghead.io 上查看](https://egghead.io/lessons/angular-execute-code-when-the-rxjs-observable-terminates-with-the-finalize-operator)
-
 
 ## Disabling/enabling a button during an Angular HTTP request
 
 ## 在 Angular HTTP 请求期间禁用/启用某个按钮
 
-
 Let’s take a look at an RxJS `Observable` subscription:
 
 来看看 RxJS 的 `Observable` 订阅：
-
 
 ```typescript
 this.someService.fetchDataFromApi()
@@ -42,7 +38,6 @@ this.someService.fetchDataFromApi()
 Assume this call is triggered by a button click on our form. Many people still double-click on those buttons and we definitely want to prevent 2 calls being sent to our backend API. There are different ways to avoid that of course, but for the purpose of this exable, let’s go the route of disabling the button once it has been clicked, and re-enable it when the http call terminates.
 
 假设我们表单上的某个按钮会触发这个调用。很多人还可能双击那些按钮，而我们肯定不希望往后端 API 发送两个调用。当然，有多种方法可以避免这种情况，我们这里要用的方案是：一旦点击某个按钮，就禁用它，并在 http 调用结束时重新启用它。
-
 
 ```typescript
 this.isLoading = true;
@@ -63,16 +58,13 @@ Whenever `isLoading` is set, we disable our button on the form. Now as in the ex
 
 无论何时设置了 `isLoading`，我们都会禁用表单上的按钮。就像之前的例子中一样，`isLoading = false` 这段代码写了两次，因为无论成功还是失败，我们都要重新启用该按钮。
 
-
 ### Option 1: Using the `tap` operator?
 
 ### 选项 1：使用 `tap` 操作符？
 
-
 One option could be the `tap` operator. For instance:
 
 第一个选项是 `tap` 操作符。例如：
-
 
 ```typescript
 this.isLoading = true;
@@ -132,7 +124,6 @@ Here’s an example of using `tap` like that:
 
 ### 选项 2：使用 `finalize` 操作符！
 
-
 Another option is to use the `finalize` operator. It’s like in the `try-catch-finally` programming construct which is present in most C based programming languages. Hence, we can modify our example from before to the following:
 
 另一种选择是使用 `finalize` 操作符。就像在大多数基于 C 的编程语言中存在的 `try-catch-finally` 结构一样。这样，我们就可以修改前面的例子：
@@ -165,21 +156,17 @@ How does `finalize` work? It basically adds a callback to the teardown of the Ob
 
 ## 结论
 
-
 Note, the `finalize` operator is executed whenever **our Observable terminates**. This is important! For Angular HTTP this works perfectly, because the `Observable` returned by the Angular HTTP service “completes” once the request is done. That might not be the case if you have a custom Observable.
 
 注意，只要**我们的 Observable 终止**，就会执行 `finalize` 操作符 。这很重要！对于 Angular HTTP 来说，这是完美的选择，因为一旦请求完成，Angular HTTP 服务返回的 `Observable` 就会 “完成（complete）”。如果你有自定义的 Observable，情况可能并非如此。
-
 
 Check out [my corresponding video explaining the finalize operator](https://egghead.io/lessons/angular-execute-code-when-the-rxjs-observable-terminates-with-the-finalize-operator) or play directly with this Stackblitz code sample.
 
 查看[我解释 finalize 操作符的视频](https://egghead.io/lessons/angular-execute-code-when-the-rxjs-observable-terminates-with-the-finalize-operator)或者直接看这个 Stackblitz 代码示例。
 
-
 Happy coding!
 
 编码快乐！
-
 
 *Thx [Ben Lesh](https://mobile.twitter.com/BenLesh) for suggesting updates on the article*
 

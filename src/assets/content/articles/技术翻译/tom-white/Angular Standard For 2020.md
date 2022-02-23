@@ -90,25 +90,25 @@ Lazy load resources whenever possible
 
 ### 关于组件架构：
 
-*   Smart / Container Components: Communicate with Services and render child components
+* Smart / Container Components: Communicate with Services and render child components
 
-  智能组件/容器组件：与服务通信并渲染子组件
+智能组件/容器组件：与服务通信并渲染子组件
 
-*   Dumb / Presentation Components: Accepts data via inputs Emit data change via event outputs
+* Dumb / Presentation Components: Accepts data via inputs Emit data change via event outputs
 
-  哑组件/展现组件：通过 Input 接受数据，通过 Output 发送数据变更
+哑组件/展现组件：通过 Input 接受数据，通过 Output 发送数据变更
 
-*   Data flows down and Events emit up.
+* Data flows down and Events emit up.
 
-  数据流向下，事件流向上。
+数据流向下，事件流向上。
 
-*   One-way dataflow promotes reusable components and can increase performance
+* One-way dataflow promotes reusable components and can increase performance
 
-  单向数据流可以推动组件复用，并且可以提高性能
+单向数据流可以推动组件复用，并且可以提高性能
 
-*   There are always occasional exceptions to this rule. When you have nested dumb components, it can be more efficient to have a component service provided on the top-most dumb component that the children can use to share and communicate ui state changes via the top-most emitter. (John Papa suggested this pattern to me)
+* There are always occasional exceptions to this rule. When you have nested dumb components, it can be more efficient to have a component service provided on the top-most dumb component that the children can use to share and communicate ui state changes via the top-most emitter. (John Papa suggested this pattern to me)
 
-  此规则偶尔会出现例外。当你拥有嵌套的哑组件时，在最顶层的哑组件中提供一个组件服务会更有效，子组件们可以共享状态，并通过最顶层的发射器来通报 ui 状态的变化。（John Papa 向我建议了这种模式）
+此规则偶尔会出现例外。当你拥有嵌套的哑组件时，在最顶层的哑组件中提供一个组件服务会更有效，子组件们可以共享状态，并通过最顶层的发射器来通报 ui 状态的变化。（John Papa 向我建议了这种模式）
 
 Use [OnPush Change Detection Strategy](https://netbasal.com/a-comprehensive-guide-to-angular-onpush-change-detection-strategy-5bac493074a4) with Dumb / Presentation Components wherever possible.
 
@@ -122,7 +122,7 @@ Use [Component-provided](https://angular.io/guide/architecture-services#providin
 
 使用[在组件级提供的](https://angular.cn/guide/architecture-services#providing-services)服务，可以降低所有组件的功能复杂性，让它更容易测试。这意味着你的组件应尽可能包含最小代码，而不必将 `**this**` 上下文传递给服务。
 
-Use **trackBy** option on the **\*ngFor** directive — “[Angular 2 — Improve performance with trackBy](https://netbasal.com/angular-2-improve-performance-with-trackby-cc147b5104e5)”
+Use **trackBy** option on the **\*ngFor** directive — “[Angular 2 — Improve performance with trackBy](https://netbasal.com/angular-2-improve-performance-with-trackby-cc147b5104e5)”
 
 在 **\*ngFor** 指令上使用 **trackBy** 选项 - “[Angular 2 - 用 trackBy 提高性能](https://netbasal.com/angular-2-improve-performance-with-trackby-cc147b5104e5)”
 

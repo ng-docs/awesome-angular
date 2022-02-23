@@ -1,14 +1,14 @@
-import { difference, min, uniq, uniqBy } from 'lodash';
+import * as spawn from 'cross-spawn';
 import * as fs from 'fs';
-import { AuthorModel } from '../../src/app/author/data/author.model';
+import { difference, min, uniq, uniqBy } from 'lodash';
 import * as path from 'path';
-import { FileCommitModel } from './file-commit.model';
-import { FileModel } from './file.model';
+import { ArticleGroupModel } from '../../src/app/article/data/article-group.model';
 import { ArticleHistoryModel } from '../../src/app/article/data/article.history.model';
 import { articleIsCover, ArticleModel } from '../../src/app/article/data/article.model';
-import * as spawn from 'cross-spawn';
+import { AuthorModel } from '../../src/app/author/data/author.model';
+import { FileCommitModel } from './file-commit.model';
+import { FileModel } from './file.model';
 import { emailOf, firstOf, lastOf, pathListToTree } from './utils';
-import { ArticleGroupModel } from '../../src/app/article/data/article-group.model';
 
 export function parseCommit(gitLogEntry: string): FileCommitModel {
   const result = new FileCommitModel();

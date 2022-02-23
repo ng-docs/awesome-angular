@@ -1,16 +1,9 @@
 import { expect } from 'chai';
-import {
-  buildArticleTree,
-  buildUuid,
-  findFilesWithDuplicateIds,
-  parseAuthor,
-  parseCommit,
-  splitGitLog,
-} from './builder';
+import { ArticleModel } from '../../src/app/article/data/article.model';
+import { buildArticleTree, buildUuid, findFilesWithDuplicateIds, parseAuthor, parseCommit, splitGitLog } from './builder';
 import { FileCommitModel } from './file-commit.model';
 import { FileModel } from './file.model';
 import { pathListToTree } from './utils';
-import { ArticleModel } from '../../src/app/article/data/article.model';
 
 const log = `commit 303bcb286e7fea09fa5814e68b6384f36cf1d234
 Author: Zhicheng Wang <zcwang@thoughtworks.com>

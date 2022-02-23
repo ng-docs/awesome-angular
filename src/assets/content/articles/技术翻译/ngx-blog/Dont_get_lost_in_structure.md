@@ -73,8 +73,7 @@ Since Angular CLI stepped in most of the Angular projects are scaffold with it. 
 自从 Angular CLI 推出之后，大多数 Angular 项目都是用它搭建的。因此，我们经常会有一个众所周知的项目结构。
 
 In the project root folder we see some files and three folders: "e2e", "node_modules" and "src"
-We want to focus on the `src` folder for now. Here our application code is located.
-Inside the "src" folder we'll see the `app` folder where our application logic is located.
+We want to focus on the `src` folder for now. Here our application code is located. Inside the "src" folder we'll see the `app` folder where our application logic is located.
 
 在项目的根文件夹中，我们看到了一些文件和三个文件夹：`e2e`、`node_modules` 和 `src`。我们现在集中讨论 `src` 文件夹，这里是我们的应用代码。在 `src` 文件夹中，我们会看到应用逻辑所在的 `app` 文件夹。
 
@@ -90,8 +89,7 @@ In there we can split the application in some sub folders to organize our code b
 
 在那里，我们可以把应用分成一些子文件夹来更好地组织我们的代码。这种做法很常见。
 
-First of all we want to create a `feature` folder for our features we want to implement in our app.
-We also want to have a `framework` folder and a `shared` folder.
+First of all we want to create a `feature` folder for our features we want to implement in our app. We also want to have a `framework` folder and a `shared` folder.
 
 首先，我们要为想在应用中实现的那些特性创建一个 `feature` 文件夹。我们还要有一个 `framework` 文件夹和一个 `shared` 文件夹。
 
@@ -124,13 +122,11 @@ Most of the apps have a navigation, a header and something very often called "co
 
 ![架构](images/architecture.png)
 
-Those parts together are known as the <strong>app shell</strong>.
-The app shell is a very important part of your app. It's visible almost everywher and an important piece of code when you start thinking about Progressive Web Applications (PWAs).
+Those parts together are known as the <strong>app shell</strong>. The app shell is a very important part of your app. It's visible almost everywher and an important piece of code when you start thinking about Progressive Web Applications (PWAs).
 
 这些部分加起来被称为**应用外壳（app shell）**。应用外壳是应用中非常重要的一部分。当你开始考虑使用渐进式Web应用（PWA）时，几乎到处都能看到它，并且是代码的重要组成部分。
 
-So where would we expect the app shell to be located?
-Right: in `framework` folder because it's a generaly used functionality.
+So where would we expect the app shell to be located? Right: in `framework` folder because it's a generaly used functionality.
 
 那么，我们应该把应用外壳放到什么位置？说对了！就放到 `framework` 文件夹中，因为它是一种通用的功能。
 
@@ -138,8 +134,7 @@ Right: in `framework` folder because it's a generaly used functionality.
 
 ### 把代码切分成模块
 
-Next let's talk about the `features`.
-To get the idea of the features of an app it's always a good strategy to look at the menu/navigation.
+Next let's talk about the `features`. To get the idea of the features of an app it's always a good strategy to look at the menu/navigation.
 
 接下来让我们谈谈这些 `features`。要了解应用的这些特性，看菜单/导航是一个很好的方式。
 
@@ -181,7 +176,7 @@ in fact that means:
 - <h3>no acme <small>(a component managing everything)</small></h3>
 
   <h3>不要用一个组件管理一切。no acme <small>(a component managing everything)</small></h3>
-  
+
 - <h3>no adme <small>(a directive managing everything)</small></h3>
 
   <h3>不要用一个指令管理一切。no adme <small>(a directive managing everything)</small></h3>
@@ -215,8 +210,7 @@ container components and presentational (or dumb) components.
 
    容器组件可以作为其它组件和逻辑的宿主。它们与服务相连，可以从 api 中获取数据，并把这些数据提供给子组件
 
-1. Dump Components have no dependencies, they only have logic which is directly used for their view. They get all the data they need through the @Input decorators, communicate with their parents through @Output decorators
-   and they are reusable.
+1. Dump Components have no dependencies, they only have logic which is directly used for their view. They get all the data they need through the @Input decorators, communicate with their parents through @Output decorators and they are reusable.
 
    哑组件没有依赖，它们只有那些直接用于其视图的逻辑。他们通过 @Input 装饰器获取所需的全部数据，并通过 @Output 装饰器与父级进行通信，并且可被复用。
 
@@ -226,8 +220,7 @@ Just a small explanation of the connection and the data flow here
 
 这只是对连接和数据流的一个小小解释
 
-We have a container component with some logic and it holds some presentational components.
-All the data the presentational components need are passed through the @Input decorators. If they want to talk to their parents they would make use of an @Output decorator. If we use a service for some stuff we only use it in the container component.
+We have a container component with some logic and it holds some presentational components. All the data the presentational components need are passed through the @Input decorators. If they want to talk to their parents they would make use of an @Output decorator. If we use a service for some stuff we only use it in the container component.
 
 我们有一个带有一些逻辑的容器组件，它拥有一些展现组件。展现组件需要的所有数据都会通过 @Input 装饰器传入。如果它们想和父组件交谈，就要利用 @Output 装饰器。如果我们要使用某个服务，就应该只在容器组件中使用它。
 
@@ -282,8 +275,7 @@ Almost all logic in am app should fit to one of the following categories:
 
 ### 保持可维护性
 
-Maybe your structure is very deep.
-And this means you have looooong imports.
+Maybe your structure is very deep. And this means you have looooong imports.
 
 也许你的结构很深。这意味着你的导入表可能很长长长长……
 

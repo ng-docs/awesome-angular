@@ -1,6 +1,6 @@
 import * as spawn from 'cross-spawn';
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
 
 interface ChangeLog {
   action: string;
@@ -38,7 +38,7 @@ function preCommit(): void {
 
 function parseLine(line: string): ChangeLog {
   const [_, action, filename] = line.match(/^ *(\S+)\s+(.*)$/);
-  return {action, filename};
+  return { action, filename };
 }
 
 preCommit();

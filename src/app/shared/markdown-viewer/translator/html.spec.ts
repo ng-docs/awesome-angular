@@ -1,11 +1,11 @@
-import { describe, it } from 'mocha';
 import { expect } from 'chai';
 import { JSDOM } from 'jsdom';
+import { describe, it } from 'mocha';
 import { html } from './html';
-import restructureTable = html.restructureTable;
-import markAndSwapAll = html.markAndSwapAll;
 import addIdForHeaders = html.addIdForHeaders;
 import extractAll = html.extractAll;
+import markAndSwapAll = html.markAndSwapAll;
+import restructureTable = html.restructureTable;
 
 describe('html', function () {
   it('should mark and restructure table', () => {

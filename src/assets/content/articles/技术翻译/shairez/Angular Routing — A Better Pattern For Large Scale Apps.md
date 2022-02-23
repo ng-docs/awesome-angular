@@ -15,9 +15,9 @@ But today, I read the following tweet:
 但今天，我读到了下面的推文：
 
 > I wish someone could explain the purpose/benefit of putting routing into a separate "routing module" in @angular because for the life of me I can't see it, other than the idea of "hey, let's create another module because whey the heck not???
-> 
+>
 > 我希望能有人解释一下在 @angular 中把路由拆分到 "路由模块" 中的目的/优点，因为我在日常工作中没能想明白，只知道 "嘿，让我们创建另一个模块吧，因为……恩，见鬼，我也不知道为什么"。
-> 
+>
 > — @josepheames
 
 And it got me inspired to share my pattern of configuring routes in large scale Angular apps.

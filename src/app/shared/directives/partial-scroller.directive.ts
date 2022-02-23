@@ -1,5 +1,5 @@
-import { Directive, ElementRef } from '@angular/core';
 import { ViewportScroller } from '@angular/common';
+import { Directive, ElementRef } from '@angular/core';
 import { PartialScroller } from '../../core/services/partial-scroller.service';
 
 @Directive({
