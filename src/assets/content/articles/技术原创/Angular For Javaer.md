@@ -40,13 +40,16 @@
   - 表单概述
   - 模板驱动表单
   - 响应式表单
+  - 动态表单
   - 表单生成器
+  - 验证器与报错
 - 融会贯通：国际化、动态组件、服务端渲染等
   - 国际化
   - 自定义元素（Custom Element）
-  - SSR 的思路与用法
+  - SSR/Universal 的思路与用法
   - Prerender 的思路与用法
   - PWA 的思路与用法
+  - Web Worker 的思路与用法
 - 驾轻就熟：Angular CDK，以及它背后的设计思想
   - 与样式无关的 UI 库
   - Angular CDK 的主要功能版块
@@ -55,6 +58,7 @@
   - Angular CDK 的组件
   - Angular CDK 的设计思想
   - 基于 Angular CDK 自己实现组件库
+  - Angular Material 简介
 - 卓尔不群：对测试的系统化总结
   - 测试首先是思维的转变
   - Angular 项目的测试策略
@@ -69,3 +73,8 @@
   - 模板语句的解析过程
   - 变更检测与属性绑定
   - 依赖注入的实现原理
+- 谈笑风生：Angular 社区
+  - 优秀 Angular 开源项目
+  - 推荐的 Angular 资源
+  - Angular 价值观与社区文化
+  - Angular 社区活动
