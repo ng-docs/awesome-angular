@@ -126,7 +126,7 @@ function buildArticle(file: FileModel, authors: AuthorModel[]): ArticleModel {
     result.originUrl = originUrl;
   }
   result.path = file.path
-    .replace('./src/assets/content/articles/', '')
+    .replace('./content/articles/', '')
     .replace(/.md$/, '')
     .split('/')
     .slice(0, -1)

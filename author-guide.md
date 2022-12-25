@@ -6,7 +6,7 @@
 
 ## 如何写文章
 
-所有内容都在 `src/assets/content` 目录下，其中 `articles` 是文章，`authors` 是作者信息。
+所有内容都在 `/content` 目录下，其中 `articles` 是文章，`authors` 是作者信息。
 
 ### articles
 

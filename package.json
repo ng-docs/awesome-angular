@@ -6,7 +6,7 @@
     "prestart": "npm run build:docs",
     "start": "ng serve --port=4202",
     "build:docs": "ts-node scripts/build.ts",
-    "watch": "chokidar './src/assets/content/**/*.md' --initial -c 'npm run build:docs || true'",
+    "watch": "chokidar './src/content/**/*.md' --initial -c 'npm run build:docs || true'",
     "prebuild": "npm run build:docs",
     "build": "ng build --prod",
     "test": "ng test",

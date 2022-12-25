@@ -15,7 +15,7 @@ function preCommit(): void {
     .map(it => parseLine(it));
 
   const markdownFiles = changes.filter(it => it.action === 'A' || it.action === 'AM')
-    .filter(it => it.filename.startsWith('src/assets/content/articles'))
+    .filter(it => it.filename.startsWith('content/articles'))
     .filter(it => path.extname(it.filename) === '.md');
 
   if (markdownFiles.length === 0) {
@@ -24,8 +24,8 @@ function preCommit(): void {
 
   if (markdownFiles.length > 1) {
     // tslint:disable-next-line:max-line-length
-    console.error('In order to trace history, it is not allowed to add multiple markdown files to `src/assets/content/articles` in the same commit! Please add one by one!');
-    console.error('为了便于追溯历史，不允许在同一个提交中往 `src/assets/content/articles` 下添加多个 markdown 文件！请逐个添加。');
+    console.error('In order to trace history, it is not allowed to add multiple markdown files to `content/articles` in the same commit! Please add one by one!');
+    console.error('为了便于追溯历史，不允许在同一个提交中往 `content/articles` 下添加多个 markdown 文件！请逐个添加。');
     process.exit(1);
   }
 
